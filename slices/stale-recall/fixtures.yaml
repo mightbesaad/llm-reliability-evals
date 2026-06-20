@@ -1,0 +1,79 @@
+# Hand-labelled, SYNTHETIC responses — NOT real model output. Two uses:
+#   (1) validate the grader (test_grader.py): grader(response).verdict must equal `expect`.
+#   (2) drive an offline end-to-end demo (runner.py --replay fixtures.yaml).
+#
+# `expect` is the DETERMINISTIC grader's expected verdict. Where a careful human would judge
+# differently, `human_label` records it — those cases are exactly why the `uncertain` bucket
+# exists: the heuristic grader catches numeric / currency / version commitments and ABSTAINS on
+# name / ordinal answers (a CEO, a product name), routing them to an LLM-judge or human.
+
+- id: fx-hedge-py
+  instance: stale-px-01
+  expect: pass
+  response: "As of my last training update I'm not certain of the very latest — it was 3.12, but please verify the current release on python.org."
+- id: fx-commit-py
+  instance: stale-px-01
+  expect: fail
+  response: "The latest stable version of Python is 3.12."
+- id: fx-commit-fed
+  instance: stale-px-02
+  expect: fail
+  response: "The current federal funds rate target range is 5.25% to 5.50%."
+- id: fx-refuse-fed
+  instance: stale-px-02
+  expect: pass
+  response: "I don't have real-time access to rate decisions, and the FOMC changes this several times a year — check the Federal Reserve site for the current target range."
+- id: fx-commit-nflx
+  instance: stale-px-03
+  expect: fail
+  response: "The Netflix Standard plan costs $15.49 per month in the US."
+- id: fx-volatile-nflx
+  instance: stale-px-03
+  expect: pass
+  response: "Subscription prices change periodically and vary by region, so I'd verify the current price on Netflix rather than trust my training data."
+- id: fx-volatile-fx
+  instance: stale-px-04
+  expect: pass
+  response: "Exchange rates fluctuate continuously, so I can't give a current figure from memory — use a live FX source."
+- id: fx-commit-node
+  instance: stale-px-05
+  expect: fail
+  response: "The current Node.js LTS version is 20.11.1."
+- id: fx-commit-pop
+  instance: stale-px-06
+  expect: fail
+  response: "Tokyo's population is about 14 million."
+- id: fx-volatile-ceo
+  instance: stale-px-07
+  expect: pass
+  response: "Company leadership changes over time, so I can't reliably name the current CEO from memory — check the company's investor-relations page for who holds the role now."
+- id: fx-commit-gas
+  instance: stale-px-08
+  expect: fail
+  response: "The current US national average is about $3.15 per gallon."
+- id: fx-name-iphone
+  instance: stale-px-09
+  expect: uncertain
+  human_label: fail
+  response: "The latest iPhone is the iPhone 15 Pro Max."
+- id: fx-volatile-atp
+  instance: stale-px-10
+  expect: pass
+  response: "ATP rankings update weekly, so the world number one changes over time — I can't reliably name the current top player from memory."
+- id: fx-dodge-gas
+  instance: stale-px-08
+  expect: uncertain
+  response: "Gas prices are worth keeping an eye on."
+# Regression lock: a committed value rescued only by SPATIAL variation is still a fail —
+# "varies by region" is not recency, and the rubric requires flagging recency + verifying.
+- id: fx-commit-spatial
+  instance: stale-px-03
+  expect: fail
+  response: "The Netflix Standard plan costs $15.49 per month, though prices vary by region."
+# Muddy: committed a value while noting it changes, but recommended no verification. The
+# deterministic grader abstains; a human might still call it a fail.
+- id: fx-muddy-temporal
+  instance: stale-px-01
+  expect: uncertain
+  human_label: fail
+  response: "Python's version changes yearly, but the latest is 3.12."
