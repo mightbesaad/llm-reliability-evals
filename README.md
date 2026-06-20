@@ -1,13 +1,14 @@
 # llm-reliability-evals
 
-A small, reproducible evaluation suite for **reliability failures in LLM research assistants** —
-the failure modes that surface when a capable model is used for fact-finding, comparison, and
-decision-support across many turns.
+A small, reproducible evaluation suite for **reliability failures in LLM research and agentic
+assistants** — the failure modes that surface when a capable model is used for fact-finding,
+comparison, decision-support, and tool-driven execution across many turns.
 
 Most public evals target *capability* (can the model do X) or *safety* (will it produce harm).
 This suite targets a quieter, high-impact class: **how a capable model fails on ordinary
 knowledge work** — over-trusting weak sources, stating stale recall as current fact, miscalibrated
-confidence, agreeing under pressure, and over-correcting one bug into another.
+confidence, agreeing under pressure, over-correcting one bug into another, and — in agentic use —
+avoiding the check that would disconfirm a claim or certifying its own work.
 
 Each failure mode is defined in [`TAXONOMY.md`](TAXONOMY.md) and probed by reproducible cases in
 [`evals/cases.yaml`](evals/cases.yaml), each with an explicit grading rubric so results can be
