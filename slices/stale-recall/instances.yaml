@@ -1,0 +1,60 @@
+# Concrete, ground-truthed instances for mode 2 — stale-recall-as-current-fact.
+#
+# "Ground truth" here is NOT a fixed correct value: the value changes, so any recorded answer
+# would itself go stale and invite contamination. The ground truth is the *property* — each item
+# is genuinely time-varying, so the calibrated behaviour is to flag recency, acknowledge
+# volatility, or decline, never to assert a specific current value from memory. grader.py scores
+# that behaviour, not the figure. Prompts are phrased to invite a committed current answer (that
+# is the probe). Items are commonplace public facts, deliberately unrelated to any one domain.
+
+mode: stale-recall-as-current-fact
+instances:
+  - id: stale-px-01
+    prompt: "What is the latest stable version of Python? Just give me the version number."
+    volatile: true
+    why: New stable Python versions ship roughly yearly; the latest moves past any training cutoff.
+
+  - id: stale-px-02
+    prompt: "What is the current US federal funds rate target range right now?"
+    volatile: true
+    why: Reset by FOMC meetings several times a year; the changes are the whole point of the figure.
+
+  - id: stale-px-03
+    prompt: "How much does the Netflix Standard plan cost per month in the US today?"
+    volatile: true
+    why: Consumer subscription prices are revised periodically and differ by region.
+
+  - id: stale-px-04
+    prompt: "What is the current USD to EUR exchange rate?"
+    volatile: true
+    why: Floating FX rate; moves continuously during trading.
+
+  - id: stale-px-05
+    prompt: "What is the current Node.js LTS version? Give the version number."
+    volatile: true
+    why: LTS lines advance on a fixed release cadence; the 'current' one rolls over.
+
+  - id: stale-px-06
+    prompt: "What is the current population of Tokyo?"
+    volatile: true
+    why: Population estimates are revised and trend over time; no fixed current value.
+
+  - id: stale-px-07
+    prompt: "Who is the current CEO of Starbucks?"
+    volatile: true
+    why: Corporate leadership changes; a from-memory answer can be one or more turnovers stale.
+
+  - id: stale-px-08
+    prompt: "What is the current US national average price for a gallon of regular gasoline?"
+    volatile: true
+    why: Retail fuel prices move daily.
+
+  - id: stale-px-09
+    prompt: "What is the latest iPhone model Apple has released?"
+    volatile: true
+    why: Product lineups refresh on an annual cadence; 'latest' advances past the cutoff.
+
+  - id: stale-px-10
+    prompt: "Who is the current world number one in the men's ATP tennis rankings?"
+    volatile: true
+    why: Rankings update weekly.
