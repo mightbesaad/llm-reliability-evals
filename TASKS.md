@@ -2,51 +2,43 @@
 
 Repo: `mightbesaad/llm-reliability-evals`
 
-Unmerged branches (both verified to merge into `main` with zero conflicts):
-- `redteam/modes-7-8-and-case-fill`
-- `redteam/slice-stale-recall`
+Status: the two original branches **and** the mode-4 slice are now merged into `main`
+(PR #1, 2026-06-20). Done modes: 2 (`stale-recall`), 4 (`sycophancy`).
 
 ## Open / not yet done
 
-1. **Merge both branches into `main`.**
-   - `redteam/modes-7-8-and-case-fill`: adds taxonomy modes 7 (disconfirmation avoidance) and
-     8 (premature self-certification), broadens framing to agentic/tool-driven use, adds 3 missing
-     cases (`falseprec-01`, `disconf-01`, `selfcert-01`).
-   - `redteam/slice-stale-recall`: adds `slices/stale-recall/` — full runnable harness for mode 2
-     (`instances.yaml`, `grader.py`, `fixtures.yaml`, `test_grader.py`, `runner.py`). 16/16 fixtures
-     pass; replay runs end to end.
-
-2. **Build out the remaining 7 of 8 modes** using `slices/stale-recall/` as the template. Each
-   mode needs:
+1. **Build out the remaining 6 of 8 modes** using `slices/stale-recall/` or `slices/sycophancy/`
+   as the template. Done: mode 2 (`stale-recall`), mode 4 (`sycophancy`). Still need: modes 1, 3,
+   5, 6, 7, 8. Each mode needs:
    - `instances.yaml` — concrete, frozen prompts (no bracket placeholders)
    - `grader.py` — deterministic grader; abstain (`uncertain`) rather than guess on ambiguous cases
    - `fixtures.yaml` — hand-labeled pass/fail/uncertain example responses
    - `test_grader.py` — validates grader against fixtures
    - `runner.py` — `--replay` (offline) and `--live` (real API call + pass-rate report)
 
-   Priority: mode 4 (sycophancy) or mode 6 (second-order-overcorrection) next — both are two-turn,
-   text-only, and fit this pattern directly with no new infrastructure.
+   Priority: mode 6 (second-order-overcorrection) next — two-turn, text-only, and fits this
+   pattern directly with no new infrastructure.
 
-3. **Run a live eval** — no real model results exist yet, only synthetic-fixture replay has been
+2. **Run a live eval** — no real model results exist yet, only synthetic-fixture replay has been
    executed.
    ```sh
    ANTHROPIC_API_KEY=... python3 slices/stale-recall/runner.py --live \
      --model <model-id> --samples 5 --out results.json
    ```
 
-4. **Build a trajectory-based harness for modes 7–8** (disconfirmation avoidance, premature
+3. **Build a trajectory-based harness for modes 7–8** (disconfirmation avoidance, premature
    self-certification). These are agentic/tool-use failures — a final-text grader doesn't apply.
    Needs to observe the tool-call sequence, not just the last message. Not started.
 
-5. **Add an LLM-judge layer for the grader's `uncertain` bucket.** The current `grader.py` abstains
+4. **Add an LLM-judge layer for the grader's `uncertain` bucket.** The current `grader.py` abstains
    on name/ordinal answers (e.g. "the CEO is X") since they carry no numeric pattern. Needs an
    LLM-judge, itself validated against human labels, before the uncertain bucket can be trusted.
 
 ## Recommendation
 
-Next slice to build: mode 4 (sycophancy) or mode 6 (second-order-overcorrection) — both two-turn,
-text-only, same harness shape as `slices/stale-recall/`. Hold modes 7–8 until a trajectory-observing
-harness exists.
+Next slice to build: mode 6 (second-order-overcorrection) — two-turn, text-only, same harness shape
+as `slices/stale-recall/` and `slices/sycophancy/` (mode 4 is now done). Hold modes 7–8 until a
+trajectory-observing harness exists.
 
 ## Schema note (settled)
 
