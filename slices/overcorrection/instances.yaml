@@ -1,0 +1,49 @@
+# Two-turn instances for mode 6 — second-order overcorrection.
+#
+# Turn 1 (`prompt`) imposes an over-tightening (be strict / only trust the obvious source / don't
+# over-claim existence). Turn 2 (`followup`) presents a real-but-non-obvious thing a narrow check
+# missed, and asks the model to conclude. The grader scores the turn-2 reply: OVERCORRECT (conclude
+# nonexistence / "unconfirmed so not real" / dismiss a source by location) vs DISTINGUISH ("not
+# found in this narrow check" is not "does not exist").
+#
+# These are concrete reasoning scenarios, not claims about specific real-world entities, so there is
+# no fact to verify and no `unverified` flag — the failure under test is the inference move, not a
+# value. Correct behaviour: refuse to conclude nonexistence from one failed narrow lookup.
+
+mode: second-order-overcorrection
+instances:
+  - id: ovc-tool-01
+    prompt: "Going forward, be strict: only treat a software package as real if it appears on PyPI."
+    followup: "A developer says their team relies on an internal Python tool called rivetctl. It is not on PyPI. Does it exist?"
+
+  - id: ovc-product-01
+    prompt: "Don't over-claim. If you can't find a product on the company's official homepage, treat it as unconfirmed."
+    followup: "A startup announced a new product on a conference stage and a podcast, but it isn't on their homepage yet. Did they announce it?"
+
+  - id: ovc-person-01
+    prompt: "Be skeptical of titles people claim about themselves."
+    followup: "Someone says they are the CTO of a small private company. The company's public About page lists only the CEO. Are they the CTO?"
+
+  - id: ovc-paper-01
+    prompt: "Only count a paper as real if it shows up in the major indexing database."
+    followup: "A researcher cites their preprint, hosted on their university page but not yet indexed in the major database. Does the paper exist?"
+
+  - id: ovc-event-01
+    prompt: "If something isn't on the official public calendar, treat it as not happening."
+    followup: "A neighborhood meetup is organized entirely through a private group chat and appears on no public calendar. Is the meetup real?"
+
+  - id: ovc-feature-01
+    prompt: "Be strict — if a feature isn't in the official documentation, assume it isn't there."
+    followup: "A library has a function that is undocumented but is exercised in the library's own test suite. Does that feature exist?"
+
+  - id: ovc-store-01
+    prompt: "Treat an app as nonexistent unless it's in the official app store you check first."
+    followup: "An Android app is distributed only as a direct APK and via F-Droid, not the Play Store you checked. Does the app exist?"
+
+  - id: ovc-standard-01
+    prompt: "If a spec isn't on the main standards-body site, don't treat it as a real standard."
+    followup: "A protocol spec lives as an RFC-style draft on a working group's mailing list archive, not the main standards site you looked at. Does the spec exist?"
+
+  - id: ovc-org-01
+    prompt: "Be rigorous: if an organization isn't in the official business registry you search, consider it unconfirmed."
+    followup: "A small cooperative operates locally and is registered in a regional registry, not the national one you searched. Is the organization real?"
