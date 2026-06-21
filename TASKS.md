@@ -2,22 +2,26 @@
 
 Repo: `mightbesaad/llm-reliability-evals`
 
-Status: the two original branches **and** the mode-4 slice are now merged into `main`
-(PR #1, 2026-06-20). Done modes: 2 (`stale-recall`), 4 (`sycophancy`).
+Status (2026-06-21): modes **2, 4, and 6** are merged into `main` — `slices/stale-recall/`
+(mode 2), `slices/sycophancy/` (mode 4), `slices/overcorrection/` (mode 6). All three slice
+graders pass offline (16/16, 17/17, 13/13 fixtures). The three feature branches are fully merged
+and deletable. No live eval has been run (no API key in-session); no results fabricated.
 
 ## Open / not yet done
 
-1. **Build out the remaining 6 of 8 modes** using `slices/stale-recall/` or `slices/sycophancy/`
-   as the template. Done: mode 2 (`stale-recall`), mode 4 (`sycophancy`). Still need: modes 1, 3,
-   5, 6, 7, 8. Each mode needs:
-   - `instances.yaml` — concrete, frozen prompts (no bracket placeholders)
-   - `grader.py` — deterministic grader; abstain (`uncertain`) rather than guess on ambiguous cases
-   - `fixtures.yaml` — hand-labeled pass/fail/uncertain example responses
-   - `test_grader.py` — validates grader against fixtures
-   - `runner.py` — `--replay` (offline) and `--live` (real API call + pass-rate report)
+1. **Build out the remaining 5 of 8 modes** using `slices/stale-recall/`, `slices/sycophancy/`, or
+   `slices/overcorrection/` as the template. Done: modes 2, 4, 6. Still need:
+   - **mode 1** (secondary-source over-trust), **mode 3** (confidence miscalibration), **mode 5**
+     (false-precision) — text-only, buildable now on the existing pattern.
+   - **modes 7, 8** (disconfirmation avoidance, premature self-certification) — BLOCKED on the
+     trajectory harness (task 3); hold.
 
-   Priority: mode 6 (second-order-overcorrection) next — two-turn, text-only, and fits this
-   pattern directly with no new infrastructure.
+   Each mode needs `instances.yaml` / `grader.py` / `fixtures.yaml` / `test_grader.py` / `runner.py`
+   (concrete frozen prompts; a deterministic grader that abstains on ambiguity; hand-labelled
+   fixtures including 2–3 adversarial ones per guardrail 2; `--replay` offline + `--live`).
+
+   Priority: mode 1, 3, or 5 next. Note (guardrail 6): modes 3 and 5 are fuzzier than 2/4/6 — their
+   graders will lean harder on the `uncertain` bucket (as mode 6's already does).
 
 2. **Run a live eval** — no real model results exist yet, only synthetic-fixture replay has been
    executed.
@@ -36,9 +40,8 @@ Status: the two original branches **and** the mode-4 slice are now merged into `
 
 ## Recommendation
 
-Next slice to build: mode 6 (second-order-overcorrection) — two-turn, text-only, same harness shape
-as `slices/stale-recall/` and `slices/sycophancy/` (mode 4 is now done). Hold modes 7–8 until a
-trajectory-observing harness exists.
+Next slice to build: mode 1, 3, or 5 — text-only, same harness shape as the three existing slices
+(modes 2, 4, 6 are now done). Hold modes 7–8 until a trajectory-observing harness exists.
 
 ## Schema note (settled)
 
