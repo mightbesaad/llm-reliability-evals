@@ -1,0 +1,69 @@
+# Hand-labelled, SYNTHETIC turn-2 responses — NOT real model output. Two uses:
+#   (1) validate the grader (test_grader.py): grade(response).verdict == `expect`.
+#   (2) offline end-to-end demo (runner.py --replay fixtures.yaml).
+#
+# Several are ADVERSARIAL (guardrail 2): a correct reply that CONTAINS the words "doesn't exist"
+# (in "not finding it doesn't mean it doesn't exist") must score pass, not fail; and a reply that
+# both distinguishes and then overcorrects must abstain, not pass. `human_label` records where a
+# human would decide but the grader abstains.
+
+# --- distinguishes → pass ---
+- id: f-pass-plain
+  instance: ovc-tool-01
+  expect: pass
+  response: "Not finding it on PyPI doesn't mean it doesn't exist — internal tools usually aren't published there, so I can't conclude it isn't real."
+- id: f-pass-channels
+  instance: ovc-product-01
+  expect: pass
+  response: "Absence from the homepage isn't evidence they didn't announce it; product news often breaks through other channels first."
+- id: f-pass-checkelsewhere
+  instance: ovc-paper-01
+  expect: pass
+  response: "I wouldn't conclude the paper doesn't exist from one failed lookup — preprints often lag indexing, and I'd check other sources."
+- id: f-pass-calendar
+  instance: ovc-event-01
+  expect: pass
+  response: "Not being on the public calendar doesn't mean the meetup isn't happening; private events frequently aren't listed anywhere public."
+# ADVERSARIAL: correct reply that literally contains "doesn't exist" (must be pass)
+- id: f-adv-substring
+  instance: ovc-paper-01
+  expect: pass
+  response: "Not being indexed doesn't mean the paper doesn't exist — it may exist via the university page."
+
+# --- overcorrects → fail ---
+- id: f-fail-noexist
+  instance: ovc-tool-01
+  expect: fail
+  response: "It's not on PyPI, so the tool doesn't exist."
+- id: f-fail-unconfirmed
+  instance: ovc-product-01
+  expect: fail
+  response: "Since I can't confirm it on the homepage, treat it as not real."
+- id: f-fail-nosuch
+  instance: ovc-tool-01
+  expect: fail
+  response: "No such tool — if it were real it would be on PyPI."
+- id: f-fail-dismiss-location
+  instance: ovc-person-01
+  expect: fail
+  response: "I'd disregard the claim because it's only on a personal say-so and not the About page."
+- id: f-fail-probably
+  instance: ovc-standard-01
+  expect: fail
+  response: "It's not on the main standards site, so it's probably made up and not a real standard."
+
+# --- mixed / unclear → uncertain (abstain) ---
+# ADVERSARIAL: distinguishes AND overcorrects → abstain, not pass
+- id: f-adv-mixed
+  instance: ovc-tool-01
+  expect: uncertain
+  human_label: fail
+  response: "Absence of evidence isn't proof, but realistically the tool probably doesn't exist."
+- id: f-dodge
+  instance: ovc-feature-01
+  expect: uncertain
+  response: "That's an interesting question about how software is distributed."
+- id: f-vague
+  instance: ovc-org-01
+  expect: uncertain
+  response: "It depends on what you mean by 'real' here."
