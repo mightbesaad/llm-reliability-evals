@@ -2,46 +2,61 @@
 
 Repo: `mightbesaad/llm-reliability-evals`
 
-Status (2026-06-21): modes **2, 4, and 6** are merged into `main` — `slices/stale-recall/`
-(mode 2), `slices/sycophancy/` (mode 4), `slices/overcorrection/` (mode 6). All three slice
-graders pass offline (16/16, 17/17, 13/13 fixtures). The three feature branches are fully merged
-and deletable. No live eval has been run (no API key in-session); no results fabricated.
+Status (2026-06-23): **5 of 8 modes** are merged into `main` — `slices/stale-recall/` (mode 2),
+`slices/sycophancy/` (mode 4), `slices/overcorrection/` (mode 6), `slices/source-overtrust/`
+(mode 1), `slices/false-precision/` (mode 5). All five slice graders pass offline (16/16, 17/17,
+13/13, 17/17, 17/17 fixtures respectively). No paid live eval has been run (see task 2); no results
+fabricated. Feature branches are merged; `redteam/slice-source-overtrust` has been deleted from
+`origin`, `redteam/slice-false-precision` is local-only.
 
 ## Open / not yet done
 
-1. **Build out the remaining 5 of 8 modes** using `slices/stale-recall/`, `slices/sycophancy/`, or
-   `slices/overcorrection/` as the template. Done: modes 2, 4, 6. Still need:
-   - **mode 1** (secondary-source over-trust), **mode 3** (confidence miscalibration), **mode 5**
-     (false-precision) — text-only, buildable now on the existing pattern.
-   - **modes 7, 8** (disconfirmation avoidance, premature self-certification) — BLOCKED on the
-     trajectory harness (task 3); hold.
+1. **Build the last text-only mode — mode 3** (confidence-correctness miscalibration), using any
+   existing slice as the template. It is the **only** buildable text-only mode left; modes 1 and 5
+   are now done and merged. Modes 7, 8 stay BLOCKED on the trajectory harness (task 3); hold.
 
-   Each mode needs `instances.yaml` / `grader.py` / `fixtures.yaml` / `test_grader.py` / `runner.py`
+   The mode needs `instances.yaml` / `grader.py` / `fixtures.yaml` / `test_grader.py` / `runner.py`
    (concrete frozen prompts; a deterministic grader that abstains on ambiguity; hand-labelled
-   fixtures including 2–3 adversarial ones per guardrail 2; `--replay` offline + `--live`).
+   fixtures including 2–3 adversarial ones per guardrail 2; `--replay` offline + the unused `--live`).
 
-   Priority: mode 1, 3, or 5 next. Note (guardrail 6): modes 3 and 5 are fuzzier than 2/4/6 — their
-   graders will lean harder on the `uncertain` bucket (as mode 6's already does).
+   Note (guardrail 6): mode 3 is the **hardest design** of the fuzzy set — its grader will lean
+   hardest on the `uncertain` bucket. Its Card-1 plan gets full review before any build begins.
 
-2. **Run a live eval** — no real model results exist yet, only synthetic-fixture replay has been
-   executed.
+2. **Get real-model data via manual chat-paste-replay — no paid API usage for this project.**
+   Decision: do not call the paid `--live` path. Instead, paste each case's frozen prompt into
+   claude.ai, copy the literal reply into a fixtures-style entry, and `--replay` it:
    ```sh
-   ANTHROPIC_API_KEY=... python3 slices/stale-recall/runner.py --live \
-     --model <model-id> --samples 5 --out results.json
+   # 1. paste a slice prompt into claude.ai → 2. copy the literal response into an entry:
+   #    { id, instance, response: "<verbatim model text>", <claim|precision_unwarranted>, expect: <blind label> }
+   # 3. run it offline:
+   python3 slices/<mode>/runner.py --replay real_responses.yaml
    ```
+   No real-model results exist yet — only synthetic-fixture replay has been executed. (`--live` stays
+   in every runner for portability but is intentionally unused here; this is a decision, not a
+   missing key.)
 
 3. **Build a trajectory-based harness for modes 7–8** (disconfirmation avoidance, premature
-   self-certification). These are agentic/tool-use failures — a final-text grader doesn't apply.
-   Needs to observe the tool-call sequence, not just the last message. Not started.
+   self-certification). These are agentic/tool-use failures — a final-text grader doesn't apply; it
+   must observe the tool-call sequence, not just the last message. Not started.
 
-4. **Add an LLM-judge layer for the grader's `uncertain` bucket.** The current `grader.py` abstains
-   on name/ordinal answers (e.g. "the CEO is X") since they carry no numeric pattern. Needs an
-   LLM-judge, itself validated against human labels, before the uncertain bucket can be trusted.
+   Decision (recorded so it is not lost to chat history): prefer **forward-instrumenting the
+   tool-call cycle going forward** — capturing calls as they happen — over historical reconstruction.
+   A file-history-versus-timestamp correlation is a **weak supplementary** signal, usable only for
+   **mode 8**, and only shows whether files were still changing when "done" was declared — it cannot
+   show whether the prescribed check (tests, lint) actually ran. Useful as a cheap first-pass flag,
+   not a substitute for real trajectory data.
+
+4. **Add an LLM-judge layer for the grader's `uncertain` bucket**, itself validated against human
+   labels before the uncertain bucket can be trusted. More **load-bearing for modes 1 and 5** than
+   for 2/4/6: their abstain buckets collect genuine failures — mode 1, paraphrased figures the
+   verbatim echo-check misses; mode 5, buried caveats and a bidirectional abstain-skew — not just the
+   name/ordinal ambiguities stale-recall abstains on.
 
 ## Recommendation
 
-Next slice to build: mode 1, 3, or 5 — text-only, same harness shape as the three existing slices
-(modes 2, 4, 6 are now done). Hold modes 7–8 until a trajectory-observing harness exists.
+Next slice to build: **mode 3** (confidence-correctness miscalibration) — the last of the buildable
+text-only set, and the hardest design of the three fuzzy modes, so its Card-1 plan gets full review
+before any build. Modes 7–8 wait on the trajectory harness (task 3).
 
 ## Schema note (settled)
 
