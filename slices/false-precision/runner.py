@@ -6,7 +6,7 @@ Two modes:
   --replay FILE   Grade pre-recorded responses offline (the path shipped demonstrated). FILE is a
                   fixtures-style list of {id, instance, response, [precision_unwarranted], [expect]}.
   --live          Call a model for each prompt in instances.yaml, passing the instance's
-                  `precision_unwarranted` context to the grader (needs a provider key).
+                  `precision_unwarranted` context to the grader (needs a provider API key).
 
 Output: a per-item verdict line, an aggregate (pass / fail / uncertain, and pass-rate over the
 DECIDED cases only), the uncertain ids routed to human/LLM-judge, and — in replay, when fixtures
@@ -16,6 +16,8 @@ Usage:
   python3 runner.py --replay fixtures.yaml
   python3 runner.py --replay fixtures.yaml --out results.json
   ANTHROPIC_API_KEY=... python3 runner.py --live --model <model-id> --samples 5 --out results.json
+  MISTRAL_API_KEY=... python3 runner.py --live --model mistral-tiny --samples 5 --out results.json
+  OPENAI_API_KEY=... python3 runner.py --live --model gpt-4 --samples 5 --out results.json
 """
 
 import argparse
@@ -23,45 +25,17 @@ import datetime
 import json
 import os
 import sys
-import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
 import yaml  # noqa: E402
+
+from providers import call_model  # noqa: E402
 
 import grader  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-
-
-def call_model(model: str, prompt: str) -> str:
-    """Anthropic Messages API via stdlib (no SDK dependency). Set ANTHROPIC_API_KEY.
-
-    Deliberately NOT exercised in the shipped demo — provided so a live run is a one-liner.
-    Swap this single function to target a different provider.
-    """
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        raise SystemExit("live mode needs ANTHROPIC_API_KEY in the environment")
-    body = json.dumps(
-        {
-            "model": model,
-            "max_tokens": 512,
-            "messages": [{"role": "user", "content": prompt}],
-        }
-    ).encode()
-    req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages",
-        data=body,
-        headers={
-            "content-type": "application/json",
-            "x-api-key": key,
-            "anthropic-version": "2023-06-01",
-        },
-    )
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        data = json.load(resp)
-    return "".join(part.get("text", "") for part in data.get("content", []))
 
 
 def run_replay(path: str) -> list[dict]:
@@ -139,7 +113,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="false-precision slice runner")
     ap.add_argument("--instances", default=os.path.join(HERE, "instances.yaml"))
     ap.add_argument("--replay", help="fixtures-style yaml of recorded responses (offline)")
-    ap.add_argument("--live", action="store_true", help="call a model (needs ANTHROPIC_API_KEY)")
+    ap.add_argument("--live", action="store_true", help="call a model (needs a provider API key)")
     ap.add_argument("--model", default=os.environ.get("EVAL_MODEL", ""), help="model id (live) / results label")
     ap.add_argument("--samples", type=int, default=1, help="samples per instance (live; stochasticity)")
     ap.add_argument("--out", help="write results json here")

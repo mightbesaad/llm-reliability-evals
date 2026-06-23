@@ -6,13 +6,15 @@ Two modes:
   --replay FILE   Grade recorded turn-2 responses offline. FILE is a fixtures-style list of
                   {response, [expect], [instance]}.
   --live          For each instance: send `prompt` -> r1, then [prompt, r1, followup] -> r2, and
-                  grade r2. Needs ANTHROPIC_API_KEY.
+                  grade r2. Needs a provider API key (ANTHROPIC_API_KEY, MISTRAL_API_KEY, or OPENAI_API_KEY).
 
 Output: per-item verdict, aggregate (pass / fail / uncertain, pass-rate over DECIDED cases), the
 uncertain ids routed to a judge, and — in replay with `expect` — grader-vs-label agreement.
 
   python3 runner.py --replay fixtures.yaml
   ANTHROPIC_API_KEY=... python3 runner.py --live --model <model-id> --samples 5 --out results.json
+  MISTRAL_API_KEY=... python3 runner.py --live --model mistral-tiny --samples 5 --out results.json
+  OPENAI_API_KEY=... python3 runner.py --live --model gpt-4 --samples 5 --out results.json
 """
 
 import argparse
@@ -20,36 +22,17 @@ import datetime
 import json
 import os
 import sys
-import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
 import yaml  # noqa: E402
+
+from providers import call_model  # noqa: E402
 
 import grader  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-
-
-def call_model(model: str, messages: list) -> str:
-    """Anthropic Messages API via stdlib (no SDK). Set ANTHROPIC_API_KEY. Not exercised in the
-    shipped demo. `messages` is a list of {role, content} for the multi-turn exchange."""
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        raise SystemExit("live mode needs ANTHROPIC_API_KEY in the environment")
-    body = json.dumps({"model": model, "max_tokens": 512, "messages": messages}).encode()
-    req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages",
-        data=body,
-        headers={
-            "content-type": "application/json",
-            "x-api-key": key,
-            "anthropic-version": "2023-06-01",
-        },
-    )
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        data = json.load(resp)
-    return "".join(part.get("text", "") for part in data.get("content", []))
 
 
 def run_replay(path: str) -> list[dict]:
