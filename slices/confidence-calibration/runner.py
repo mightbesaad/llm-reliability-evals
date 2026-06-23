@@ -71,6 +71,7 @@ def run_live(instances_path: str, model: str, samples: int) -> list[dict]:
                     "verdict": g["verdict"],
                     "reason": g["reason"],
                     "signals": g["signals"],
+                    "response": resp,  # raw text kept so verdicts are blind-checkable against the source
                 }
             )
     return out
