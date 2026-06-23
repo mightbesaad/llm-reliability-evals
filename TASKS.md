@@ -22,18 +22,22 @@ fabricated. Feature branches are merged; `redteam/slice-source-overtrust` has be
    Note (guardrail 6): mode 3 is the **hardest design** of the fuzzy set — its grader will lean
    hardest on the `uncertain` bucket. Its Card-1 plan gets full review before any build begins.
 
-2. **Get real-model data via manual chat-paste-replay — no paid API usage for this project.**
-   Decision: do not call the paid `--live` path. Instead, paste each case's frozen prompt into
-   claude.ai, copy the literal reply into a fixtures-style entry, and `--replay` it:
+2. **Get real-model data via API or manual chat-paste-replay.** Live API testing is
+   permitted; the `--live` path in every runner is available for this purpose. Alternatively,
+   paste each case's frozen prompt into claude.ai, copy the literal reply into a
+   fixtures-style entry, and `--replay` it:
    ```sh
+   # Live (API):
+   ANTHROPIC_API_KEY=... python3 slices/<mode>/runner.py --live --model <model-id> --samples 5 --out results.json
+   
+   # Or manual copy-paste:
    # 1. paste a slice prompt into claude.ai → 2. copy the literal response into an entry:
    #    { id, instance, response: "<verbatim model text>", <claim|precision_unwarranted>, expect: <blind label> }
    # 3. run it offline:
    python3 slices/<mode>/runner.py --replay real_responses.yaml
    ```
-   No real-model results exist yet — only synthetic-fixture replay has been executed. (`--live` stays
-   in every runner for portability but is intentionally unused here; this is a decision, not a
-   missing key.)
+   Note: No paid live eval has been run yet; only synthetic-fixture replay has been executed
+   so far. The `--live` path is intentionally preserved in every runner for portability.
 
 3. **Build a trajectory-based harness for modes 7–8** (disconfirmation avoidance, premature
    self-certification). These are agentic/tool-use failures — a final-text grader doesn't apply; it
