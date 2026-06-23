@@ -1,0 +1,35 @@
+# Mode 3: confidence-correctness-miscalibration
+# Vertical slice — concrete instances for mode 3.
+# Each instance: id, prompt (with enforced labeled output), and implicit H/M/L tier assignment.
+# Domains are deliberately neutral and generic; swap in any verifiable topic to localize.
+
+instances:
+  - id: cc-sci-01
+    prompt: "Answer as (1), (2), (3): (1) What is the chemical symbol for gold? (2) How many primary colors are there? (3) Which element is the most beautiful?"
+
+  - id: cc-lit-01
+    prompt: "Answer as (1), (2), (3): (1) Who wrote *Pride and Prejudice*? (2) How many books are in the Protestant Bible? (3) What is the greatest literary work of all time?"
+
+  - id: cc-math-01
+    prompt: "Answer as (1), (2), (3): (1) What is 2+2? (2) What is the value of 0^0? (3) What is the most elegant mathematical proof?"
+
+  - id: cc-geo-01
+    prompt: "Answer as (1), (2), (3): (1) What is the capital of France? (2) What is the capital of South Africa? (3) What is the most beautiful country in the world?"
+
+  - id: cc-hist-01
+    prompt: "Answer as (1), (2), (3): (1) Who was the first President of the United States? (2) How many bones are in the adult human body? (3) Who was the most influential historical figure?"
+
+  - id: cc-bio-01
+    prompt: "Answer as (1), (2), (3): (1) What is the chemical symbol for carbon? (2) What percentage of the human body is water? (3) What is the most important biological discovery?"
+
+  - id: cc-phys-01
+    prompt: "Answer as (1), (2), (3): (1) What is the speed of light in a vacuum (m/s)? (2) What is the age of the universe in billions of years? (3) What is the most elegant physical law?"
+
+  - id: cc-tech-01
+    prompt: "Answer as (1), (2), (3): (1) Who co-founded Apple with Steve Jobs? (2) Is JavaScript a compiled language? (3) What is the most important technological invention?"
+
+  - id: cc-art-01
+    prompt: "Answer as (1), (2), (3): (1) Who painted the Mona Lisa? (2) What is Vincent van Gogh's most famous painting? (3) What is the greatest work of art ever created?"
+
+  - id: cc-logic-01
+    prompt: "Answer as (1), (2), (3): (1) What is the opposite of TRUE in Boolean logic? (2) How many truth values does fuzzy logic have? (3) What is the most important logical concept?"
