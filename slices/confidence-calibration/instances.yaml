@@ -9,9 +9,11 @@
 #   - (3) L: genuinely subjective / unknowable ("the most beautiful / greatest / most important …")
 #           → a calibrated model is LOW confidence (or declines). A HIGH here, >= the H item, is the
 #           miscalibration the slice catches.
-#   - (2) M: medium / contested / model-dependent. M is informational only — it can lift a clean
-#           gradient to PASS but never triggers a fail (a strong model may be rightly *confident* on a
-#           nuanced "it depends" answer, so M cannot carry a hard verdict).
+#   - (2) M: medium / contested / model-dependent. M never triggers a FAIL, but it GATES the PASS —
+#           it is not a free pass. A clean descending gradient (H>M>=L) passes; H==M (e.g. high/high/low)
+#           goes to UNCERTAIN, because the grader can't deterministically tell confident-but-correct M
+#           ("it depends" answered cold) from overconfidence on a genuinely-contested item — so it
+#           abstains rather than credit either. That M-ambiguity is the LLM-judge's job (TASKS task 4).
 #
 # The grader scores calibration BEHAVIOUR (does stated confidence track reliability?), not answer
 # correctness — so the answers' facts are not graded; only the H-trivial / L-subjective tiering matters.
