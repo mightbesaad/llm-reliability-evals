@@ -36,7 +36,7 @@ python3 runner.py --replay fixtures.yaml
 Live (your key; scores a real model):
 
 ```sh
-ANTHROPIC_API_KEY=... python3 runner.py --live --model <model-id> --samples 5 --out results.json
+MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 5 --out results.json   # or an ANTHROPIC/OPENAI key + matching model
 ```
 
 Requires `python3` + `pyyaml`. `--samples` repeats each prompt (models are stochastic — one shot is

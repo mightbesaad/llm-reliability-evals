@@ -23,7 +23,7 @@ cd slices/overcorrection
 python3 test_grader.py
 python3 runner.py --replay fixtures.yaml
 # live:
-ANTHROPIC_API_KEY=... python3 runner.py --live --model <model-id> --samples 5 --out results.json
+MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 5 --out results.json   # or an ANTHROPIC/OPENAI key + matching model
 ```
 
 ## Honest limits (by design)

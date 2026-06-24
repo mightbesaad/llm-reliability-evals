@@ -127,8 +127,8 @@ def call_model(model: str, prompt: str = None, messages: list = None) -> str:
       - prompt: str (single-turn: modes 1, 2, 3, 5, 6)
       - messages: list (multi-turn: mode 4)
     
-    Priority order: Anthropic -> Mistral -> OpenAI
-    Set the corresponding env var (ANTHROPIC_API_KEY, MISTRAL_API_KEY, OPENAI_API_KEY).
+    Routes by model id (claude*->Anthropic, mistral*->Mistral, gpt*/o*->OpenAI); unknown ids fall
+    back to whichever key is set. Set the corresponding env var (ANTHROPIC/MISTRAL/OPENAI_API_KEY).
     
     Args:
         model: Provider-specific model identifier
@@ -144,19 +144,26 @@ def call_model(model: str, prompt: str = None, messages: list = None) -> str:
     if prompt is None and messages is None:
         raise SystemExit("call_model requires either 'prompt' or 'messages' argument")
     
-    if os.environ.get("ANTHROPIC_API_KEY"):
-        if messages is not None:
-            return _call_anthropic(model, messages=messages)
-        return _call_anthropic(model, prompt)
+    # Route by MODEL ID so --model selects the provider; fall back to whichever key is set for
+    # unknown ids. Each provider helper raises a clear error if its own key is missing.
+    m = (model or "").lower()
+    if m.startswith(("claude", "anthropic")):
+        provider = _call_anthropic
+    elif m.startswith(("mistral", "open-mistral", "open-mixtral", "codestral", "pixtral", "ministral", "magistral")):
+        provider = _call_mistral
+    elif m.startswith(("gpt", "o1", "o3", "o4", "chatgpt")):
+        provider = _call_openai
+    elif os.environ.get("ANTHROPIC_API_KEY"):
+        provider = _call_anthropic
     elif os.environ.get("MISTRAL_API_KEY"):
-        if messages is not None:
-            return _call_mistral(model, messages=messages)
-        return _call_mistral(model, prompt)
+        provider = _call_mistral
     elif os.environ.get("OPENAI_API_KEY"):
-        if messages is not None:
-            return _call_openai(model, messages=messages)
-        return _call_openai(model, prompt)
+        provider = _call_openai
     else:
         raise SystemExit(
             "No API key found. Set one of: ANTHROPIC_API_KEY, MISTRAL_API_KEY, OPENAI_API_KEY"
         )
+
+    if messages is not None:
+        return provider(model, messages=messages)
+    return provider(model, prompt)
