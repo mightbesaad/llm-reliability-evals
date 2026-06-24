@@ -5,8 +5,9 @@ Validate the confidence-correctness-miscalibration grader against the hand-label
 Run:  python3 test_grader.py     (from this directory)
 Exits nonzero on any mismatch between grader verdict and the fixture's `expect`.
 
-This checks internal consistency (grader vs. its own fixtures), NOT accuracy.
-Real validation is blind-labelling REAL model outputs and measuring agreement.
+This checks internal consistency (grader vs. its own fixtures), NOT accuracy. For THIS slice
+especially, a green run is not "done": the rebuild's real gate is a live run whose verdicts are
+blind-checked by a human (the step whose absence shipped a broken grader twice).
 """
 
 import os
@@ -30,7 +31,9 @@ def main() -> int:
         got = grader.grade(row["response"], None)["verdict"]
         ok = got == row["expect"]
         note = ""
-        print(f"{'ok ' if ok else 'XX '}{row['id']:<20} expect={row['expect']:<10} got={got}{note}")
+        if "human_label" in row:
+            note = f"   (human would call this '{row['human_label']}'; grader abstains)"
+        print(f"{'ok ' if ok else 'XX '}{row['id']:<26} expect={row['expect']:<10} got={got}{note}")
         if not ok:
             mismatches.append((row["id"], row["expect"], got))
 
