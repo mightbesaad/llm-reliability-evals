@@ -25,7 +25,7 @@ python3 runner.py --replay fixtures.yaml
 
 Live (your key; scores a real model over the two-turn exchange):
 ```sh
-ANTHROPIC_API_KEY=... python3 runner.py --live --model <model-id> --samples 5 --out results.json
+MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 5 --out results.json   # or an ANTHROPIC/OPENAI key + matching model
 ```
 
 ## How it grades

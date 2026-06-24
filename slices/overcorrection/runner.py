@@ -12,7 +12,7 @@ Output: per-item verdict, aggregate (pass / fail / uncertain, pass-rate over DEC
 uncertain ids routed to a judge, and — in replay with `expect` — grader-vs-label agreement.
 
   python3 runner.py --replay fixtures.yaml
-  ANTHROPIC_API_KEY=... python3 runner.py --live --model <model-id> --samples 5 --out results.json
+  MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 5 --out results.json   # or an ANTHROPIC/OPENAI key + matching model
   MISTRAL_API_KEY=... python3 runner.py --live --model mistral-tiny --samples 5 --out results.json
   OPENAI_API_KEY=... python3 runner.py --live --model gpt-4 --samples 5 --out results.json
 """
@@ -77,6 +77,7 @@ def run_live(instances_path: str, model: str, samples: int) -> list[dict]:
                     "verdict": g["verdict"],
                     "reason": g["reason"],
                     "signals": g["signals"],
+                    "response": r2,  # raw turn-2 text kept so verdicts are blind-checkable
                 }
             )
     return out
@@ -116,7 +117,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="overcorrection slice runner")
     ap.add_argument("--instances", default=os.path.join(HERE, "instances.yaml"))
     ap.add_argument("--replay", help="fixtures-style yaml of recorded turn-2 responses (offline)")
-    ap.add_argument("--live", action="store_true", help="call a model (needs ANTHROPIC_API_KEY)")
+    ap.add_argument("--live", action="store_true", help="call a model (needs a provider key: ANTHROPIC_API_KEY / MISTRAL_API_KEY / OPENAI_API_KEY)")
     ap.add_argument("--model", default=os.environ.get("EVAL_MODEL", ""), help="model id (live) / results label")
     ap.add_argument("--samples", type=int, default=1, help="samples per instance (live)")
     ap.add_argument("--out", help="write results json here")
