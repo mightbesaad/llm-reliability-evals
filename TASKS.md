@@ -2,46 +2,22 @@
 
 Repo: `mightbesaad/llm-reliability-evals`
 
-Status (2026-06-23): **5 of 8 modes** are merged into `main` — `slices/stale-recall/` (mode 2),
+Status (2026-06-24): **6 of 8 modes** are merged into `main` — `slices/stale-recall/` (mode 2),
 `slices/sycophancy/` (mode 4), `slices/overcorrection/` (mode 6), `slices/source-overtrust/`
-(mode 1), `slices/false-precision/` (mode 5). All five slice graders pass offline (16/16, 17/17,
-13/13, 17/17, 17/17 fixtures respectively). No paid live eval has been run (see task 2); no results
-fabricated. Feature branches are merged; `redteam/slice-source-overtrust` has been deleted from
-`origin`, `redteam/slice-false-precision` is local-only.
+(mode 1), `slices/false-precision/` (mode 5), `slices/confidence-calibration/` (mode 3). All six
+slice graders pass offline (16/16, 17/17, 13/13, 17/17, 17/17, 20/20 fixtures respectively). **All
+text-only modes (1–6) are done; only modes 7–8 remain** (blocked on the trajectory harness, task 1).
+Mode 3 was rebuilt (a prose-register grader proved unworkable — it false-failed real output at 92%;
+it now grades explicit per-item confidence labels) and **live-validated** against `mistral-medium`;
+modes 1/2/4/5/6 have only synthetic-fixture replay (see task 2). No results fabricated. All feature
+branches are merged and deleted; only `main` remains, synced with `origin`.
 
 ## Open / not yet done
 
-1. **Build the last text-only mode — mode 3** (confidence-correctness miscalibration), using any
-   existing slice as the template. It is the **only** buildable text-only mode left; modes 1 and 5
-   are now done and merged. Modes 7, 8 stay BLOCKED on the trajectory harness (task 3); hold.
-
-   The mode needs `instances.yaml` / `grader.py` / `fixtures.yaml` / `test_grader.py` / `runner.py`
-   (concrete frozen prompts; a deterministic grader that abstains on ambiguity; hand-labelled
-   fixtures including 2–3 adversarial ones per guardrail 2; `--replay` offline + the unused `--live`).
-
-   Note (guardrail 6): mode 3 is the **hardest design** of the fuzzy set — its grader will lean
-   hardest on the `uncertain` bucket. Its Card-1 plan gets full review before any build begins.
-
-2. **Get real-model data via API or manual chat-paste-replay.** Live API testing is
-   permitted; the `--live` path in every runner is available for this purpose. Alternatively,
-   paste each case's frozen prompt into claude.ai, copy the literal reply into a
-   fixtures-style entry, and `--replay` it:
-   ```sh
-   # Live (API):
-   ANTHROPIC_API_KEY=... python3 slices/<mode>/runner.py --live --model <model-id> --samples 5 --out results.json
-   
-   # Or manual copy-paste:
-   # 1. paste a slice prompt into claude.ai → 2. copy the literal response into an entry:
-   #    { id, instance, response: "<verbatim model text>", <claim|precision_unwarranted>, expect: <blind label> }
-   # 3. run it offline:
-   python3 slices/<mode>/runner.py --replay real_responses.yaml
-   ```
-   Note: No paid live eval has been run yet; only synthetic-fixture replay has been executed
-   so far. The `--live` path is intentionally preserved in every runner for portability.
-
-3. **Build a trajectory-based harness for modes 7–8** (disconfirmation avoidance, premature
-   self-certification). These are agentic/tool-use failures — a final-text grader doesn't apply; it
-   must observe the tool-call sequence, not just the last message. Not started.
+1. **Build a trajectory-based harness for modes 7–8** (disconfirmation avoidance, premature
+   self-certification) — now the **only remaining mode work**, since modes 1–6 are all merged. These
+   are agentic/tool-use failures: a final-text grader doesn't apply; it must observe the tool-call
+   sequence, not just the last message. Not started.
 
    Decision (recorded so it is not lost to chat history): prefer **forward-instrumenting the
    tool-call cycle going forward** — capturing calls as they happen — over historical reconstruction.
@@ -50,17 +26,34 @@ fabricated. Feature branches are merged; `redteam/slice-source-overtrust` has be
    show whether the prescribed check (tests, lint) actually ran. Useful as a cheap first-pass flag,
    not a substitute for real trajectory data.
 
-4. **Add an LLM-judge layer for the grader's `uncertain` bucket**, itself validated against human
-   labels before the uncertain bucket can be trusted. More **load-bearing for modes 1 and 5** than
-   for 2/4/6: their abstain buckets collect genuine failures — mode 1, paraphrased figures the
-   verbatim echo-check misses; mode 5, buried caveats and a bidirectional abstain-skew — not just the
-   name/ordinal ambiguities stale-recall abstains on.
+2. **Get real-model data via API or manual chat-paste-replay.** Live API testing is permitted; the
+   `--live` path in every runner is available. Mode 3 has been live-validated against `mistral-medium`
+   (30 samples, blind-checked against the raw responses — extraction faithful, the lone fail a true
+   positive, abstentions honest). Modes 1/2/4/5/6 still have only synthetic-fixture replay and want
+   the same treatment.
+   ```sh
+   # Live (API):
+   MISTRAL_API_KEY=... python3 slices/<mode>/runner.py --live --model mistral-medium --samples 3 --out results.json
+   # Or manual: paste a slice prompt into claude.ai, copy the literal reply into a fixtures-style
+   # entry { id, response: "<verbatim>", expect: <blind label> }, then --replay it.
+   ```
+   The **blind-check** (read the raw responses; confirm verdicts are sane) is the real gate — not the
+   count of decisions. That is the step whose absence shipped a broken mode-3 grader twice. The
+   confidence-calibration runner now keeps the raw response in `--live` records to make this possible.
+
+3. **Add an LLM-judge layer for the grader's `uncertain` bucket**, itself validated against human
+   labels before the uncertain bucket can be trusted. Most **load-bearing for modes 3, 1, and 5**:
+   mode 3 abstains on ~60% of real output by design (the H==M cases a deterministic grader can't
+   adjudicate); mode 1's bucket holds paraphrased figures the verbatim echo-check misses; mode 5's
+   holds buried caveats. The judge is also the route to reading *natural-prose* calibration for mode 3
+   (the deterministic grader reads only explicit confidence labels).
 
 ## Recommendation
 
-Next slice to build: **mode 3** (confidence-correctness miscalibration) — the last of the buildable
-text-only set, and the hardest design of the three fuzzy modes, so its Card-1 plan gets full review
-before any build. Modes 7–8 wait on the trajectory harness (task 3).
+All text-only modes (1–6) are merged, and mode 3 is live-validated. Remaining work: the **trajectory
+harness for modes 7–8** (task 1) and the **LLM-judge layer** (task 3). Mode 3's rebuild is the
+cautionary tale for both — a grader green on its own fixtures (twice) was broken on real output, so
+the live blind-check, not the fixture count, is the gate (see guardrails).
 
 ## Schema note (settled)
 
