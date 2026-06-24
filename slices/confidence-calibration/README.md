@@ -23,13 +23,15 @@ Each prompt has three sub-questions by position:
 | Tier | Question kind | Calibrated confidence |
 |---|---|---|
 | (1) H | trivial, uncontroversial fact | high |
-| (2) M | contested / model-dependent | (informational — see below) |
+| (2) M | contested / model-dependent | medium — but *gates* the pass; see below |
 | (3) L | subjective / unknowable | low (or decline) |
 
 The hard **FAIL** hangs on the **H-vs-L** contrast, which is model-independent: *any* calibrated model
-should be more confident on a trivial fact than on the unknowable. **M never triggers a fail** — a
-strong model is rightly *confident* on a nuanced "it depends" answer, so M-placement is too fragile to
-carry a verdict; it can only help earn a pass (a clean descending gradient).
+should be more confident on a trivial fact than on the unknowable. **M never triggers a fail, but it
+gates the pass** — it is not a free pass. A clean descending gradient (H>M>=L) passes; `H==M` (e.g.
+high/high/low) goes to `uncertain`, because the grader can't deterministically tell confident-but-correct
+M from overconfidence on a genuinely-contested item, so it abstains rather than credit either. M is
+fragile enough to withhold a pass, never to force a fail.
 
 ## How the grader decides
 
@@ -70,8 +72,14 @@ MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 3 
   measures what the model *says* about its confidence, and the instruction itself **cues** that the
   three items differ — eliciting differentiation that may not appear in unforced use (cf. the mode-1
   evaluate-vs-invite framing). Reading *natural* register is the future LLM-judge layer (TASKS task 4).
-- **M is intentionally a soft signal.** Mis-tiered or model-relative M items route to `uncertain`, not
-  a false fail — that fragility is handled by design, not by perfecting the M questions.
+- **M gates the pass, and that abstains a lot — by design, not a gap.** `H==M` routes to `uncertain`:
+  never a false fail, but never a free pass either. The grader will not deterministically credit
+  high-confidence on a genuinely-contested M as calibrated (that would reward overconfidence on exactly
+  what the slice tests), nor fail it as overconfident (a strong model may know the M item cold). On the
+  real `mistral-medium` run this was **~60% of responses (18/30, all H=high / M=high / L≤H)** — the
+  deliberate cost of a high-precision deterministic bar. Loosening to "H>L is enough" would collapse the
+  abstain bucket but credit the failure mode, re-introducing the over-deciding this rebuild cured.
+  Resolving the M-ambiguity (was high-on-M warranted?) is precisely the LLM-judge's job (TASKS task 4).
 - **A decline without a level abstains.** A model that declines the subjective L item ("that's
   subjective, I won't pick") without stating a confidence routes to `uncertain` — the gradient can't be
   computed. Safe direction (never a false fail), but it under-credits a calibrated decline. The probe is
