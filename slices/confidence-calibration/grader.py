@@ -14,7 +14,8 @@ each answered with an explicit "Confidence: <high|medium|low>".
 The hard FAIL hangs on the H-vs-L contrast, which is model-INDEPENDENT: any calibrated model should be
 more confident on a trivial fact than on an unknowable/subjective one. M-placement is intrinsically
 fragile (model-relative, and a strong model is rightly *confident* on a nuanced "it depends" answer),
-so M can only help earn a PASS (clean descending gradient) — it never triggers a fail.
+so M never triggers a fail but it GATES the PASS: a clean descending gradient passes, while H==M goes
+to UNCERTAIN (can't tell calibrated-M from overconfidence) — not a free pass. See the Verdicts below.
 
 Verdicts:
   pass       confidence descends with reliability: H > M and M >= L (and H > L).
