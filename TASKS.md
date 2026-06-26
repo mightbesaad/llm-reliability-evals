@@ -2,29 +2,36 @@
 
 Repo: `mightbesaad/llm-reliability-evals`
 
-Status (2026-06-24): **6 of 8 modes** are merged into `main` — `slices/stale-recall/` (mode 2),
+Status (2026-06-26): **7 of 8 modes** are merged into `main` — `slices/stale-recall/` (mode 2),
 `slices/sycophancy/` (mode 4), `slices/overcorrection/` (mode 6), `slices/source-overtrust/`
-(mode 1), `slices/false-precision/` (mode 5), `slices/confidence-calibration/` (mode 3). All six
-slice graders pass offline (16/16, 17/17, 13/13, 17/17, 17/17, 20/20 fixtures respectively). **All
-text-only modes (1–6) are done; only modes 7–8 remain** (blocked on the trajectory harness, task 1).
-Mode 3 was rebuilt (a prose-register grader proved unworkable — it false-failed real output at 92%;
-it now grades explicit per-item confidence labels) and **live-validated** against `mistral-medium`;
-modes 1/2/4/5/6 have only synthetic-fixture replay (see task 2). No results fabricated. All feature
-branches are merged and deleted; only `main` remains, synced with `origin`.
+(mode 1), `slices/false-precision/` (mode 5), `slices/confidence-calibration/` (mode 3),
+`slices/premature-certification/` (mode 8). Slice graders pass offline (16/16, 17/17, 13/13, 17/17,
+17/17, 20/20, 12/12 respectively). **Only mode 7 (disconfirmation avoidance) remains, and it is no
+longer blocked** — `slices/harness.py`, the shared trajectory harness, is built and proven (mode 8
+runs on it). Mode 3 was rebuilt (a prose-register grader false-failed real output at 92%; it now
+grades explicit per-item confidence labels) and live-validated against `mistral-medium`. **Mode 8
+finding:** under a fair probe a 3-model Mistral panel showed *no model prematurely certified* — but
+that is **Mistral-family only; cross-provider coverage is open** (see task 1 gaps). Modes 1/2/4/5/6
+have only synthetic-fixture replay (see task 2). No results fabricated; only `main` remains, synced
+with `origin`.
 
 ## Open / not yet done
 
-1. **Build a trajectory-based harness for modes 7–8** (disconfirmation avoidance, premature
-   self-certification) — now the **only remaining mode work**, since modes 1–6 are all merged. These
-   are agentic/tool-use failures: a final-text grader doesn't apply; it must observe the tool-call
-   sequence, not just the last message. Not started.
+1. **Build mode 7 (disconfirmation avoidance)** — the last of the original 8. **No longer blocked:**
+   `slices/harness.py` (the shared trajectory harness) is built and proven on mode 8, and reuses
+   cleanly — mode 7 is the same trajectory shape with a *failing* scripted check and a grader that
+   reads whether the model **surfaced the disconfirming result** (vs mode 8's "did it run the check at
+   all"). It's now a buildable text+trajectory slice like any other, not a blocked one.
 
-   Decision (recorded so it is not lost to chat history): prefer **forward-instrumenting the
-   tool-call cycle going forward** — capturing calls as they happen — over historical reconstruction.
-   A file-history-versus-timestamp correlation is a **weak supplementary** signal, usable only for
-   **mode 8**, and only shows whether files were still changing when "done" was declared — it cannot
-   show whether the prescribed check (tests, lint) actually ran. Useful as a cheap first-pass flag,
-   not a substitute for real trajectory data.
+   Mode 8 (`premature-certification`) is merged but carries **still-open gaps** — recorded so they
+   don't get lost:
+   - `mistral-large-latest` is **untested** — rate-limited (HTTP 429) on every attempt; retriable when
+     the key's quota resets.
+   - the **Anthropic leg is unrun** (no key provisioned), so the panel is Mistral-family only —
+     **cross-provider coverage (a genuinely different lab) is open**.
+   - the **fail path is validated on fixtures only**: no panel model has ever actually committed mode 8
+     live (they verify or defer), so a real premature-certification has not yet been graded on real
+     output. The adversarial fixtures prove the grader *would* catch one.
 
 2. **Get real-model data via API or manual chat-paste-replay.** Live API testing is permitted; the
    `--live` path in every runner is available. Mode 3 has been live-validated against `mistral-medium`
@@ -50,10 +57,12 @@ branches are merged and deleted; only `main` remains, synced with `origin`.
 
 ## Recommendation
 
-All text-only modes (1–6) are merged, and mode 3 is live-validated. Remaining work: the **trajectory
-harness for modes 7–8** (task 1) and the **LLM-judge layer** (task 3). Mode 3's rebuild is the
-cautionary tale for both — a grader green on its own fixtures (twice) was broken on real output, so
-the live blind-check, not the fixture count, is the gate (see guardrails).
+**Mode 7 (disconfirmation avoidance) is next — the last of the original 8.** It is no longer
+harness-blocked: `slices/harness.py` is built and proven on mode 8, and mode 7 reuses it with a
+*failing* scripted check. After that, the open cross-cutting work is the **LLM-judge layer** (task 3)
+plus closing mode 8's gaps (cross-provider panel, the live fail path). Mode 3's rebuild stays the
+cautionary tale — a grader green on its own fixtures (twice) was broken on real output, so the live
+blind-check, not the fixture count, is the gate (see guardrails).
 
 ## Schema note (settled)
 
