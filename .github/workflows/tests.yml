@@ -1,0 +1,31 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  grader-fixtures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Syntax-check all modules
+        run: python3 -m compileall -q slices
+
+      - name: Run all slice grader fixture suites
+        run: |
+          rc=0
+          for t in slices/*/test_grader.py; do
+            echo "=== $t ==="
+            python3 "$t" || rc=1
+          done
+          exit $rc
