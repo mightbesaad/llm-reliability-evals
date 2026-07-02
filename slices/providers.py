@@ -173,6 +173,17 @@ def call_model(model: str, prompt: str | None = None, messages: list | None = No
     base = base_url or os.environ.get("OPENAI_BASE_URL")
     m = (model or "").lower()
 
+    # Aggregator-form ids ("anthropic/claude-…", "mistralai/…") are vendor-prefixed OpenRouter/
+    # gateway ids — native APIs never use slashes. They route to the base-url leg BEFORE native
+    # prefix matching, or fail plainly if no endpoint is set.
+    if "/" in m:
+        if base:
+            return _call_openai_compatible(model, base_url=base, key_required=False, **kw)
+        raise ProviderError(
+            f"'{model}' is an aggregator-form model id (contains '/') — set OPENAI_BASE_URL "
+            f"(e.g. https://openrouter.ai/api/v1) or use the provider's native id."
+        )
+
     if m.startswith(("claude", "anthropic")):
         return _call_anthropic(model, **kw)
     if m.startswith(MISTRAL_PREFIXES):
