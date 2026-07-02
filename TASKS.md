@@ -15,6 +15,13 @@ that is **Mistral-family only; cross-provider coverage is open** (see task 1 gap
 have only synthetic-fixture replay (see task 2). No results fabricated; only `main` remains, synced
 with `origin`.
 
+**Update (2026-07-02):** project definition settled — this is an **open, model-agnostic
+instrument**. The suite itself stays free and independent (eval credibility requires it); any
+billable application (panels run for a client, qualification gates, evidence packs, drift report
+cards) lives *outside* this repo and consumes it. That definition drives task 4: a model-agnostic
+provider layer and a one-command run are core properties, not polish. Same day: README rewritten to
+reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About/topics filled.
+
 ## Open / not yet done
 
 1. **Build mode 7 (disconfirmation avoidance)** — the last of the original 8. **No longer blocked:**
@@ -55,6 +62,34 @@ with `origin`.
    holds buried caveats. The judge is also the route to reading *natural-prose* calibration for mode 3
    (the deterministic grader reads only explicit confidence labels).
 
+4. **Instrument hardening — model-agnostic + one-command run.** A dependency-ordered PR ladder;
+   each PR is guarded by what the previous one built, and `main` stays shippable at every boundary.
+   - **PR 1 — harness offline tests**: `slices/test_harness.py`, mocked HTTP. Pins the trajectory
+     normalization contract (schema parity across providers, stop-reason mapping, unscripted-tool
+     error results, max-turns cap, parallel calls) *before* anything touches the harness. In CI.
+   - **PR 2 — provider layer**: uniform sampling params sent to *every* provider — today Anthropic
+     gets no temperature + `max_tokens: 512` while Mistral/OpenAI get `0.7` + provider-default
+     max_tokens, so any cross-provider comparison is confounded until this lands (this silently
+     blocks the mode-8 Anthropic leg in task 1). Plus: an OpenAI-compatible `base_url` path
+     (Ollama / vLLM / Groq / OpenRouter / local — model-agnostic for real); retry with backoff on
+     429/5xx (likely closes the `mistral-large` 429 gap without waiting on quota); urllib-only so
+     deps collapse to `pyyaml`; `ProviderError` raised from library modules instead of `SystemExit`.
+   - **PR 3 — live-run durability**: incremental flush (today a crash at sample 29/30 discards all
+     30 paid calls — results are only written at the end); extract *only* report/args/results-writing
+     into a shared runlib. `run_live` / `run_replay` stay per-slice — self-containment is deliberate.
+   - **PR 4 — entry point**: top-level `run.py`; bare invocation = all offline suites, zero keys,
+     green in under a minute (the contributor-conversion path). README rewritten around it.
+   - **PR 5 — results convention**: `slices/<mode>/results/<model>-<YYYY-MM-DD>.json` plus a
+     `params` block *inside* every results file — sampling params are currently recorded nowhere,
+     which quietly undermines the reproducibility claim. Retire `-latest` filenames.
+   - **PR 6 — license split**: Apache-2.0 for code, CC-BY-4.0 retained for TAXONOMY.md and docs
+     (CC licenses are not recommended for software; attribution keeps flowing where it matters —
+     the taxonomy). Owner eyeballs this one before it lands.
+
+   **Mode 7 starts after PR 2**, in parallel with PRs 3–5 — on a harness that is by then tested
+   (PR 1) and retry-hardened (PR 2). The mode-3 lesson applies to infrastructure too: don't build
+   the last mode on an untested substrate.
+
 ## Recommendation
 
 **Mode 7 (disconfirmation avoidance) is next — the last of the original 8.** It is no longer
@@ -63,6 +98,10 @@ harness-blocked: `slices/harness.py` is built and proven on mode 8, and mode 7 r
 plus closing mode 8's gaps (cross-provider panel, the live fail path). Mode 3's rebuild stays the
 cautionary tale — a grader green on its own fixtures (twice) was broken on real output, so the live
 blind-check, not the fixture count, is the gate (see guardrails).
+
+**(2026-07-02) Sequencing revised:** instrument hardening (task 4) PRs 1–2 land first — tests, then
+the provider layer — because mode 7 builds on the harness and the mode-8 Anthropic leg is confounded
+until sampling params are uniform. Mode 7 then proceeds in parallel with PRs 3–5.
 
 ## Schema note (settled)
 
