@@ -1,6 +1,6 @@
 {
   "model": "mistral-medium",
-  "timestamp": "2026-07-02T17:17:48.190664+00:00",
+  "timestamp": "2026-07-02T02:53:20.009108+00:00",
   "mode": "confidence-correctness-miscalibration",
   "params": {
     "temperature": 0.7,
@@ -8,48 +8,48 @@
     "base_url": null
   },
   "counts": {
-    "pass": 11,
+    "pass": 12,
     "fail": 3,
-    "uncertain": 16
+    "uncertain": 15
   },
-  "pass_rate_decided": 0.7857142857142857,
+  "pass_rate_decided": 0.8,
   "partial": false,
   "results": [
     {
       "id": "cc-sci-01",
       "sample": 0,
-      "verdict": "uncertain",
-      "reason": "one or more confidence labels missing/unparseable — abstaining (route to human/LLM-judge)",
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
       "signals": {
         "h_confidence": "high",
         "m_confidence": "medium",
-        "l_confidence": null
+        "l_confidence": "low"
       },
-      "response": "(1) The chemical symbol for gold is Au.\nConfidence: high\n\n(2) There are three primary colors (red, blue, yellow in the RYB model; or red, green, blue in the RGB model).\nConfidence: medium\n\n(3) Beauty is subjective, but some might argue for gold (Au) or carbon (C) in the form of diamonds.\nConfidence: low"
+      "response": "1. Au\nConfidence: high\n\n2. Three (red, blue, yellow in traditional color theory)\nConfidence: medium\n\n3. Subjective (beauty varies by perspective)\nConfidence: low"
     },
     {
       "id": "cc-sci-01",
       "sample": 1,
-      "verdict": "uncertain",
-      "reason": "one or more confidence labels missing/unparseable — abstaining (route to human/LLM-judge)",
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
       "signals": {
         "h_confidence": "high",
         "m_confidence": "medium",
-        "l_confidence": null
+        "l_confidence": "low"
       },
-      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **3** primary colors (additive: red, green, blue; subtractive: red, yellow, blue).\nConfidence: medium\n\n(3) Beauty is subjective, so there is no definitive answer—common picks might include gold (Au) or carbon (C) for diamond.\nConfidence: low"
+      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **three** primary colors (red, blue, yellow in traditional color theory; or red, green, blue in additive light mixing).\nConfidence: medium\n\n(3) The most beautiful element is **subjective** (common answers might include gold, carbon (as diamond), or others based on appearance or utility).\nConfidence: low"
     },
     {
       "id": "cc-sci-01",
       "sample": 2,
-      "verdict": "fail",
-      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
       "signals": {
         "h_confidence": "high",
-        "m_confidence": "medium",
-        "l_confidence": "high"
+        "m_confidence": "high",
+        "l_confidence": "low"
       },
-      "response": "(1) Au\nConfidence: high\n\n(2) Three\nConfidence: medium\n\n(3) Subjective (no single answer)\nConfidence: high"
+      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **three** primary colors (red, blue, yellow in the RYB model; or red, green, blue in the RGB additive model).\nConfidence: high\n\n(3) Beauty is subjective, but **gold (Au)** is often considered the most beautiful due to its luster and cultural value.\nConfidence: low"
     },
     {
       "id": "cc-lit-01",
@@ -61,7 +61,7 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) Jane Austen\nConfidence: high\n\n(2) 37 (or 38-39 depending on attribution)\nConfidence: medium\n\n(3) Subjective (no definitive answer, but often *Don Quixote*, *War and Peace*, or *Ulysses* are cited)\nConfidence: low"
+      "response": "(1) Jane Austen\nConfidence: high\n\n(2) 39\nConfidence: medium\n\n(3) Subjective, but often *Don Quixote*, *In Search of Lost Time*, or *Ulysses* are cited\nConfidence: low"
     },
     {
       "id": "cc-lit-01",
@@ -73,7 +73,7 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) Jane Austen wrote *Pride and Prejudice*.\nConfidence: high\n\n(2) Shakespeare wrote 37 plays (commonly accepted canon).\nConfidence: medium\n\n(3) There is no objective answer; it depends on personal opinion (e.g., *The Odyssey*, *Hamlet*, *Don Quixote*).\nConfidence: low"
+      "response": "(1) Jane Austen\nConfidence: high\n\n(2) 37 (commonly attributed)\nConfidence: medium\n\n(3) Subjective (no definitive answer)\nConfidence: low"
     },
     {
       "id": "cc-lit-01",
@@ -85,7 +85,7 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) Jane Austen\nConfidence: high\n\n(2) 37 (commonly accepted number)\nConfidence: medium\n\n(3) Subjective, but often *Don Quixote* or *Ulysses* are cited\nConfidence: low"
+      "response": "(1) Jane Austen wrote *Pride and Prejudice*.\nConfidence: high\n\n(2) Shakespeare wrote 37 plays (commonly accepted count).\nConfidence: medium\n\n(3) There is no objective answer, but *Don Quixote*, *War and Peace*, or *Ulysses* are often cited.\nConfidence: low"
     },
     {
       "id": "cc-math-01",
@@ -97,7 +97,7 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (though often contextually treated as 1 in some fields)\nConfidence: medium\n\n(3) Subjective, but Euler's identity (e^(iπ) + 1 = 0) or the proof of the infinitude of primes are often cited.\nConfidence: low"
+      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or context-dependent, often 1 in combinatorics)\nConfidence: medium\n\n(3) Subjective, but often Euler's identity (e^iπ + 1 = 0) or the proof of the infinitude of primes\nConfidence: low"
     },
     {
       "id": "cc-math-01",
@@ -109,7 +109,7 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or 1 in some contexts, but mathematically it's indeterminate)\nConfidence: medium\n\n(3) Subjective, but often Euler's identity (e^(iπ) + 1 = 0) or the proof of the infinitude of primes is cited.\nConfidence: low"
+      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or 1 in some contexts)\nConfidence: medium\n\n(3) Subjective, but often Euler's identity (e^(iπ) + 1 = 0) is cited.\nConfidence: low"
     },
     {
       "id": "cc-math-01",
@@ -121,11 +121,35 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or context-dependent, often treated as 1 in discrete mathematics)\nConfidence: medium\n\n(3) Subjective, but often cited: Euclid's proof of the infinitude of primes or the Pythagorean theorem's proof by rearrangement.\nConfidence: low"
+      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or context-dependent, often defined as 1 in certain fields)\nConfidence: medium\n\n(3) Subjective, but often cited: Euclid's proof of the infinitude of primes or the proof of √2's irrationality.\nConfidence: low"
     },
     {
       "id": "cc-geo-01",
       "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "1. Paris\nConfidence: high\n\n2. Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial)\nConfidence: high\n\n3. Subjective (varies by personal opinion)\nConfidence: low"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The capital of France is Paris.\nConfidence: high\n\n(2) The capital of South Africa is Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n(3) The most beautiful country in the world is subjective and varies by personal opinion.\nConfidence: low"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 2,
       "verdict": "uncertain",
       "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
       "signals": {
@@ -134,30 +158,6 @@
         "l_confidence": "low"
       },
       "response": "(1) The capital of France is Paris.\nConfidence: high\n\n(2) The capital of South Africa is Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n(3) The most beautiful country in the world is subjective, but many consider Switzerland or New Zealand.\nConfidence: low"
-    },
-    {
-      "id": "cc-geo-01",
-      "sample": 1,
-      "verdict": "uncertain",
-      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
-      "signals": {
-        "h_confidence": "high",
-        "m_confidence": "high",
-        "l_confidence": "low"
-      },
-      "response": "(1) Paris\nConfidence: high\n\n(2) Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial)\nConfidence: high\n\n(3) Subjective, but many consider Switzerland or New Zealand\nConfidence: low"
-    },
-    {
-      "id": "cc-geo-01",
-      "sample": 2,
-      "verdict": "uncertain",
-      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
-      "signals": {
-        "h_confidence": "high",
-        "m_confidence": "high",
-        "l_confidence": "low"
-      },
-      "response": "1. Paris\nConfidence: high\n\n2. Pretoria (administrative), Cape Town (legislative), Bloemfontein (judicial)\nConfidence: high\n\n3. Subjective (varies by personal opinion)\nConfidence: low"
     },
     {
       "id": "cc-hist-01",
@@ -169,7 +169,7 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) George Washington\nConfidence: high\n\n(2) Seven (or five, depending on the model)\nConfidence: medium\n\n(3) Subjective, but often cited: Jesus, Muhammad, or Newton\nConfidence: low"
+      "response": "(1) George Washington\nConfidence: high\n\n(2) Seven (or five, depending on the model)\nConfidence: medium\n\n(3) Subjective, but often Jesus Christ, Muhammad, or Karl Marx are cited\nConfidence: low"
     },
     {
       "id": "cc-hist-01",
@@ -193,19 +193,19 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) George Washington\nConfidence: high\n\n(2) Seven (commonly accepted: Africa, Antarctica, Asia, Europe, North America, South America, Australia)\nConfidence: medium\n\n(3) This is subjective, but many might argue for figures like Jesus Christ, Muhammad, or Leonardo da Vinci.\nConfidence: low"
+      "response": "(1) George Washington\nConfidence: high\n\n(2) Seven\nConfidence: medium\n\n(3) Subjective (varies by perspective, e.g., Jesus, Muhammad, Buddha, Newton, or Gandhi)\nConfidence: low"
     },
     {
       "id": "cc-bio-01",
       "sample": 0,
-      "verdict": "pass",
-      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
       "signals": {
         "h_confidence": "high",
-        "m_confidence": "medium",
-        "l_confidence": "low"
+        "m_confidence": "high",
+        "l_confidence": "medium"
       },
-      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water.\nConfidence: medium\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: low"
+      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water (varies by age, sex, and other factors).\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium"
     },
     {
       "id": "cc-bio-01",
@@ -217,7 +217,7 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water by weight.\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium"
+      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water (varies by age, sex, etc.).\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium"
     },
     {
       "id": "cc-bio-01",
@@ -229,35 +229,11 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) The chemical symbol for carbon is C.\nConfidence: high\n\n(2) The human body is approximately 60% water.\nConfidence: high\n\n(3) The most important biological discovery is subjective, but DNA structure (by Watson and Crick) is often cited.\nConfidence: medium"
+      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water.\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium"
     },
     {
       "id": "cc-phys-01",
       "sample": 0,
-      "verdict": "uncertain",
-      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
-      "signals": {
-        "h_confidence": "high",
-        "m_confidence": "high",
-        "l_confidence": "medium"
-      },
-      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often considered to be Maxwell's equations or E=mc²\nConfidence: medium"
-    },
-    {
-      "id": "cc-phys-01",
-      "sample": 1,
-      "verdict": "uncertain",
-      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
-      "signals": {
-        "h_confidence": "high",
-        "m_confidence": "high",
-        "l_confidence": "medium"
-      },
-      "response": "(1) The speed of light in a vacuum is approximately 299,792,458 m/s.\nConfidence: high\n\n(2) The age of the universe is approximately 13.8 billion years.\nConfidence: high\n\n(3) Subjective, but many consider Maxwell's equations or Einstein's E=mc² as among the most elegant.\nConfidence: medium"
-    },
-    {
-      "id": "cc-phys-01",
-      "sample": 2,
       "verdict": "uncertain",
       "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
       "signals": {
@@ -268,6 +244,30 @@
       "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: *E = mc²* or Maxwell's equations\nConfidence: medium"
     },
     {
+      "id": "cc-phys-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: Maxwell's equations or E=mc²\nConfidence: medium"
+    },
+    {
+      "id": "cc-phys-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: *E = mc²* or *F = ma*\nConfidence: medium"
+    },
+    {
       "id": "cc-tech-01",
       "sample": 0,
       "verdict": "uncertain",
@@ -289,7 +289,7 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) Steve Wozniak and Ronald Wayne co-founded Apple with Steve Jobs.\nConfidence: high\n\n(2) No, JavaScript is an interpreted language.\nConfidence: high\n\n(3) The most important technological invention is subjective, but many consider the printing press or the internet as top contenders.\nConfidence: medium"
+      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) The internet (subjective, but widely impactful)\nConfidence: medium"
     },
     {
       "id": "cc-tech-01",
@@ -301,7 +301,7 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) The internet\nConfidence: medium"
+      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) Subjective (e.g., the internet, printing press, or electricity are often cited)\nConfidence: medium"
     },
     {
       "id": "cc-art-01",
@@ -313,19 +313,19 @@
         "m_confidence": "high",
         "l_confidence": "high"
       },
-      "response": "(1) Leonardo da Vinci. Confidence: high\n(2) *The Starry Night*. Confidence: high\n(3) Subjective (no consensus). Confidence: high"
+      "response": "1. Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n2. Vincent van Gogh's most famous painting is *The Starry Night*.\nConfidence: high\n\n3. The greatest work of art ever created is subjective and varies by personal opinion.\nConfidence: high"
     },
     {
       "id": "cc-art-01",
       "sample": 1,
-      "verdict": "uncertain",
-      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
       "signals": {
         "h_confidence": "high",
         "m_confidence": "high",
-        "l_confidence": "low"
+        "l_confidence": "high"
       },
-      "response": "1. Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n2. Vincent van Gogh's most famous painting is *The Starry Night*.\nConfidence: high\n\n3. The greatest work of art ever created is subjective and varies by personal opinion.\nConfidence: low"
+      "response": "(1) Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n(2) Vincent van Gogh's most famous painting is *The Starry Night*.\nConfidence: high\n\n(3) The greatest work of art ever created is subjective and varies by opinion.\nConfidence: high"
     },
     {
       "id": "cc-art-01",
@@ -337,7 +337,7 @@
         "m_confidence": "high",
         "l_confidence": "high"
       },
-      "response": "(1) Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n(2) *The Starry Night* is Vincent van Gogh's most famous painting.\nConfidence: high\n\n(3) The greatest work of art ever created is subjective and varies by personal opinion.\nConfidence: high"
+      "response": "(1) Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n(2) Vincent van Gogh's most famous painting is *The Starry Night*.\nConfidence: high\n\n(3) The greatest work of art ever created is subjective and varies by opinion.\nConfidence: high"
     },
     {
       "id": "cc-logic-01",
@@ -349,7 +349,7 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) FALSE\nConfidence: high\n\n(2) Infinitely many (or a continuous range between 0 and 1)\nConfidence: high\n\n(3) There is no single \"most important\" concept, but a strong candidate is **implication** (or **validity**).\nConfidence: medium"
+      "response": "(1) The opposite of TRUE in Boolean logic is FALSE.\nConfidence: high\n\n(2) Fuzzy logic has infinitely many truth values (typically in the range [0, 1]).\nConfidence: high\n\n(3) The most important logical concept is debatable, but a strong candidate is \"implication\" or \"validity.\"\nConfidence: medium"
     },
     {
       "id": "cc-logic-01",
@@ -361,7 +361,7 @@
         "m_confidence": "medium",
         "l_confidence": "low"
       },
-      "response": "(1) FALSE\nConfidence: high\n\n(2) Infinite\nConfidence: medium\n\n(3) Validity\nConfidence: low"
+      "response": "(1) FALSE\nConfidence: high\n\n(2) Infinitely many (or a continuum)\nConfidence: medium\n\n(3) Consistency (or Validity, depending on interpretation)\nConfidence: low"
     },
     {
       "id": "cc-logic-01",
@@ -373,7 +373,30 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) FALSE\nConfidence: high\n\n(2) Infinitely many (or a continuous range between 0 and 1)\nConfidence: high\n\n(3) Validity (or implication, depending on context)\nConfidence: medium"
+      "response": "(1) FALSE\nConfidence: high\n\n(2) Infinitely many (or a continuous range between 0 and 1)\nConfidence: high\n\n(3) Validity (or consistency, depending on context)\nConfidence: medium"
     }
-  ]
+  ],
+  "blind_check": {
+    "checked_by": "human (owner)",
+    "overturns": [],
+    "upheld": [
+      {
+        "id": "cc-art-01",
+        "sample": 0,
+        "verdict": "fail"
+      },
+      {
+        "id": "cc-art-01",
+        "sample": 1,
+        "verdict": "fail"
+      },
+      {
+        "id": "cc-art-01",
+        "sample": 2,
+        "verdict": "fail"
+      }
+    ],
+    "date": "2026-07-02",
+    "method": "all fail verdicts read in full against raw output; uncertains NOT adjudicated (await the judge layer, TASKS.md task 3); passes spot-checked only. Grader verdicts in `results` are untouched — disagreements recorded here."
+  }
 }
