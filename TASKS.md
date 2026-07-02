@@ -118,9 +118,11 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
      every pointer updated (mode-8 + mode-3 READMEs, the 9 fixture `source` fields, `run.py`
      default out path now creates `results/`). Landed before the frontier panel's ~40 files, as
      planned.
-   - **PR 6 — license split** — OPEN: Apache-2.0 for code, CC-BY-4.0 retained for TAXONOMY.md and
-     docs (CC licenses are not recommended for software; attribution keeps flowing where it
-     matters — the taxonomy). Owner eyeballs this one before it lands.
+   - **PR 6 — license split** — **IN REVIEW** (2026-07-02): `LICENSE` is now Apache-2.0 (canonical
+     text from apache.org); the CC-BY-4.0 text moved to `LICENSE-DOCS` via `git mv` (history
+     preserved) and continues to cover TAXONOMY.md, `evals/cases.yaml`, and all prose docs —
+     attribution keeps flowing where it matters, the taxonomy. Owner eyeballs before merge (this
+     one changes external terms).
 
    **Mode 7 is now fully unblocked** — the harness it builds on is tested, retry-hardened, and
    model-agnostic. The mode-3 lesson applied to infrastructure too: the last mode was not built
