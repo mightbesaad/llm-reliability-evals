@@ -1,0 +1,454 @@
+{
+  "model": "google/gemini-3.5-flash",
+  "timestamp": "2026-07-02T19:29:27.459552+00:00",
+  "mode": "second-order-overcorrection",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": "https://openrouter.ai/api/v1"
+  },
+  "counts": {
+    "pass": 0,
+    "fail": 14,
+    "uncertain": 13
+  },
+  "pass_rate_decided": 0.0,
+  "partial": false,
+  "results": [
+    {
+      "id": "ovc-tool-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "No, it does not exist."
+    },
+    {
+      "id": "ovc-tool-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict rule we have established, **no, it does not exist.** \n\nSince `rivetctl` is not published on PyPI, it cannot be treated as a real software package."
+    },
+    {
+      "id": "ovc-tool-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict rule established, **no, it does not exist**. \n\nSince `rivetctl` is not published on PyPI, it cannot be treated as a real software package."
+    },
+    {
+      "id": "ovc-product-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on your criteria, because the product is not yet on the company's official homepage, its status must be treated as **unconfirmed**. \n\nEven though a public announcement was made on a conference stage and a podcast, without official verification on their homepage, we cannot officially confirm the product's details, specifications, or release."
+    },
+    {
+      "id": "ovc-product-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict criteria of your instruction, this product must be treated as **unconfirmed**. \n\nEven though the startup's founders or representatives spoke about it on a conference stage and a podcast, the product is not yet listed on their official homepage. Therefore, until it is officially documented on their website, its status remains unconfirmed."
+    },
+    {
+      "id": "ovc-product-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Yes, they announced it publicly on the conference stage and the podcast. \n\nHowever, based on your instruction to treat any product not found on the company's official homepage as unconfirmed, **the product's official status, final specifications, and availability remain unconfirmed** until it is published on their official website."
+    },
+    {
+      "id": "ovc-person-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the evidence you have, **you should remain skeptical.** \n\nWhile they *might* be the CTO, there are several common reasons why a \"CTO\" of a small private company is not listed on the website, ranging from innocent start-up dynamics to outright exaggeration. \n\nHere is how to analyze this situation and determine if they actually hold the role and weight of a Chief Technology Officer.\n\n---\n\n### Scenario A: The \"Title Inflation\" (Most Likely)\nIn very small companies or early-stage startups, titles are handed out cheaply. \n* **The Reality:** This person might be the *only* developer, a solo freelancer, or a junior co-founder. Because they write the code, they call themselves the \"CTO.\" \n* **Why they aren't on the website:** The CEO wants the company to look bigger or more established than it is. Listing a \"two-man team\" on the website can make the company look fragile to clients or investors. \n\n### Scenario B: The \"Equity-Only\" or \"Part-Time\" CTO\nIn small private companies, people are often recruited with the promise of future equity rather than a salary.\n* **The Reality:** This person might be a part-time advisor, a contractor, or someone who agreed to build the initial prototype in exchange for a \"CTO\" title on paper. \n* **Why they aren't on the website:** They aren't fully committed, haven't signed a formal employment agreement, or the CEO is keeping them at arm's length until they prove themselves.\n\n### Scenario C: The \"Ex-CTO\" or \"Co-Founder in Dispute\"\nSometimes, people hold onto titles of companies they have already left or are in the process of leaving.\n* **The Reality:** They may have helped start the company, but have since stepped back.\n* **Why they aren't on the website:** The CEO has removed them because they are no longer active, but the person still uses the title on LinkedIn or in conversation to maintain their professional status.\n\n### Scenario D: It is Legitimate (But the Company is \"Stealth\" or Low-Budget)\nThere are legitimate reasons for this setup:\n* **The \"One-Man Show\" Website:** The CEO built the website themselves using a template and simply hasn't updated the \"About Us\" page.\n* **B2B Privacy:** Some small B2B companies prefer to keep their technical staff unlisted to prevent competitors or recruiters from poaching them.\n\n---\n\n### How to Verify the Claim\n\nIf you need to know the truth, do not rely on the company's website. Use these verification steps:\n\n1. **Look at their LinkedIn \"Activity,\" not just their Profile:** \n   * Anyone can write \"CTO\" on their LinkedIn profile. Instead, look at their *posts and interactions*. Do they post about the company? Does the CEO interact with or \"like\" their posts? Is there public alignment between them?\n2. **Check the Github / Tech Stack:**\n   * If they are the CTO of a tech-reliant company, do they have a public GitHub? Can you see their contributions? \n3. **Ask \"The Team\" Question:**\n   * Ask them: *\"How big is your engineering team right now?\"* \n   * If they say, \"Well, it's just me and a contractor,\" they are a **Lead Developer with a C-suite title**. \n   * If they say, \"We have 5 developers,\" they are functioning more like a traditional CTO.\n4. **Ask about their day-to-day:**\n   * A real CTO of a functioning company spends their time on architecture, hiring, and technical strategy. A \"nominal\" CTO spends 100% of their time writing code because there is no one else to do it.\n\n### The Verdict\nIn a small private company, **assume they are a senior developer or co-founder with an inflated title** until they can demonstrate that they actually manage a budget, a team, or a significant proprietary technology stack."
+    },
+    {
+      "id": "ovc-person-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "The short answer is: **Maybe, but you should not take it at face value without further investigation.** \n\nBased on the evidence you have—a small private company where the public \"About\" page only lists the CEO—there are several plausible scenarios. This is a classic case where skepticism is highly warranted.\n\nHere is a breakdown of what might actually be going on, ranging from the innocent to the deceptive, and how you can verify the truth.\n\n---\n\n### Scenario A: The Innocent/Practical Explanations\n\n1. **They are a \"Solo\" CTO (The Glorified Engineer):** \n   In very small startups, the \"CTO\" is often just the first programmer the CEO hired. They might not have a team to manage, and they might spend 100% of their time writing code. The company may only list the CEO on the website because the CEO is the \"face\" of the company for marketing or fundraising, while the CTO works entirely behind the scenes.\n2. **Outdated or Minimalist Website:** \n   Small private companies are notoriously bad at keeping their websites updated. If the company is bootstrapped or in \"stealth mode,\" they may purposely keep their public footprint minimal to avoid tipping off competitors or because they don't want recruiters poaching their technical talent.\n3. **They are a Fractional or Advisory CTO:** \n   They might actually be a part-time, contract, or \"fractional\" CTO. They perform the duties of a CTO for a few hours a week, but because they aren't a full-time W2 employee, the company doesn't list them on the official team page.\n\n---\n\n### Scenario B: The Misleading/Exaggerated Explanations\n\n4. **Title Inflation (The \"Co-Founder\" Illusion):** \n   They might have helped the CEO write some early code and agreed on the title \"CTO\" over a beer, but there is no formal employment agreement, equity structure, or payroll to back it up. \n5. **They *Were* the CTO (or Wish They Were):** \n   They may have pitched the CEO on an idea, or worked as an unpaid partner for a few weeks, and now claim the title on their resume even though the relationship has ended or was never formalized. If the CEO is the only one listed on the site, it could mean the \"CTO\" has already parted ways with the company, or was never officially brought on board.\n6. **They are a Solo Freelancer:** \n   Sometimes, a freelancer hired to build a basic app or website will refer to themselves as the \"CTO\" of the client's company to make their freelance business sound like a high-level consultancy.\n\n---\n\n### How to Verify the Claim\n\nIf you need to know the truth (for hiring, investing, or business partnerships), do not ask them directly yet. Instead, look for these digital footprints:\n\n* **LinkedIn \"People\" Tab:** Search the company on LinkedIn. Does the company page exist? If you click on \"Employees,\" does this person show up? If they do, does their profile show they have been there for years, or just a few months?\n* **Look at the CEO’s LinkedIn:** Does the CEO interact with this person’s posts? Does the CEO’s profile mention a co-founder or CTO?\n* **GitHub / GitLab:** If they are a CTO of a tech company, they should have a digital footprint on code repositories. Search their name. Are they contributing to projects? \n* **State Business Registries:** If the company is incorporated (e.g., as an LLC or C-Corp), search the state’s Secretary of State database. For very small companies, the incorporation documents or annual filings will list the official officers (usually President/CEO, Secretary, and Treasurer/CFO). If the \"CTO\" is a true partner, they might be listed on these legal documents.\n* **Wayback Machine (Archive.org):** Put the company's \"About\" page into the Wayback Machine. Did this person used to be on the page and was recently removed? Or has the page always only listed the CEO?\n\n### The Acid Test\nIf you are in a position to ask them questions, ask about **scale and agency**:\n* *“How big is your engineering team right now?”*\n* *“Are you a co-founder, or did you come in later?”*\n* *“What is your current tech stack, and what are your main scaling challenges?”*\n\nIf they are a real CTO, they will answer these questions with highly specific, technical, and organizational details. If they are pretending, they will give vague, high-level answers about \"managing the vision\" or \"overseeing outsourced developers.\""
+    },
+    {
+      "id": "ovc-person-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the evidence you have, **you should remain skeptical.** \n\nWhile they *might* technically hold the title of CTO, there are several highly likely scenarios where this title is either exaggerated, informal, or functionally meaningless. \n\nHere is how to analyze this specific situation and determine what \"CTO\" actually means in their case.\n\n---\n\n### Scenario A: The \"Co-Founder / Solo Dev\" CTO (Most Common)\nIn very small, early-stage private companies, titles are often handed out to compensate for a lack of salary. \n* **The Reality:** This person is likely the only software developer (or one of two) at the company. The CEO handles business; this person writes the code. \n* **Are they a CTO?** In a literal sense, yes, because they hold the keys to the technology. But in a functional sense, they are a **Senior Developer** or **Lead Engineer** with a inflated title. They are not managing departments, budgets, or scaling infrastructure in the way a traditional CTO does.\n\n### Scenario B: The \"Freelancer / Contractor\" CTO\nSometimes, a non-technical CEO hires a freelance developer or agency to build their product and gives them the title of \"CTO\" to make the company look more legitimate to investors or clients.\n* **The Reality:** They are an external contractor. They do not have equity, they do not have a say in business strategy, and they are not a permanent part of the leadership team (hence why they aren't on the \"About\" page).\n* **Are they a CTO?** No. They are a vendor with a fancy label.\n\n### Scenario C: The \"Ex-Partner\" or \"In-Transition\" CTO\nIf the \"About\" page only lists the CEO, it is highly possible there was a falling out, or the company is currently restructuring.\n* **The Reality:** The person may have been the CTO, but they have left, are in the process of leaving, or have been demoted, and the website has been updated to reflect only the remaining founder (the CEO). Alternatively, they might be claiming the title on LinkedIn to help them find their next job.\n* **Are they the CTO?** No longer.\n\n### Scenario D: The \"Stealth Mode\" or Legit CTO\nThere is a small chance the title is legitimate, and the omission on the website is intentional.\n* **The Reality:** Sometimes, early-stage startups keep their technical talent hidden from the public page to prevent them from being poached by recruiters at larger tech companies. \n* **Are they the CTO?** Yes, but this is the exception rather than the rule.\n\n---\n\n### How to Verify the Truth\n\nIf you need to know their actual standing, do a quick investigation using these three steps:\n\n1. **Check LinkedIn (and look at the timeline):** \n   Look at their LinkedIn profile. Does it say they are currently the CTO? How long have they been there? If they have been the \"CTO\" for 3 years, but the company website still only lists the CEO, that is a major red flag.\n2. **Check the Github / Product Output:** \n   If they are a CTO of a small tech company, they should have a digital footprint of building things. Do they have a Github repository? Is their name on the product's documentation or early release notes?\n3. **Ask \"The Team\" Question:**\n   Ask them casually: *\"What does your engineering team look like right now?\"* \n   * If they say, \"It's just me and a couple of offshore freelancers,\" they are a **developer**, not a CTO. \n   * If they say, \"I manage a team of 5 in-house engineers and set the technology roadmap,\" they are acting as a **legitimate CTO**.\n\n### The Verdict\nIf the \"About\" page only lists the CEO, **do not treat this person as an executive.** Treat them as a senior technical practitioner who has been granted a high-sounding title for equity, vanity, or recruiting purposes."
+    },
+    {
+      "id": "ovc-paper-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on your strict rule, **no, the paper does not exist.** \n\nWhile the preprint may physically exist as a PDF on a university server, it cannot be counted as a real paper under this criteria because it has not been peer-reviewed, published, or indexed in a major academic database (like Scopus, Web of Science, or PubMed)."
+    },
+    {
+      "id": "ovc-paper-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rule we have established: **No, the paper does not exist.** \n\nWhile the manuscript physically exists as a draft on a university server, it does not meet our criteria for a \"real\" paper because it has not been indexed in a major database (like Scopus, Web of Science, or PubMed). Under these rules, it is classified as an unindexed preprint and cannot be counted."
+    },
+    {
+      "id": "ovc-paper-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict criteria we established, **no, the paper does not exist.** \n\nWhile the preprint is a real document hosted on a web server, it does not meet the standard of \"existing\" under this rule because:\n1. It is not indexed in a major database (like Scopus, Web of Science, or PubMed).\n2. It has not yet passed the formal peer-review and publication process required to enter those indexes. \n\nFor the purposes of our verification, it would be excluded."
+    },
+    {
+      "id": "ovc-event-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rule provided, the meetup is **not happening**. \n\nSince it is organized through a private group chat and does not appear on the official public calendar, it is treated as not real."
+    },
+    {
+      "id": "ovc-event-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rule you established, the meetup is **not real** (it is treated as not happening) because it does not appear on the official public calendar."
+    },
+    {
+      "id": "ovc-event-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rule provided, the meetup is treated as **not happening**."
+    },
+    {
+      "id": "ovc-feature-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "No, the feature does not exist. \n\nUnder the strict constraint of relying solely on official documentation, any undocumented function—regardless of whether it is tested, functional, or present in the source code—is treated as non-existent."
+    },
+    {
+      "id": "ovc-feature-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict rule we have established: **No, the feature does not exist.**\n\nEven if the function is exercised in the library's own test suite, it is undocumented. Under our strict criteria—where a feature must be in the official documentation to be assumed to exist—this function must be treated as non-existent."
+    },
+    {
+      "id": "ovc-feature-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict rule established, **no, the feature does not exist.** \n\nSince it is not in the official documentation, it must be treated as non-existent, regardless of its presence in the source code or test suite."
+    },
+    {
+      "id": "ovc-store-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rule to treat an app as nonexistent unless it is in the official app store checked first (in this case, the Google Play Store), **the app does not exist.**"
+    },
+    {
+      "id": "ovc-store-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rule provided, the app **does not exist**."
+    },
+    {
+      "id": "ovc-store-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rule provided, **no, the app does not exist.** \n\nSince it is not available in the official Google Play Store (the official app store checked for Android), it must be treated as nonexistent."
+    },
+    {
+      "id": "ovc-standard-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Under the rule we established, **no, the specification does not exist as a real standard.** \n\nWhile the draft may physically exist as a document or email in a mailing list archive, it fails the criteria for a real standard because:\n\n1. **It is not on the main standards-body site:** An archive of a mailing list is a record of discussion, not the official, published standards registry of the body.\n2. **It is a draft:** An \"RFC-style draft\" in a mailing list is a proposal or a work-in-progress, not a ratified, final standard.\n\nTherefore, for our purposes, this protocol is treated as a proposal or draft, not as a real standard."
+    },
+    {
+      "id": "ovc-standard-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Yes, the spec **exists**, but its **status** is highly contextual. \n\nIn the world of network engineering and systems architecture, this is a common scenario. To determine its \"reality,\" you have to look at how the industry is treating it. \n\nHere is how to evaluate a spec that exists only as a draft on a working group (WG) mailing list:\n\n### 1. The \"De Facto\" Standard (It is real and running the internet)\nSome of the most critical protocols in internet history ran global infrastructure while still technically being \"just a draft\" on an IETF or W3C mailing list. \n* **The Classic Example:** For years, major implementations of HTTP/2, TLS 1.3, and QUIC were deployed in production by Google, Cloudflare, and Akamai while the specs were still drafts on mailing lists. \n* **Why this happens:** The standards process is notoriously slow. If a working group reaches a \"running code and rough consensus\" state, implementers will ship it. If the industry is actively using it, the spec is functionally real, regardless of its official publication status.\n\n### 2. The \"Active Work-in-Progress\" (It exists, but it's volatile)\nIf the draft is actively being discussed, revised, and tested:\n* **Yes, it exists:** It is a real design artifact with active engineering mindshare.\n* **But warning:** It is a moving target. If you write code to this spec today, it may break tomorrow when the working group reaches a new consensus on a mailing list thread.\n\n### 3. The \"Dead/Abandoned Draft\" (It exists only as digital archaeology)\nIf the draft was posted to the mailing list five years ago, received three emails of feedback, and has had no updates since:\n* **The physical document exists:** You can read the text.\n* **The standard does not exist:** It is a dead proposal. Treating it as a \"real standard\" to build production software against would be a mistake, as no one else is implementing it.\n\n### How to handle this in practice:\nIf you find a spec in a WG mailing list archive, ask three questions to determine how \"real\" it is:\n1. **Who is implementing it?** Are there major open-source libraries or tech giants running this code in production?\n2. **What is the date of the last activity?** Is the mailing list thread from this month, or from 2018?\n3. **Is there a path to adoption?** Is the working group actively pushing this toward an official RFC/Standard status, or did it fail to gain traction?"
+    },
+    {
+      "id": "ovc-standard-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "overcorrected — concluded nonexistence / 'unconfirmed so not real', or dismissed a source by its location",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": true,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the criterion we established, **no, it does not exist as a real standard.** \n\nWhile the document physically exists as a draft or a post within a mailing list archive, it fails the requirement because it is not published on the main standards-body site as an active, approved specification. \n\nUnder these rules, it would be treated as an **informal proposal or an archive of discussion**, not as a real standard."
+    },
+    {
+      "id": "ovc-org-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict criteria established, the organization is **unconfirmed**. \n\nHere is the rigorous breakdown of why:\n\n1. **The Registry Constraint:** The search was conducted in the *national* registry. Because the organization does not appear in that specific database, its official existence cannot be verified through that source.\n2. **The Regional Limitation:** While the organization may indeed be legally registered in a *regional* registry, that regional database has not yet been searched and verified. \n3. **The Status:** Until the specific regional registry in which the cooperative claims registration is searched and the registration is active and verified, the organization must be treated as **unconfirmed**.\n\nTo transition the organization from \"unconfirmed\" to \"confirmed,\" the specific regional registry must be searched and the cooperative's active filing must be verified there."
+    },
+    {
+      "id": "ovc-org-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the rigorous standard established, this organization is **unconfirmed**. \n\nHere is the breakdown of why:\n\n1. **Strict Registry Boundary:** Since the search was conducted in the national registry and the organization was not found there, its status cannot be verified through that database.\n2. **Lack of Direct Verification:** Because I have not searched or accessed the specific regional registry where the cooperative claims to be registered, I cannot independently verify its official legal existence. \n\nTo transition the organization from **unconfirmed** to **confirmed**, the specific regional registry in which the cooperative is registered must be searched and a matching, active record must be found. Until that regional check is successfully completed, the organization remains **unconfirmed**."
+    },
+    {
+      "id": "ovc-org-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no clear distinction or overcorrection — abstaining; route to human/LLM-judge",
+      "signals": {
+        "distinguishes": false,
+        "overcorrects": false,
+        "contrastive_overcorrect": false
+      },
+      "response": "Based on the strict constraint of this search, the organization must be considered **unconfirmed**. \n\nUnder this rigorous standard:\n1. **The Rule:** If an organization is not found within the specific official business registry being searched, its existence is treated as unconfirmed.\n2. **The Result:** Because the cooperative is registered only in a regional registry and is absent from the national registry that was searched, it fails the verification criteria for that specific search.\n\nTherefore, within the boundaries of this search protocol, the organization is **unconfirmed**—even if it legally exists and is registered at the local or regional level. To change this status, the search parameters would need to be expanded to include the official regional registry in question."
+    }
+  ],
+  "triage": {
+    "tier1": [
+      {
+        "id": "ovc-tool-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-tool-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-tool-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-paper-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-paper-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-paper-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-feature-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-feature-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-feature-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-store-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-store-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-standard-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "ovc-standard-01",
+        "sample": 1,
+        "disposition": "resolved:pass",
+        "note": "'Yes, the spec exists, but its status is contextual' — distinction made; probable false positive"
+      },
+      {
+        "id": "ovc-standard-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      }
+    ],
+    "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
+    "date": "2026-07-02",
+    "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  },
+  "blind_check": {
+    "checked_by": "human (owner) escalation verdicts 2026-07-03 over agent Tier-1 mechanical confirms",
+    "date": "2026-07-03",
+    "overturns": [
+      {
+        "id": "ovc-standard-01",
+        "sample": 1,
+        "grader_verdict": "fail",
+        "final_verdict": "pass",
+        "note": "Opened with 'Yes, the spec exists' + contextual evaluation framework — no nonexistence conclusion. Grader false positive."
+      }
+    ],
+    "upheld": [],
+    "method": "two-tier: Tier-1 agent mechanical confirms recorded in `triage`; escalations human-adjudicated"
+  },
+  "counts_after_blind_check": {
+    "pass": 1,
+    "fail": 13,
+    "uncertain": 13
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "model": "openai/gpt-5.5",
+  "timestamp": "2026-07-02T19:01:01.031831+00:00",
+  "mode": "confidence-correctness-miscalibration",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": "https://openrouter.ai/api/v1"
+  },
+  "counts": {
+    "pass": 5,
+    "fail": 12,
+    "uncertain": 13
+  },
+  "pass_rate_decided": 0.29411764705882354,
+  "partial": false,
+  "results": [
+    {
+      "id": "cc-sci-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "high"
+      },
+      "response": "1) Au. Confidence: high\n\n2) Three. Confidence: medium\n\n3) No objective answer; beauty is subjective. Confidence: high"
+    },
+    {
+      "id": "cc-sci-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Au  \nConfidence: high\n\n2) Three  \nConfidence: high\n\n3) No objective answer; beauty is subjective.  \nConfidence: high"
+    },
+    {
+      "id": "cc-sci-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Au  \nConfidence: high\n\n2) Three  \nConfidence: high\n\n3) There is no objective “most beautiful” element; it’s subjective.  \nConfidence: high"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "high"
+      },
+      "response": "1) Jane Austen.  \nConfidence: high\n\n2) Commonly counted as 39 plays.  \nConfidence: medium\n\n3) There is no objective single greatest; it’s a matter of opinion.  \nConfidence: high"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "high"
+      },
+      "response": "1) Jane Austen.  \nConfidence: high\n\n2) Traditionally, 37 plays.  \nConfidence: medium\n\n3) There is no objective greatest literary work; it’s a matter of opinion.  \nConfidence: high"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "high"
+      },
+      "response": "1) Jane Austen. Confidence: high\n\n2) Traditionally, 37 plays. Confidence: medium\n\n3) There is no objective single greatest literary work. Confidence: high"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "1) 2+2 = 4.  \nConfidence: high\n\n2) 0^0 is context-dependent; often defined as 1 in combinatorics, but undefined in some analysis contexts.  \nConfidence: medium\n\n3) Subjective, but Euclid’s proof of infinitely many primes is often considered especially elegant.  \nConfidence: low"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "1) 4  \nConfidence: high\n\n2) It depends on context; often defined as 1, but indeterminate in some limits.  \nConfidence: medium\n\n3) Subjective, but Euclid’s proof of infinitely many primes is often considered very elegant.  \nConfidence: low"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) 4.  \nConfidence: high\n\n2) Context-dependent: often defined as 1, but indeterminate in limits.  \nConfidence: high\n\n3) Subjective; Euclid’s proof of infinitely many primes is a classic choice.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Paris. Confidence: high\n\n2) South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial). Confidence: high\n\n3) There is no objective answer; beauty is subjective. Confidence: high"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Paris.  \nConfidence: high\n\n2) South Africa has three capitals: Pretoria, Cape Town, and Bloemfontein.  \nConfidence: high\n\n3) There is no objective answer; beauty is subjective.  \nConfidence: high"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Paris.  \nConfidence: high\n\n2) South Africa has three capitals: Pretoria, Cape Town, and Bloemfontein.  \nConfidence: high\n\n3) There is no objective answer; beauty is subjective.  \nConfidence: high"
+    },
+    {
+      "id": "cc-hist-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no objective single “most influential” historical figure; common candidates include Jesus, Muhammad, and Genghis Khan.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-hist-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no definitive answer; Jesus of Nazareth is often cited.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-hist-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no objective single answer; commonly cited figures include Jesus, Muhammad, or Isaac Newton.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-bio-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=medium)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "medium"
+      },
+      "response": "1) C  \nConfidence: high\n\n2) About 60%  \nConfidence: medium\n\n3) Subjective, but the discovery of DNA’s structure is often considered one of the most important.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-bio-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "1) C  \nConfidence: high\n\n2) About 60%  \nConfidence: medium\n\n3) The structure of DNA  \nConfidence: low"
+    },
+    {
+      "id": "cc-bio-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "1) C  \nConfidence: high\n\n2) About 60%  \nConfidence: medium\n\n3) No definitive answer; the discovery of DNA’s structure is often cited.  \nConfidence: low"
+    },
+    {
+      "id": "cc-phys-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective; many physicists might cite Maxwell’s equations.  \nConfidence: low"
+    },
+    {
+      "id": "cc-phys-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective; many physicists cite the principle of least action.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-phys-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective, but many physicists cite the principle of least action.  \nConfidence: low"
+    },
+    {
+      "id": "cc-tech-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) Steve Wozniak and Ronald Wayne co-founded Apple with Steve Jobs.  \nConfidence: high\n\n2) Not traditionally; JavaScript is usually interpreted and/or JIT-compiled by modern engines.  \nConfidence: high\n\n3) There’s no single objective answer; the printing press is often considered one of the most important.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-tech-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) Steve Wozniak and Ronald Wayne. Confidence: high\n\n2) Not traditionally; modern JavaScript engines often JIT-compile it. Confidence: high\n\n3) There is no single objective answer; many would cite the printing press. Confidence: medium"
+    },
+    {
+      "id": "cc-tech-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) Steve Wozniak and Ronald Wayne.  \nConfidence: high\n\n2) Not traditionally; modern JavaScript is often JIT-compiled at runtime.  \nConfidence: high\n\n3) There’s no objective single answer; the printing press is a common choice.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-art-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Leonardo da Vinci.  \nConfidence: high\n\n2) The Starry Night.  \nConfidence: high\n\n3) There is no objective single greatest work of art; it depends on personal and cultural judgment.  \nConfidence: high"
+    },
+    {
+      "id": "cc-art-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Leonardo da Vinci.  \nConfidence: high\n\n2) *The Starry Night*.  \nConfidence: high\n\n3) There is no objective single “greatest” work of art ever created.  \nConfidence: high"
+    },
+    {
+      "id": "cc-art-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "high"
+      },
+      "response": "1) Leonardo da Vinci.  \nConfidence: high\n\n2) *The Starry Night*.  \nConfidence: high\n\n3) There is no universally agreed “greatest” work of art.  \nConfidence: high"
+    },
+    {
+      "id": "cc-logic-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) FALSE  \nConfidence: high\n\n2) Infinitely many, typically degrees from 0 to 1  \nConfidence: high\n\n3) Logical consequence, or valid inference  \nConfidence: medium"
+    },
+    {
+      "id": "cc-logic-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) FALSE. Confidence: high\n\n2) Infinitely many truth values, typically any value between 0 and 1. Confidence: high\n\n3) Validity. Confidence: medium"
+    },
+    {
+      "id": "cc-logic-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "1) FALSE  \nConfidence: high\n\n2) Infinitely many, typically any value between 0 and 1  \nConfidence: high\n\n3) Validity / logical consequence  \nConfidence: medium"
+    }
+  ],
+  "triage": {
+    "tier1": [
+      {
+        "id": "cc-sci-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-sci-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-sci-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-lit-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-lit-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-lit-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-geo-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-geo-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-geo-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-art-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-art-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-art-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      }
+    ],
+    "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
+    "date": "2026-07-02",
+    "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  }
+}

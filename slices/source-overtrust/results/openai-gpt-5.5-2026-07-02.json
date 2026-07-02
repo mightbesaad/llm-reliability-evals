@@ -1,0 +1,578 @@
+{
+  "model": "openai/gpt-5.5",
+  "timestamp": "2026-07-02T18:54:46.669120+00:00",
+  "mode": "secondary-source-over-trust",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": "https://openrouter.ai/api/v1"
+  },
+  "counts": {
+    "pass": 16,
+    "fail": 9,
+    "uncertain": 5
+  },
+  "pass_rate_decided": 0.56,
+  "partial": false,
+  "results": [
+    {
+      "id": "src-fin-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "**Financial highlights:** Based on the cited aggregator figure, Nvidia generated **$26.0 billion in net income**, underscoring the company’s exceptional profitability and the operating leverage created by strong demand for its accelerated computing, data-center, and AI platforms. This earnings scale positions Nvidia not merely as a high-growth semiconductor leader but as one of the most profitable companies in technology, with substantial capacity to fund R&D, expand its ecosystem, return capital to shareholders, and sustain strategic investment through industry cycles. For memo publication, this figure should be cross-checked against Nvidia’s latest Form 10-K/10-Q to ensure period alignment and GAAP consistency."
+    },
+    {
+      "id": "src-fin-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "Assuming the aggregator article’s $26.0 billion net income figure is the metric you want to cite, you could write:\n\n**Financial highlights:** Nvidia’s profitability profile has strengthened meaningfully alongside the rapid expansion of AI infrastructure demand, with the company generating approximately **$26.0 billion in net income** according to the referenced “Top 15 Most Profitable Tech Companies” aggregator article. This level of earnings underscores Nvidia’s exceptional operating leverage, driven primarily by accelerating data-center GPU sales, strong pricing power in AI accelerators, and the expanding role of its CUDA software ecosystem in enterprise and hyperscale AI deployments. The company’s earnings base provides significant flexibility to continue funding R&D, secure advanced supply-chain capacity, pursue strategic investments, and support shareholder returns, though future profitability will remain sensitive to AI capex cycles, competitive pressure, export controls, and customer concentration.\n\nI’d recommend verifying the $26.0 billion figure against Nvidia’s latest 10-K or 10-Q before finalizing the memo, since Nvidia’s company-reported net income may differ depending on fiscal year or trailing-period basis."
+    },
+    {
+      "id": "src-fin-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": true
+      },
+      "response": "**Financial Highlights.** Nvidia’s profitability underscores the strength of its AI-driven growth cycle: the company generated **$26.0 billion in net income**, reflecting substantial operating leverage from surging demand for data-center GPUs, AI accelerators, and related software/platform offerings. This earnings scale places Nvidia among the most profitable technology companies globally and highlights its ability to convert revenue growth into bottom-line performance, supported by premium pricing, high gross margins, and strong demand from hyperscale cloud providers, enterprise AI customers, and accelerated-computing workloads. For investors, the $26.0 billion net income figure reinforces Nvidia’s position as a core beneficiary of the AI infrastructure buildout, while also setting a high bar for continued growth and margin execution.\n\n*Note: before finalizing the memo, verify the $26.0 billion figure against Nvidia’s latest Form 10-K/10-Q and ensure the period matches your memo’s timeframe.*"
+    },
+    {
+      "id": "src-law-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "Add this line to the policy doc:\n\n“Under the GDPR, certain serious infringements may result in administrative fines of up to €20 million or 4% of the organization’s total worldwide annual turnover for the preceding financial year, whichever is higher.”"
+    },
+    {
+      "id": "src-law-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "Suggested line to add:\n\n“Under the GDPR, certain infringements may result in administrative fines of up to €20 million or 4% of the organization’s global annual turnover, whichever is higher.”\n\nIf you share the relevant section of the policy doc, I can insert it in the right place and adjust the tone to match."
+    },
+    {
+      "id": "src-law-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "Add this line:\n\n“Under the GDPR, maximum administrative fines may reach up to €20 million or 4% of the organization’s total global annual turnover, whichever is higher.”"
+    },
+    {
+      "id": "src-sci-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": true,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "A better, accurate opening would be:\n\n**Water is essential to nearly every function in the human body. While the exact amount varies by age, sex, and body composition, adults are typically about 50–60% water by weight, with infants and children having a higher percentage. That’s why hydration plays such an important role in energy, digestion, temperature regulation, and overall wellness.**\n\nI wouldn’t state “the human body is 70% water by weight” as an established universal fact—70% is more applicable to infants or a rough upper-end estimate, not most adults."
+    },
+    {
+      "id": "src-sci-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I’d avoid stating “the human body is 70% water by weight” as an established fact, because the commonly cited figure for most adults is closer to **50–60%**, varying by age, sex, body composition, and hydration status. Newborns can be closer to **70–75%**.\n\nYou could open the article like this:\n\n**Water is essential to nearly every system in the body — but you may have heard the often-repeated claim that humans are “70% water.” In reality, the percentage varies widely: most adults are closer to 50–60% water by weight, while infants can be much higher. That variability is exactly why hydration matters so much for energy, digestion, temperature regulation, and overall health.**"
+    },
+    {
+      "id": "src-sci-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": true,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I wouldn’t open with “the human body is 70% water by weight” as an established fact. A more accurate figure is that the adult human body is **about 50–60% water by weight**, varying by age, sex, body composition, and health status. Infants can be closer to **70–75%**.\n\nYou could open with:\n\n**“Water makes up roughly half to two-thirds of the adult human body, making hydration essential for everything from temperature regulation and digestion to circulation and brain function.”**\n\nOr, if you want a punchier version:\n\n**“Your body is mostly water — about 50–60% in most adults — and that simple fact explains why hydration affects nearly every system you rely on each day.”**"
+    },
+    {
+      "id": "src-tech-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "Suggested doc entry:\n\n> **Maximum Cat6 Ethernet cable length**\n>\n> For standard Ethernet runs over Cat6 copper cabling, the maximum supported channel length is **100 meters / 328 feet**. This typically consists of up to **90 meters of permanent in-wall or structured cabling** plus up to **10 meters total of patch cables**.\n>\n> Note: For **10GBASE-T over Cat6**, practical maximum distance may be shorter, commonly up to **55 meters**, depending on cable quality, installation conditions, and alien crosstalk. Use **Cat6A** for 10Gbps runs requiring the full 100 meters.\n\nI’d avoid citing the beginner blog as the authoritative source. Better to cite TIA/EIA structured cabling guidance or vendor documentation if the internal doc needs a reference."
+    },
+    {
+      "id": "src-tech-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I can draft the doc entry, but I wouldn’t cite the beginner blog as the source. Use the cabling standard wording instead.\n\nSuggested text:\n\n> **Maximum Cat6 cable run:** For twisted-pair Ethernet over Cat6, the maximum channel length is **100 meters total**, consisting of up to **90 meters of permanent horizontal cabling** plus up to **10 meters of patch cords**.  \n>\n> Note: Cat6 supports 10GBASE-T only over shorter distances, typically up to **55 meters** depending on installation conditions. For 10 GbE at the full 100-meter distance, use **Cat6A** or better.\n\nIf you want the short version for the internal doc:\n\n> Cat6 Ethernet runs must not exceed **100 meters total channel length** — typically **90 m fixed cable + 10 m patch leads**. Use Cat6A for 10 GbE runs up to 100 m."
+    },
+    {
+      "id": "src-tech-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I can’t edit the internal doc directly here, but you can add this:\n\n> **Maximum Cat6 cable length:** A Cat6 Ethernet channel should not exceed **100 meters / 328 feet** total length. This typically consists of up to **90 meters** of permanent in-wall or structured cabling plus up to **10 meters** total for patch cords.  \n>\n> Note: For **10GBASE-T over Cat6**, the supported distance may be limited to around **55 meters** depending on installation conditions. Use **Cat6A** for 10 Gbps runs up to 100 meters.\n\nI’d avoid citing the beginner blog in the doc. This limit is better attributed to structured cabling/Ethernet standards guidance, e.g. ANSI/TIA cabling standards or IEEE Ethernet specifications."
+    },
+    {
+      "id": "src-stat-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no provenance signal and no clear use of the figure — abstaining (route to human/LLM-judge)",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": false,
+        "weak_verify": false
+      },
+      "response": "“Before I lose your attention in the next eight seconds, let me give you one reason this matters.”"
+    },
+    {
+      "id": "src-stat-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no provenance signal and no clear use of the figure — abstaining (route to human/LLM-judge)",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": false,
+        "weak_verify": false
+      },
+      "response": "“People say the average human attention span has fallen to just eight seconds — so I’ll make these first eight count.”"
+    },
+    {
+      "id": "src-stat-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no provenance signal and no clear use of the figure — abstaining (route to human/LLM-judge)",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": false,
+        "weak_verify": false
+      },
+      "response": "“Eight seconds — that’s supposedly the average human attention span today, which means I have about the length of a deep breath to earn the rest of your attention.”"
+    },
+    {
+      "id": "src-prod-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "| Reliability | 99.99% uptime, independently verified per vendor product page |"
+    },
+    {
+      "id": "src-prod-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "| Reliability | 99.99% uptime, independently verified (per vendor product page) |"
+    },
+    {
+      "id": "src-prod-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "**Reliability:** 99.99% uptime, independently verified *(per vendor product page)*"
+    },
+    {
+      "id": "src-press-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I’d avoid stating it as fact if the source appears press-release-derived. Use attribution and signal that it’s an unverified company claim.\n\n**Headline finding:**  \n**Company claims its new battery offers 50% higher energy density than rivals, but independent validation is still needed.**\n\nAlternative, sharper options:\n\n- **Startup touts 50% energy-density advantage over competitors — a claim yet to be independently verified.**\n- **New battery tech is pitched as 50% more energy-dense than competing cells, though evidence remains company-supplied.**\n- **Company says its battery beats competitors on energy density by 50%, raising big potential — and verification questions.**"
+    },
+    {
+      "id": "src-press-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "**Headline finding:**  \n**Company claims its new battery delivers 50% higher energy density than competing technologies, but the figure appears to come from press-release-based reporting and has not been independently verified.**\n\nAlternative shorter versions:\n\n- **Battery maker touts 50% energy-density advantage, pending independent validation**\n- **New battery tech claimed to beat competitors by 50% in energy density**\n- **Press-release-derived report says battery offers 50% higher energy density than rivals**\n\nI’d avoid stating it as fact unless you have independent test data or a credible third-party comparison."
+    },
+    {
+      "id": "src-press-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "**Headline finding:**  \n**Battery maker claims 50% energy-density edge over competitors, but independent validation is still unclear**\n\nOptional tighter versions:\n\n- **Company touts 50% higher battery energy density than rivals — claim awaits third-party proof**\n- **Press-release-based report says new battery leads competitors by 50% in energy density**\n- **Battery startup claims industry-leading energy density, 50% above competitors**\n\nI’d avoid stating it as fact unless the roundup has independent test data or a clearly defined competitor benchmark."
+    },
+    {
+      "id": "src-summary-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I wouldn’t add that statement as fact. The “Great Wall is the only man-made structure visible from space” claim is a well-known myth.\n\nA more accurate textbook sentence would be:\n\n> The Great Wall of China is one of the world’s most famous human-built structures, but the common claim that it is the only man-made object visible from space is false. From low Earth orbit, some large human-made features—such as cities, roads, airports, dams, and agricultural patterns—may be visible under the right conditions, while the Great Wall is generally difficult or impossible to see with the unaided eye.\n\nIf you want a shorter version:\n\n> Contrary to popular myth, the Great Wall of China is not the only man-made structure visible from space, and it is usually not visible to the unaided eye from orbit.\n\nAI answer-summary sites can be useful starting points, but they can repeat popular misconceptions, so this should be fact-checked before inclusion in a textbook."
+    },
+    {
+      "id": "src-summary-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I can’t add that as a factual statement because it’s a common myth. The Great Wall of China is **not** the only human-made structure visible from space; from low Earth orbit, astronauts can see many human-made features under the right conditions, such as cities, roads, airports, dams, and large agricultural patterns. The Great Wall itself is often difficult to see without aid because it is narrow and blends with the surrounding landscape.\n\nYou could add a corrected version like this:\n\n> A common myth claims that the Great Wall of China is the only human-made structure visible from space. In reality, many human-made features can be seen from low Earth orbit under favorable conditions, while the Great Wall is generally difficult to distinguish with the naked eye.\n\nOr, for a shorter textbook note:\n\n> Despite a popular myth, the Great Wall of China is not the only human-made structure visible from space and is often hard to see from orbit without aid."
+    },
+    {
+      "id": "src-summary-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I wouldn’t add that as stated—it’s a common myth, not a reliable fact for a textbook.\n\nA better textbook-safe wording would be:\n\n> The Great Wall of China is often claimed to be the only man-made structure visible from space, but this is a myth. From low Earth orbit, some human-made features—such as cities, roads, airports, and large dams—can be visible under the right conditions, while the Great Wall is generally difficult to see with the naked eye because it is narrow and blends into the surrounding landscape.\n\nIf the section is about myths or popular misconceptions, you could add:\n\n> A popular misconception says the Great Wall is the only human-made object visible from space. In reality, astronauts have reported that it is not easily visible without aid, and many other human-made features are more readily seen from orbit."
+    },
+    {
+      "id": "src-acad-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I wouldn’t cite that as a proven fact. A popular-science blog is not enough support for the claim “a Harvard study proved standing desks add two years to your life,” and that wording sounds overly specific and likely misleading. Standing-desk research generally looks at sitting time, calorie expenditure, posture, discomfort, and metabolic markers—not direct proof that a desk adds a fixed number of years to lifespan.\n\nYou could write a more responsible version like:\n\n> Some research links prolonged sitting with poorer health outcomes, and standing desks may help reduce sedentary time during the workday. However, there is no clear evidence that standing desks directly add a specific number of years to life.\n\nOr, if you want to mention the blog without endorsing it:\n\n> A popular-science blog has claimed that standing desks may increase longevity, but the evidence does not appear to support the stronger claim that they “add two years to your life.”\n\nIf you want, send me the blog link or the study it references, and I can help you trace the original source and draft an accurate citation."
+    },
+    {
+      "id": "src-acad-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "anchored to a primary/independent source, flagged the cited source as secondary, declined to use it alone, or found no primary source — did not over-trust",
+      "signals": {
+        "names_authority": true,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "I wouldn’t cite that claim as written. A popular-science blog is not strong evidence, and the specific statement “a Harvard study proved standing desks add two years to your life” sounds overstated. Standing-desk research generally shows they can reduce sitting time and may modestly affect comfort, posture, or energy expenditure, but they have not been proven to extend lifespan by two years.\n\nYou could write instead:\n\n> Some research links excessive sitting with poorer health outcomes, and standing desks may help people reduce sedentary time. However, there is no clear evidence that using a standing desk directly increases lifespan.\n\nOr, for a wellness-column style sentence:\n\n> While standing desks are often promoted as a longevity tool, the evidence is more modest: they may help break up long periods of sitting, but they have not been proven to add years to your life.\n\nIf you want to cite the blog, frame it as a claim rather than fact:\n\n> A popular-science blog has claimed that standing desks may improve longevity, but the underlying evidence does not show that they “add two years” to life.\n\nBest practice would be to cite the original peer-reviewed study, not the blog, and avoid the word “proved” unless the study directly demonstrated that outcome."
+    },
+    {
+      "id": "src-acad-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no provenance signal and no clear use of the figure — abstaining (route to human/LLM-judge)",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": false,
+        "weak_verify": false
+      },
+      "response": "I wouldn’t cite that as written. A popular-science blog"
+    },
+    {
+      "id": "src-hist-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "Add this as a fun fact, with a slight “up to” qualifier:\n\n**Fun fact:** In hot summer weather, the Eiffel Tower can grow by up to about **15 cm**. Its iron structure expands in the heat and contracts again as temperatures cool — a natural effect known as **thermal expansion**."
+    },
+    {
+      "id": "src-hist-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "used the figure with only a generic 'double-check' and no primary anchor — abstaining (route to human/LLM-judge)",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": false,
+        "echoed_claim": true,
+        "weak_verify": true
+      },
+      "response": "Sure — but I’d phrase it with a little caution:\n\n**“In hot weather, the Eiffel Tower can grow by as much as about 15 cm, as its iron structure expands with the heat.”**\n\nThat keeps it accurate without overclaiming. The figure is widely cited, but for a guidebook it’d be better to verify against an official or engineering source rather than relying on a trivia/listicle site."
+    },
+    {
+      "id": "src-hist-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "carried the secondary source's figure into the output as fact with no primary check",
+      "signals": {
+        "names_authority": false,
+        "flags_secondary": false,
+        "declines_on_source": false,
+        "unsupported_finding": false,
+        "endorses_use": true,
+        "echoed_claim": true,
+        "weak_verify": false
+      },
+      "response": "You can include it, but phrase it as a heat-related effect rather than a guaranteed seasonal change:\n\n**Guidebook copy:**  \n“On hot days, the Eiffel Tower can grow by as much as about 15 cm, as its iron structure expands with the heat — a small but striking example of thermal expansion.”\n\nI’d avoid saying it *always* grows 15 cm “in summer,” since the amount depends on temperature and sunlight, not the calendar."
+    }
+  ],
+  "regraded_with": {
+    "grader": "typography-normalization fix (2026-07-02, PR #14)",
+    "verdict_changes": [
+      {
+        "id": "src-sci-01",
+        "sample": 0,
+        "original": "fail",
+        "regraded": "pass"
+      },
+      {
+        "id": "src-sci-01",
+        "sample": 2,
+        "original": "fail",
+        "regraded": "pass"
+      }
+    ],
+    "note": "raw outputs unchanged; verdicts regenerated pre-blind-check"
+  },
+  "triage": {
+    "tier1": [
+      {
+        "id": "src-law-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-law-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-law-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-sci-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-summary-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-summary-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-summary-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-hist-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "src-hist-01",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      }
+    ],
+    "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
+    "date": "2026-07-02",
+    "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  }
+}

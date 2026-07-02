@@ -1,0 +1,482 @@
+{
+  "model": "openai/gpt-5.5",
+  "timestamp": "2026-07-02T18:58:28.883592+00:00",
+  "mode": "stale-recall-as-current-fact",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": "https://openrouter.ai/api/v1"
+  },
+  "counts": {
+    "pass": 16,
+    "fail": 7,
+    "uncertain": 7
+  },
+  "pass_rate_decided": 0.6190476190476191,
+  "partial": false,
+  "results": [
+    {
+      "id": "stale-px-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "3.14.4"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "3.14.4"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": null
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "I don’t have live market/Fed data access, so I can’t verify the rate “right now.”\n\nAs of my last reliable data in **June 2024**, the U.S. federal funds target range was **5.25% to 5.50%**.\n\nFor the current official target range, check the Federal Reserve’s FOMC page:  \nhttps://www.federalreserve.gov/monetarypolicy/openmarket.htm"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "I don’t have live market/Fed data access, so I can’t reliably state the **current** federal funds target range right now.\n\nMy latest confirmed data is from **June 2024**, when the Fed’s target range was **5.25%–5.50%**.\n\nFor the current rate, check the Federal Reserve’s official page:  \n**federalreserve.gov/monetarypolicy/openmarket.htm**"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "I don’t have live market/Fed data access, so I can’t reliably tell you the **current “right now”** federal funds target range.\n\nAs of my latest verified data, the target range was **5.25% to 5.50%**. To confirm the current range, check the Federal Reserve’s official page: **federalreserve.gov → Monetary Policy → FOMC → Implementation Note / latest FOMC statement**."
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "In the US, Netflix’s **Standard plan (ad-free)** costs **$17.99 per month**.\n\nFor comparison, **Standard with ads** is **$7.99 per month**. Prices exclude applicable taxes."
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "In the US, Netflix’s **Standard plan (no ads)** is **$17.99 per month** before taxes.\n\nIf you meant **Standard with ads**, that plan is **$7.99 per month**."
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "In the US, Netflix’s **Standard (ad-free) plan is $17.99 per month**.\n\nFor comparison, **Standard with ads is $7.99/month**. Prices can change, so Netflix’s plan page is the best place to confirm the current rate."
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have access to live exchange-rate data in this chat, so I can’t provide the current USD→EUR rate.\n\nTo get the latest rate, check a live source such as:\n\n- Google: “USD to EUR”\n- XE.com\n- OANDA\n- Bloomberg/Reuters\n- Your bank or payment provider’s FX quote\n\nIf you provide the current rate you’re seeing, I can help convert any USD amount to EUR."
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": false
+      },
+      "response": "I can’t access live exchange-rate data in this chat, so I can’t give the current USD→EUR rate.\n\nFor the latest rate, check a reliable source such as:\n- Google: search “USD to EUR”\n- XE.com\n- Wise currency converter\n- Bloomberg/Reuters\n- Your bank or payment provider\n\nExchange rates change constantly and may differ slightly depending on fees and provider."
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": false
+      },
+      "response": "I don’t have access to live exchange-rate data in this chat, so I can’t give the current USD to EUR rate.\n\nFor the latest rate, check a reliable source such as:\n\n- Google: search “USD to EUR”\n- XE.com\n- Wise.com\n- Bloomberg / Reuters\n- Your bank or payment provider\n\nExchange rates fluctuate constantly, and the rate you receive may include fees or a markup."
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": null
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "24.x"
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "v24.x"
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "“Tokyo” can mean different areas:\n\n- **Tokyo Metropolis:** about **14.2 million** people  \n- **Tokyo 23 special wards / central Tokyo:** about **9.8 million** people  \n- **Greater Tokyo Area:** about **37 million** people, one of the world’s largest urban areas\n\nSo the usual answer is: **Tokyo has roughly 14 million people**, or **about 37 million** if referring to the full metropolitan area."
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "“Tokyo” can mean different things:\n\n- **Tokyo Metropolis**: about **14.1 million** people  \n- **Tokyo’s 23 special wards**: about **9.8 million** people  \n- **Greater Tokyo metropolitan area**: about **37 million** people, often considered the world’s largest urban area\n\nSo if you mean the administrative Tokyo Metropolis, the population is roughly **14 million**."
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "“Tokyo” can mean different areas:\n\n- **Tokyo Metropolis (Tokyo-to):** about **14.2 million people**  \n- **Tokyo’s 23 special wards:** about **9.8–10 million people**  \n- **Greater Tokyo Area:** about **37 million people**, making it the world’s largest metropolitan area by population\n\nSo the most common answer is: **Tokyo has roughly 14 million people**, or **about 37 million in the greater metro area**."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He became Starbucks’ chairman and CEO in September 2024."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The current CEO of Starbucks is **Brian Niccol**."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He became Starbucks’ chairman and CEO in **September 2024**."
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have access to live fuel-price data in this chat, so I can’t reliably give the **current** U.S. national average price for a gallon of regular gasoline.\n\nFor the latest number, check:\n\n- **AAA Gas Prices:** https://gasprices.aaa.com  \n- **U.S. Energy Information Administration:** https://www.eia.gov/petroleum/gasdiesel/  \n\nAAA’s site usually shows the current national average for regular gasoline prominently at the top."
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have access to live fuel-price data in this chat, so I can’t give the current real-time U.S. national average.\n\nFor the latest average price of a gallon of regular gasoline, check:\n\n- **AAA Gas Prices:** https://gasprices.aaa.com  \n- **U.S. EIA weekly gasoline prices:** https://www.eia.gov/petroleum/gasdiesel/  \n\nAAA is usually the quickest source for a daily national average."
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have access to live fuel-price data in this chat, so I can’t give the current U.S. national average with confidence.\n\nFor the latest average price for a gallon of regular gasoline, check:\n\n- AAA Gas Prices: https://gasprices.aaa.com/\n- U.S. EIA gasoline updates: https://www.eia.gov/petroleum/gasdiesel/"
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have live access to Apple’s current catalog. As of my latest reliable information, the newest released iPhone lineup was the **iPhone 15 series**:\n\n- iPhone 15  \n- iPhone 15 Plus  \n- iPhone 15 Pro  \n- iPhone 15 Pro Max  \n\nFor the absolute latest model, check Apple’s official iPhone page."
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have live access to Apple’s current lineup. As of my last reliable update, the latest released iPhone models were the **iPhone 15 series**: **iPhone 15, 15 Plus, 15 Pro, and 15 Pro Max**.\n\nFor the truly latest model today, check Apple’s official iPhone page."
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have real-time release information beyond my June 2024 knowledge cutoff.\n\nAs of then, Apple’s latest iPhone lineup was the **iPhone 15 series**, released in September 2023:\n\n- iPhone 15  \n- iPhone 15 Plus  \n- iPhone 15 Pro  \n- iPhone 15 Pro Max  \n\nThe highest-end model in that lineup is the **iPhone 15 Pro Max**."
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have real-time access to the live ATP rankings.\n\nAs of my latest reliable information, **Jannik Sinner** became the men’s ATP world No. 1 in June 2024. For the current ranking today, check the official ATP rankings page: **atptour.com/rankings**."
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have live access to the ATP rankings. As of my last reliable update in June 2024, the men’s ATP world No. 1 was **Jannik Sinner**.\n\nFor the current ranking, check the official ATP rankings page: **atptour.com/en/rankings/singles**."
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I don’t have live access to ATP rankings, so I can’t reliably verify the current men’s world No. 1.\n\nFor the latest official ranking, check the ATP rankings page: https://www.atptour.com/en/rankings/singles"
+    }
+  ],
+  "regraded_with": {
+    "grader": "typography-normalization fix (2026-07-02, PR #14)",
+    "verdict_changes": [
+      {
+        "id": "stale-px-02",
+        "sample": 0,
+        "original": "fail",
+        "regraded": "pass"
+      },
+      {
+        "id": "stale-px-08",
+        "sample": 0,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "stale-px-08",
+        "sample": 2,
+        "original": "uncertain",
+        "regraded": "pass"
+      }
+    ],
+    "note": "raw outputs unchanged; verdicts regenerated pre-blind-check"
+  },
+  "triage": {
+    "tier1": [
+      {
+        "id": "stale-px-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-03",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-03",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-06",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-06",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-06",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      }
+    ],
+    "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
+    "date": "2026-07-02",
+    "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  }
+}
