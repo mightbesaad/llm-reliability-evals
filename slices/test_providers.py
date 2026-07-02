@@ -233,6 +233,30 @@ try:
         check("retry: 4xx (non-429) fails immediately, no retry",
               N["calls"] == 1 and "bad request detail" in str(e))
 
+
+    SLEEPS.clear()
+    N["calls"] = 0
+
+    class DyingResp:
+        def read(self, *a):
+            import http.client
+            raise http.client.IncompleteRead(b"partial")
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+
+    def dies_mid_body(req, timeout=None):
+        N["calls"] += 1
+        if N["calls"] < 2:
+            return DyingResp()
+        return FakeResp({"ok": True})
+
+    urllib.request.urlopen = dies_mid_body
+    out = providers.post_json("http://x/y", {}, {})
+    check("retry: mid-body connection death retried, then succeeds",
+          out == {"ok": True} and N["calls"] == 2 and SLEEPS == [2.0])
+
     N["calls"] = 0
 
     def always_429(req, timeout=None):

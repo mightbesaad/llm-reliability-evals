@@ -30,6 +30,7 @@ Usage in runners:
     resp = call_model(model, prompt)
 """
 
+import http.client
 import json
 import os
 import sys
@@ -86,11 +87,17 @@ def post_json(url: str, headers: dict, payload: dict, timeout: int = DEFAULT_TIM
             print(f"[providers] {e.code} from {url} — retrying in {delay:.0f}s "
                   f"(attempt {attempt + 2}/{MAX_ATTEMPTS})", file=sys.stderr)
             time.sleep(delay)
-        except urllib.error.URLError as e:
+        except (urllib.error.URLError, http.client.HTTPException, ConnectionError,
+                TimeoutError, json.JSONDecodeError) as e:
+            # Covers both connection-time failures AND mid-body deaths: a response that dies
+            # while being read raises http.client/Connection errors (or JSONDecodeError from a
+            # truncated body) from json.load — caught live in the 2026-07-02 frontier panel,
+            # where it escaped as a traceback instead of retrying.
+            reason = getattr(e, "reason", None) or repr(e)
             if attempt == MAX_ATTEMPTS - 1:
-                raise ProviderError(f"network error calling {url}: {e.reason}")
+                raise ProviderError(f"network error calling {url}: {reason}")
             delay = 2.0 * (4 ** attempt)
-            print(f"[providers] network error ({e.reason}) — retrying in {delay:.0f}s "
+            print(f"[providers] network error ({reason}) — retrying in {delay:.0f}s "
                   f"(attempt {attempt + 2}/{MAX_ATTEMPTS})", file=sys.stderr)
             time.sleep(delay)
     raise ProviderError(f"exhausted retries calling {url}")  # defensive; loop always raises
