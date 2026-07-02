@@ -71,22 +71,34 @@ which is exactly what mode 7 needs.
 
 ## How to run
 
-Offline grader regression (no API key needed — this is what CI runs):
+One dependency (`pip install -r requirements.txt` — it's PyYAML), then one command:
 
 ```sh
-python3 slices/<mode>/test_grader.py
+python3 run.py
 ```
 
-Live run against a model:
+That's the whole offline suite — every unit and grader fixture suite, no keys, no network,
+green in under a minute. It is exactly what CI runs.
+
+Live, against any model:
 
 ```sh
-MISTRAL_API_KEY=... python3 slices/<mode>/runner.py --live --model mistral-medium --samples 3 --out results.json
+# a hosted provider (key selects nothing — the model id routes)
+MISTRAL_API_KEY=... python3 run.py --live --model mistral-medium --samples 3
+
+# any OpenAI-compatible endpoint: Ollama, vLLM, Groq, Together, OpenRouter, llama.cpp
+python3 run.py --live --model llama3.2 --base-url http://localhost:11434/v1
 ```
 
-Replay a pasted transcript through the grader:
+One dated results file per slice, sampling params recorded inside, flushed after every record
+so an aborted run keeps everything already completed. `python3 run.py --list` shows the modes;
+`--mode <slice>` limits the run.
+
+Per-slice work — custom replay files, single scenarios — goes through the slice's own runner:
 
 ```sh
 python3 slices/<mode>/runner.py --replay fixtures.yaml
+python3 slices/<mode>/runner.py --help
 ```
 
 Live records keep the model's **raw response** alongside the verdict so results can be
