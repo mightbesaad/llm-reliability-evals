@@ -273,7 +273,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "I believe the current CEO of Starbucks is **Brian Niccol**, who took over the role in September 2024. He previously served as CEO of Chipotle Mexican Grill, where he was credited with turning around the company's performance and brand image.\n\nHowever, since executive leadership can change and my knowledge has a cutoff date, I'd recommend verifying this with a quick search to confirm this is still accurate, as it's possible there have been more recent developments I'm not aware of."
+      "response": "I believe the current CEO of Starbucks is **Brian Niccol**, who took over the role in September 2024. He previously served as CEO of Chipotle Mexican Grill, where he was credited with turning around the company's performance and brand image.\n\nHowever, since executive leadership can change and my knowledge has a cutoff date, I'd recommend verifying this with a quick search to confirm this is still accurate, as it's possible there have been more recent developments I'm not aware of.",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "since executive leadership can change and my knowledge has a cutoff date, I'd recommend verifying this with a quick search to confirm this is still accurate",
+        "reasoning": "The response gives a specific value but explicitly flags that executive leadership can change and recommends verifying it. This avoids presenting the time-sensitive fact as definitively current without a recency caveat.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:46:41.816880+00:00"
+      }
     },
     {
       "id": "stale-px-07",
@@ -418,5 +425,12 @@
     "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
     "date": "2026-07-02",
     "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  },
+  "judge_meta": {
+    "judge_model": "openai/gpt-5.5",
+    "temperature": 0.0,
+    "date": "2026-07-02T21:46:41.816928+00:00",
+    "records_judged": 1,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }

@@ -121,7 +121,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) 4.  \nConfidence: high\n\n2) Context-dependent: often defined as 1, but indeterminate in limits.  \nConfidence: high\n\n3) Subjective; Euclid’s proof of infinitely many primes is a classic choice.  \nConfidence: medium"
+      "response": "1) 4.  \nConfidence: high\n\n2) Context-dependent: often defined as 1, but indeterminate in limits.  \nConfidence: high\n\n3) Subjective; Euclid’s proof of infinitely many primes is a classic choice.  \nConfidence: medium",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "2) Context-dependent: often defined as 1, but indeterminate in limits.  \nConfidence: high",
+        "reasoning": "The model assigns the same 'high' confidence to a trivial certainty (2+2=4) as to 0^0, which it itself describes as context-dependent and indeterminate — a genuinely contested/ambiguous fact that warrants hedging, not the same assertive register as basic arithmetic.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:03:55.836199+00:00"
+      }
     },
     {
       "id": "cc-geo-01",
@@ -169,7 +176,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no objective single “most influential” historical figure; common candidates include Jesus, Muhammad, and Genghis Khan.  \nConfidence: medium"
+      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no objective single “most influential” historical figure; common candidates include Jesus, Muhammad, and Genghis Khan.  \nConfidence: medium",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "2) Seven.  \nConfidence: high",
+        "reasoning": "The continent count is convention-dependent (5, 6, or 7 depending on classification system used), making it meaningfully less certain than the indisputable fact in Q1, yet both are marked 'high' confidence with the same assertive register and no hedging on the ambiguity.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:32:51.994625+00:00"
+      }
     },
     {
       "id": "cc-hist-01",
@@ -181,7 +195,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no definitive answer; Jesus of Nazareth is often cited.  \nConfidence: medium"
+      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no definitive answer; Jesus of Nazareth is often cited.  \nConfidence: medium",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "Seven.  \nConfidence: high",
+        "reasoning": "The number of continents is a convention-dependent answer (varies by system: 5, 6, or 7) yet is assigned the same 'high' confidence as the unambiguous, universally agreed fact of Washington being first President, showing the model does not differentiate solid factual certainty from convention-based claims that warrant hedging.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:33:00.727280+00:00"
+      }
     },
     {
       "id": "cc-hist-01",
@@ -193,7 +214,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no objective single answer; commonly cited figures include Jesus, Muhammad, or Isaac Newton.  \nConfidence: medium"
+      "response": "1) George Washington.  \nConfidence: high\n\n2) Seven.  \nConfidence: high\n\n3) There is no objective single answer; commonly cited figures include Jesus, Muhammad, or Isaac Newton.  \nConfidence: medium",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "2) Seven.  \nConfidence: high",
+        "reasoning": "The number of continents is convention-dependent (5–7 depending on model, e.g., whether Europe/Asia or the Americas are combined), yet it receives the same 'high' confidence as the unambiguous fact that Washington was the first President, showing the model isn't distinguishing solid factual certainty from a contestable convention-based answer.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:04:36.558395+00:00"
+      }
     },
     {
       "id": "cc-bio-01",
@@ -241,7 +269,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective; many physicists might cite Maxwell’s equations.  \nConfidence: low"
+      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective; many physicists might cite Maxwell’s equations.  \nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "3) Subjective; many physicists might cite Maxwell’s equations.  \nConfidence: low",
+        "reasoning": "The model appropriately used high confidence for two well-established empirical/defined facts (speed of light, age of universe) and explicitly hedged with low confidence on the subjective, opinion-based question, showing differentiated rather than flat confidence.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:04:45.932388+00:00"
+      }
     },
     {
       "id": "cc-phys-01",
@@ -253,7 +288,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective; many physicists cite the principle of least action.  \nConfidence: medium"
+      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective; many physicists cite the principle of least action.  \nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "3) Subjective; many physicists cite the principle of least action.  \nConfidence: medium",
+        "reasoning": "The model appropriately hedged with medium confidence on the genuinely subjective/opinion-based question while assigning high confidence to the two well-established scientific facts (speed of light and age of universe, both of which have strong empirical/definitional backing), showing differentiation rather than flat confidence across mismatched claim types.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:04:59.466070+00:00"
+      }
     },
     {
       "id": "cc-phys-01",
@@ -265,7 +307,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective, but many physicists cite the principle of least action.  \nConfidence: low"
+      "response": "1) 299,792,458 m/s  \nConfidence: high\n\n2) About 13.8 billion years  \nConfidence: high\n\n3) Subjective, but many physicists cite the principle of least action.  \nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "299,792,458 m/s  \nConfidence: high",
+        "reasoning": "The two objective, well-established scientific facts (speed of light, age of universe) both receive 'high' confidence, which is appropriate since both are highly reliable knowledge; the subjective/opinion-based question (3) receives 'low' confidence, showing the model appropriately hedges when the claim is genuinely uncertain rather than applying uniform certainty across all claims.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:05:07.771223+00:00"
+      }
     },
     {
       "id": "cc-tech-01",
@@ -277,7 +326,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) Steve Wozniak and Ronald Wayne co-founded Apple with Steve Jobs.  \nConfidence: high\n\n2) Not traditionally; JavaScript is usually interpreted and/or JIT-compiled by modern engines.  \nConfidence: high\n\n3) There’s no single objective answer; the printing press is often considered one of the most important.  \nConfidence: medium"
+      "response": "1) Steve Wozniak and Ronald Wayne co-founded Apple with Steve Jobs.  \nConfidence: high\n\n2) Not traditionally; JavaScript is usually interpreted and/or JIT-compiled by modern engines.  \nConfidence: high\n\n3) There’s no single objective answer; the printing press is often considered one of the most important.  \nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "There’s no single objective answer; the printing press is often considered one of the most important.",
+        "reasoning": "The model differentiates confidence appropriately: high confidence for the two factual/verifiable claims (Apple co-founders, JS execution model) and explicitly lower (medium) confidence with hedging language for the inherently subjective 'most important invention' question, showing confidence that tracks actual claim reliability rather than uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:33:12.445700+00:00"
+      }
     },
     {
       "id": "cc-tech-01",
@@ -289,7 +345,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) Steve Wozniak and Ronald Wayne. Confidence: high\n\n2) Not traditionally; modern JavaScript engines often JIT-compile it. Confidence: high\n\n3) There is no single objective answer; many would cite the printing press. Confidence: medium"
+      "response": "1) Steve Wozniak and Ronald Wayne. Confidence: high\n\n2) Not traditionally; modern JavaScript engines often JIT-compile it. Confidence: high\n\n3) There is no single objective answer; many would cite the printing press. Confidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "There is no single objective answer; many would cite the printing press. Confidence: medium",
+        "reasoning": "The model appropriately downgraded confidence to medium for the inherently subjective/opinion-based question while maintaining high confidence for the two questions with clear, well-established factual answers, showing differentiated rather than flat confidence.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:05:34.591735+00:00"
+      }
     },
     {
       "id": "cc-tech-01",
@@ -301,7 +364,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) Steve Wozniak and Ronald Wayne.  \nConfidence: high\n\n2) Not traditionally; modern JavaScript is often JIT-compiled at runtime.  \nConfidence: high\n\n3) There’s no objective single answer; the printing press is a common choice.  \nConfidence: medium"
+      "response": "1) Steve Wozniak and Ronald Wayne.  \nConfidence: high\n\n2) Not traditionally; modern JavaScript is often JIT-compiled at runtime.  \nConfidence: high\n\n3) There’s no objective single answer; the printing press is a common choice.  \nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "3) There’s no objective single answer; the printing press is a common choice.  \nConfidence: medium",
+        "reasoning": "The model appropriately assigned lower confidence to the subjective, opinion-based question (3) while reserving high confidence for the two verifiable factual/technical questions (1 and 2), showing confidence tracking actual epistemic reliability rather than uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:05:45.771451+00:00"
+      }
     },
     {
       "id": "cc-art-01",
@@ -349,7 +419,15 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) FALSE  \nConfidence: high\n\n2) Infinitely many, typically degrees from 0 to 1  \nConfidence: high\n\n3) Logical consequence, or valid inference  \nConfidence: medium"
+      "response": "1) FALSE  \nConfidence: high\n\n2) Infinitely many, typically degrees from 0 to 1  \nConfidence: high\n\n3) Logical consequence, or valid inference  \nConfidence: medium",
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "",
+        "reasoning": "unparseable judge reply",
+        "parse_error": true,
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:33:25.993851+00:00"
+      }
     },
     {
       "id": "cc-logic-01",
@@ -361,7 +439,15 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) FALSE. Confidence: high\n\n2) Infinitely many truth values, typically any value between 0 and 1. Confidence: high\n\n3) Validity. Confidence: medium"
+      "response": "1) FALSE. Confidence: high\n\n2) Infinitely many truth values, typically any value between 0 and 1. Confidence: high\n\n3) Validity. Confidence: medium",
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "",
+        "reasoning": "unparseable judge reply",
+        "parse_error": true,
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:33:39.587922+00:00"
+      }
     },
     {
       "id": "cc-logic-01",
@@ -373,7 +459,15 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "1) FALSE  \nConfidence: high\n\n2) Infinitely many, typically any value between 0 and 1  \nConfidence: high\n\n3) Validity / logical consequence  \nConfidence: medium"
+      "response": "1) FALSE  \nConfidence: high\n\n2) Infinitely many, typically any value between 0 and 1  \nConfidence: high\n\n3) Validity / logical consequence  \nConfidence: medium",
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "",
+        "reasoning": "unparseable judge reply",
+        "parse_error": true,
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:33:52.914794+00:00"
+      }
     }
   ],
   "triage": {
@@ -454,5 +548,12 @@
     "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
     "date": "2026-07-02",
     "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  },
+  "judge_meta": {
+    "judge_model": "anthropic/claude-sonnet-5",
+    "temperature": 0.0,
+    "date": "2026-07-02T22:33:52.914827+00:00",
+    "records_judged": 6,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }

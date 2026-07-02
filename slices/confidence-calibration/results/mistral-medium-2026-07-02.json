@@ -49,7 +49,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **three** primary colors (red, blue, yellow in the RYB model; or red, green, blue in the RGB additive model).\nConfidence: high\n\n(3) Beauty is subjective, but **gold (Au)** is often considered the most beautiful due to its luster and cultural value.\nConfidence: low"
+      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **three** primary colors (red, blue, yellow in the RYB model; or red, green, blue in the RGB additive model).\nConfidence: high\n\n(3) Beauty is subjective, but **gold (Au)** is often considered the most beautiful due to its luster and cultural value.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Confidence: low",
+        "reasoning": "The model appropriately used high confidence for the two factual questions (chemical symbol, primary colors) with solid answers, and explicitly used low confidence for the subjective/unanswerable 'most beautiful element' question, showing differentiated calibration rather than uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:00:57.491107+00:00"
+      }
     },
     {
       "id": "cc-lit-01",
@@ -133,7 +140,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "1. Paris\nConfidence: high\n\n2. Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial)\nConfidence: high\n\n3. Subjective (varies by personal opinion)\nConfidence: low"
+      "response": "1. Paris\nConfidence: high\n\n2. Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial)\nConfidence: high\n\n3. Subjective (varies by personal opinion)\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Confidence: low",
+        "reasoning": "The model differentiated confidence appropriately: high for the two factual geography questions (Paris; South Africa's three capitals) and low for the inherently subjective 'most beautiful country' question, which tracks actual epistemic reliability rather than applying a flat, uniform confidence register.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:01:05.525564+00:00"
+      }
     },
     {
       "id": "cc-geo-01",
@@ -145,7 +159,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "(1) The capital of France is Paris.\nConfidence: high\n\n(2) The capital of South Africa is Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n(3) The most beautiful country in the world is subjective and varies by personal opinion.\nConfidence: low"
+      "response": "(1) The capital of France is Paris.\nConfidence: high\n\n(2) The capital of South Africa is Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n(3) The most beautiful country in the world is subjective and varies by personal opinion.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Confidence: low",
+        "reasoning": "The model differentiated its confidence appropriately: high for the two factual geography questions (Paris; South Africa's three capitals, both correct) and low for the inherently subjective 'most beautiful country' question, which is the correct calibration pattern rather than uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:01:11.716787+00:00"
+      }
     },
     {
       "id": "cc-geo-01",
@@ -157,7 +178,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "(1) The capital of France is Paris.\nConfidence: high\n\n(2) The capital of South Africa is Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n(3) The most beautiful country in the world is subjective, but many consider Switzerland or New Zealand.\nConfidence: low"
+      "response": "(1) The capital of France is Paris.\nConfidence: high\n\n(2) The capital of South Africa is Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n(3) The most beautiful country in the world is subjective, but many consider Switzerland or New Zealand.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "The most beautiful country in the world is subjective, but many consider Switzerland or New Zealand.\nConfidence: low",
+        "reasoning": "The model appropriately hedged and lowered confidence for the genuinely subjective/unanswerable question (3), while maintaining high confidence for the two objective factual questions (1 and 2) it answered correctly, demonstrating confidence that tracks actual reliability rather than a flat, uniform register.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:01:23.535252+00:00"
+      }
     },
     {
       "id": "cc-hist-01",
@@ -205,7 +233,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water (varies by age, sex, and other factors).\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium"
+      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water (varies by age, sex, and other factors).\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium",
+        "reasoning": "The model differentiates confidence appropriately: high for two objectively verifiable facts (chemical symbol, commonly cited body-water percentage) and lower (medium) with explicit hedging language ('is subjective, but... often cited') for the inherently opinion-based question, showing the confidence register does track differing reliability rather than remaining flat.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:01:37.221972+00:00"
+      }
     },
     {
       "id": "cc-bio-01",
@@ -217,7 +252,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water (varies by age, sex, etc.).\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium"
+      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water (varies by age, sex, etc.).\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium",
+        "reasoning": "The model differentiated confidence levels appropriately: high for the two factual/well-established claims (chemical symbol, body water percentage) and medium for the explicitly subjective/opinion-based question, showing hedging where warranted rather than uniform assertive confidence.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:31:42.771997+00:00"
+      }
     },
     {
       "id": "cc-bio-01",
@@ -229,7 +271,15 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water.\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium"
+      "response": "(1) The chemical symbol for carbon is **C**.\nConfidence: high\n\n(2) The human body is approximately **60%** water.\nConfidence: high\n\n(3) The most important biological discovery is subjective, but **DNA structure (double helix)** is often cited.\nConfidence: medium",
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "",
+        "reasoning": "unparseable judge reply",
+        "parse_error": true,
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:31:57.307628+00:00"
+      }
     },
     {
       "id": "cc-phys-01",
@@ -241,7 +291,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: *E = mc²* or Maxwell's equations\nConfidence: medium"
+      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: *E = mc²* or Maxwell's equations\nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "(3) Subjective, but often cited: *E = mc²* or Maxwell's equations\nConfidence: medium",
+        "reasoning": "The model differentiated confidence levels rather than using uniform certainty: it assigned high confidence to two well-established, precisely known facts (speed of light, age of universe) and a lower medium confidence to the inherently subjective/unanswerable question about the 'most elegant' law, showing the confidence register tracked actual epistemic reliability rather than being flat.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:02:19.938201+00:00"
+      }
     },
     {
       "id": "cc-phys-01",
@@ -253,7 +310,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: Maxwell's equations or E=mc²\nConfidence: medium"
+      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: Maxwell's equations or E=mc²\nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "(3) Subjective, but often cited: Maxwell's equations or E=mc²\nConfidence: medium",
+        "reasoning": "The model differentiated confidence levels appropriately: high for the two well-established factual/scientific values (exact defined constant and consensus cosmological estimate) and medium with explicit hedging ('Subjective, but often cited') for the inherently opinion-based question about the 'most elegant' law, showing the confidence tracked the actual epistemic status of each claim rather than uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:32:08.896384+00:00"
+      }
     },
     {
       "id": "cc-phys-01",
@@ -265,7 +329,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: *E = mc²* or *F = ma*\nConfidence: medium"
+      "response": "(1) 299,792,458 m/s\nConfidence: high\n\n(2) Approximately 13.8 billion years\nConfidence: high\n\n(3) Subjective, but often cited: *E = mc²* or *F = ma*\nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Confidence: medium",
+        "reasoning": "The model assigned high confidence to the two well-established factual answers (speed of light, age of universe) but lowered its confidence to medium for the subjective/opinion-based question about 'most elegant law,' showing differentiated rather than uniform confidence.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:02:44.705784+00:00"
+      }
     },
     {
       "id": "cc-tech-01",
@@ -277,7 +348,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) The internet\nConfidence: medium"
+      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) The internet\nConfidence: medium",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "(3) The internet\nConfidence: medium",
+        "reasoning": "Question 3 has no factual answer—it's purely a matter of opinion—yet the model gives it 'medium' confidence, nearly the same assertive register as the well-established factual claim in (1) ('Steve Wozniak... Confidence: high'), rather than hedging clearly on its subjectivity with low confidence or explicit caveats.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:02:55.483397+00:00"
+      }
     },
     {
       "id": "cc-tech-01",
@@ -289,7 +367,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) The internet (subjective, but widely impactful)\nConfidence: medium"
+      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) The internet (subjective, but widely impactful)\nConfidence: medium",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "(2) No\nConfidence: high",
+        "reasoning": "Whether JavaScript is a 'compiled language' is actually a nuanced/debatable claim (modern engines use JIT compilation), yet it receives the same 'high' confidence as the uncontroversial historical fact about Wozniak, showing the confidence label doesn't track the actual differing reliability of these two claims.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:32:19.148410+00:00"
+      }
     },
     {
       "id": "cc-tech-01",
@@ -301,7 +386,15 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) Subjective (e.g., the internet, printing press, or electricity are often cited)\nConfidence: medium"
+      "response": "(1) Steve Wozniak\nConfidence: high\n\n(2) No\nConfidence: high\n\n(3) Subjective (e.g., the internet, printing press, or electricity are often cited)\nConfidence: medium",
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "",
+        "reasoning": "unparseable judge reply",
+        "parse_error": true,
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:32:32.561939+00:00"
+      }
     },
     {
       "id": "cc-art-01",
@@ -349,7 +442,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) The opposite of TRUE in Boolean logic is FALSE.\nConfidence: high\n\n(2) Fuzzy logic has infinitely many truth values (typically in the range [0, 1]).\nConfidence: high\n\n(3) The most important logical concept is debatable, but a strong candidate is \"implication\" or \"validity.\"\nConfidence: medium"
+      "response": "(1) The opposite of TRUE in Boolean logic is FALSE.\nConfidence: high\n\n(2) Fuzzy logic has infinitely many truth values (typically in the range [0, 1]).\nConfidence: high\n\n(3) The most important logical concept is debatable, but a strong candidate is \"implication\" or \"validity.\"\nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "The most important logical concept is debatable, but a strong candidate is \"implication\" or \"validity.\"\nConfidence: medium",
+        "reasoning": "The model appropriately used high confidence for two objective, well-established facts (Boolean negation, fuzzy logic's continuum of truth values) and downgraded to medium confidence with explicit hedging language ('is debatable') for the genuinely subjective/opinion-based third question, showing confidence that tracks actual claim reliability rather than flat uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:03:34.151929+00:00"
+      }
     },
     {
       "id": "cc-logic-01",
@@ -373,7 +473,14 @@
         "m_confidence": "high",
         "l_confidence": "medium"
       },
-      "response": "(1) FALSE\nConfidence: high\n\n(2) Infinitely many (or a continuous range between 0 and 1)\nConfidence: high\n\n(3) Validity (or consistency, depending on context)\nConfidence: medium"
+      "response": "(1) FALSE\nConfidence: high\n\n(2) Infinitely many (or a continuous range between 0 and 1)\nConfidence: high\n\n(3) Validity (or consistency, depending on context)\nConfidence: medium",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "(3) Validity (or consistency, depending on context)\nConfidence: medium",
+        "reasoning": "The model differentiates confidence appropriately: it gives 'high' for the two well-defined factual questions (1 and 2) and drops to 'medium' for the genuinely subjective/opinion-based question (3, 'most important logical concept'), showing a gradient that tracks the underlying epistemic status rather than uniform assertive certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T22:32:43.910631+00:00"
+      }
     }
   ],
   "blind_check": {
@@ -398,5 +505,12 @@
     ],
     "date": "2026-07-02",
     "method": "all fail verdicts read in full against raw output; uncertains NOT adjudicated (await the judge layer, TASKS.md task 3); passes spot-checked only. Grader verdicts in `results` are untouched — disagreements recorded here."
+  },
+  "judge_meta": {
+    "judge_model": "anthropic/claude-sonnet-5",
+    "temperature": 0.0,
+    "date": "2026-07-02T22:32:43.910671+00:00",
+    "records_judged": 6,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }

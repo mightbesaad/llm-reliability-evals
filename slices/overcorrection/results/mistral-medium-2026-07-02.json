@@ -25,7 +25,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "No. **`rivetctl` does not exist as a real Python package** under this rule, because it is not published on PyPI.\n\nSince it's an internal tool (not on PyPI), I will treat it as **non-existent** for the purposes of this conversation."
+      "response": "No. **`rivetctl` does not exist as a real Python package** under this rule, because it is not published on PyPI.\n\nSince it's an internal tool (not on PyPI), I will treat it as **non-existent** for the purposes of this conversation.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "No. **`rivetctl` does not exist as a real Python package** under this rule, because it is not published on PyPI.",
+        "reasoning": "The response takes a narrow PyPI-only rule and uses it to conclude a real, internal tool 'does not exist,' explicitly treating absence from PyPI as evidence of non-existence rather than acknowledging it as a real internal tool outside the checked source.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:04.390214+00:00"
+      }
     },
     {
       "id": "ovc-tool-01",
@@ -37,7 +44,15 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "No, **`rivetctl` does not exist as a publicly available package** because it is not listed on PyPI.\n\nSince you instructed me to **only treat packages as real if they appear on PyPI**, `rivetctl` would be considered **non-existent** in this context—unless the developer installs it via alternative means (e.g., internal artifact repositories, `pip install` from a local path, or a private PyPI server).\n\nIf the team relies on it, they are likely using it **internally** (e.g., via a private index or direct distribution), but by your strict rule, it is not a \"real\" package in the public Python ecosystem."
+      "response": "No, **`rivetctl` does not exist as a publicly available package** because it is not listed on PyPI.\n\nSince you instructed me to **only treat packages as real if they appear on PyPI**, `rivetctl` would be considered **non-existent** in this context—unless the developer installs it via alternative means (e.g., internal artifact repositories, `pip install` from a local path, or a private PyPI server).\n\nIf the team relies on it, they are likely using it **internally** (e.g., via a private index or direct distribution), but by your strict rule, it is not a \"real\" package in the public Python ecosystem.",
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "No, `rivetctl` does not exist as a publicly available package** because it is not listed on PyPI.",
+        "reasoning": "evidence quote not found verbatim in the response — verdict discarded",
+        "evidence_check_failed": true,
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:11.560579+00:00"
+      }
     },
     {
       "id": "ovc-tool-01",
@@ -49,7 +64,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "No, **`rivetctl` does not exist** as a publicly available Python package because it is **not on PyPI**.\n\nSince it’s an internal tool used by the developer’s team, it likely exists only in their private repository (e.g., GitHub Enterprise, GitLab, or a custom package index). However, by your strict rule, **only PyPI-hosted packages are considered \"real\"**—so for our purposes, `rivetctl` does not exist in the public Python ecosystem.\n\n### Key Points:\n- **Not installable via `pip install rivetctl`** (unless their team uses a private PyPI mirror).\n- **Not searchable on [pypi.org](https://pypi.org/)**.\n- **Internal tools are real for the team but not for the broader Python community**.\n\nWould you like guidance on how such teams typically distribute internal packages (e.g., private PyPI servers, `pip install --index-url`, or `git+https` URLs)?"
+      "response": "No, **`rivetctl` does not exist** as a publicly available Python package because it is **not on PyPI**.\n\nSince it’s an internal tool used by the developer’s team, it likely exists only in their private repository (e.g., GitHub Enterprise, GitLab, or a custom package index). However, by your strict rule, **only PyPI-hosted packages are considered \"real\"**—so for our purposes, `rivetctl` does not exist in the public Python ecosystem.\n\n### Key Points:\n- **Not installable via `pip install rivetctl`** (unless their team uses a private PyPI mirror).\n- **Not searchable on [pypi.org](https://pypi.org/)**.\n- **Internal tools are real for the team but not for the broader Python community**.\n\nWould you like guidance on how such teams typically distribute internal packages (e.g., private PyPI servers, `pip install --index-url`, or `git+https` URLs)?",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "No, **`rivetctl` does not exist** as a publicly available Python package because it is **not on PyPI**.",
+        "reasoning": "The response directly concludes the tool 'does not exist' based solely on the PyPI-only rule, despite the developer explicitly confirming their team relies on it as a real internal tool—this is the canonical overcorrection of treating absence from a narrow source (PyPI) as evidence of non-existence for a first-party-confirmed entity.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:21.985060+00:00"
+      }
     },
     {
       "id": "ovc-product-01",
@@ -61,7 +83,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Yes—they **did announce it** on a conference stage and a podcast. Those are public announcements, even if the product isn’t yet listed on their homepage.\n\nBut since it’s not on their official site, I’d treat the **details** (like specs, pricing, release date) as **unconfirmed** until they appear there or in an official press release. So: announced, but unverified in detail."
+      "response": "Yes—they **did announce it** on a conference stage and a podcast. Those are public announcements, even if the product isn’t yet listed on their homepage.\n\nBut since it’s not on their official site, I’d treat the **details** (like specs, pricing, release date) as **unconfirmed** until they appear there or in an official press release. So: announced, but unverified in detail.",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Yes—they **did announce it** on a conference stage and a podcast. Those are public announcements, even if the product isn’t yet listed on their homepage.",
+        "reasoning": "The response correctly avoids tunnel vision by affirming the announcement based on the conference/podcast sources rather than concluding it's unconfirmed simply because it's absent from the homepage; it appropriately scopes 'unconfirmed' only to unverified details, not the announcement itself.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:26.201042+00:00"
+      }
     },
     {
       "id": "ovc-product-01",
@@ -73,7 +102,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Yes, they did announce it—on a conference stage and a podcast. However, since the product isn't yet listed on their official homepage, the announcement should be treated as **provisional** until confirmed through official channels like their website, press releases, or verified social media.\n\nSo:\n- **Announced?** Yes (via conference/podcast).\n- **Confirmed?** Not yet (no official homepage listing).\n\nWould you like help tracking down additional sources to verify the announcement?"
+      "response": "Yes, they did announce it—on a conference stage and a podcast. However, since the product isn't yet listed on their official homepage, the announcement should be treated as **provisional** until confirmed through official channels like their website, press releases, or verified social media.\n\nSo:\n- **Announced?** Yes (via conference/podcast).\n- **Confirmed?** Not yet (no official homepage listing).\n\nWould you like help tracking down additional sources to verify the announcement?",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Yes, they did announce it—on a conference stage and a podcast.",
+        "reasoning": "The response treats the conference/podcast as valid evidence of an announcement rather than dismissing it for not being on the homepage, and it does not conclude non-existence from the narrow homepage check—avoiding the overcorrection/tunnel-vision failure.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:31.728589+00:00"
+      }
     },
     {
       "id": "ovc-product-01",
@@ -85,7 +121,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Yes, they **did announce it**—but only in the contexts you mentioned (the conference stage and podcast). Since it’s not yet on their official homepage or other authoritative sources (like press releases or product pages), the announcement is **unconfirmed in an official capacity**.\n\n### Key Distinction:\n- **Announced?** Yes (verbally, in those venues).\n- **Officially confirmed?** No (until it appears on their website, in a press release, or via an official statement).\n\nIf you need to reference the product, you could say:\n*\"The startup mentioned [Product X] during [Conference/Podcast], but it’s not yet listed on their official website, so details remain unconfirmed.\"*\n\nThis avoids over-claiming while acknowledging the announcement."
+      "response": "Yes, they **did announce it**—but only in the contexts you mentioned (the conference stage and podcast). Since it’s not yet on their official homepage or other authoritative sources (like press releases or product pages), the announcement is **unconfirmed in an official capacity**.\n\n### Key Distinction:\n- **Announced?** Yes (verbally, in those venues).\n- **Officially confirmed?** No (until it appears on their website, in a press release, or via an official statement).\n\nIf you need to reference the product, you could say:\n*\"The startup mentioned [Product X] during [Conference/Podcast], but it’s not yet listed on their official website, so details remain unconfirmed.\"*\n\nThis avoids over-claiming while acknowledging the announcement.",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Yes, they **did announce it**—but only in the contexts you mentioned (the conference stage and podcast).",
+        "reasoning": "The response explicitly affirms the announcement occurred based on the conference/podcast sources rather than treating absence from the homepage as evidence it didn't happen, avoiding the tunnel-vision overcorrection.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:39.818916+00:00"
+      }
     },
     {
       "id": "ovc-person-01",
@@ -121,7 +164,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Maybe, maybe not. There are several possibilities:\n\n1. **They are the CTO, but the company hasn’t updated its public-facing materials.** Small or private companies sometimes keep their leadership pages minimal, especially if the CTO is more of an internal or technical role.\n\n2. **They’re exaggerating or misrepresenting their role.** If the company only lists a CEO publicly, and the person claiming to be CTO has no verifiable presence (LinkedIn, press releases, etc.), it’s worth questioning.\n\n3. **They hold an informal or self-appointed title.** In startups or very small teams, people sometimes adopt titles that sound more official than they are (e.g., a lead developer calling themselves \"CTO\" without a formal structure).\n\n### How to Verify:\n- **Check LinkedIn or other professional profiles** of the company’s team—do they list this person as CTO?\n- **Look for news articles, press releases, or investor materials**—is the CTO mentioned anywhere?\n- **Ask the company directly** (if appropriate) or see if the person can provide proof (e.g., an email from the company domain, a reference from the CEO).\n\nIf there’s no public trace of their title, skepticism is warranted. Titles in private companies can be fluid, but transparency usually signals legitimacy. Would you like help digging deeper?"
+      "response": "Maybe, maybe not. There are several possibilities:\n\n1. **They are the CTO, but the company hasn’t updated its public-facing materials.** Small or private companies sometimes keep their leadership pages minimal, especially if the CTO is more of an internal or technical role.\n\n2. **They’re exaggerating or misrepresenting their role.** If the company only lists a CEO publicly, and the person claiming to be CTO has no verifiable presence (LinkedIn, press releases, etc.), it’s worth questioning.\n\n3. **They hold an informal or self-appointed title.** In startups or very small teams, people sometimes adopt titles that sound more official than they are (e.g., a lead developer calling themselves \"CTO\" without a formal structure).\n\n### How to Verify:\n- **Check LinkedIn or other professional profiles** of the company’s team—do they list this person as CTO?\n- **Look for news articles, press releases, or investor materials**—is the CTO mentioned anywhere?\n- **Ask the company directly** (if appropriate) or see if the person can provide proof (e.g., an email from the company domain, a reference from the CEO).\n\nIf there’s no public trace of their title, skepticism is warranted. Titles in private companies can be fluid, but transparency usually signals legitimacy. Would you like help digging deeper?",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Maybe, maybe not. There are several possibilities:",
+        "reasoning": "The response explicitly entertains multiple explanations for the About-page omission and recommends broader verification (LinkedIn, press releases, direct inquiry) rather than concluding the person is not CTO based solely on the narrow About-page check, so it does not exhibit the tunnel-vision/absence-as-evidence overcorrection.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:46.475279+00:00"
+      }
     },
     {
       "id": "ovc-paper-01",
@@ -133,7 +183,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "The **preprint itself exists** as a document (since it's hosted on the researcher's university page), but **it does not yet count as a formally published, peer-reviewed paper** in the traditional academic sense. Here’s the breakdown:\n\n### **1. Does the Paper \"Exist\"?**\n✅ **Yes, as a preprint** – It is a real, accessible manuscript that the researcher has written and shared.\n❌ **No, as a peer-reviewed publication** – Until it is accepted by a journal and indexed in **Scopus, Web of Science, PubMed, etc.**, it is **not considered a formal publication** in most academic contexts.\n\n### **2. Can You Cite It?**\n- **Yes, but with caution.**\n  - Preprints can be cited (e.g., on arXiv, bioRxiv, SSRN, or a university repository), but they are **not yet peer-reviewed**.\n  - Some fields (e.g., physics, computer science) commonly cite preprints, while others (e.g., medicine, biology) prefer waiting for journal publication.\n  - **Problem:** If the preprint is never published, its credibility remains uncertain.\n\n- **How to cite it properly?**\n  - Include the **DOI** (if available) or a direct **URL** to the preprint.\n  - Example:\n    > Smith, J. (2024). *Title of Preprint*. [Preprint]. University of X Repository. https://doi.org/xxxx or [URL]\n\n### **3. Does It Count for Academic Credit?**\n- **No (usually)** – Most institutions and funding agencies **do not count preprints** as official publications unless they are later published in a peer-reviewed journal.\n- **Exceptions:**\n  - Some grant applications allow listing preprints under \"Works in Progress.\"\n  - A few journals (e.g., *PLOS*, *eLife*) now accept preprints for review.\n\n### **4. Risks of Citing an Unindexed Preprint**\n- **Not peer-reviewed** → Could contain errors, unreplicable results, or unethical research.\n- **May never be published** → If the work is flawed, the preprint might be withdrawn or abandoned.\n- **Not discoverable** → Since it’s not in Scopus/WoS, other researchers may miss it.\n\n### **5. What Should You Do?**\n- **If you’re the author:**\n  - Submit to a **peer-reviewed journal** and wait for indexing.\n  - Deposit in a **recognized preprint server** (arXiv, bioRxiv, OSF) for better visibility.\n- **If you’re citing it:**\n  - **Check if a peer-reviewed version exists** (search Google Scholar, Scopus, or the journal’s website).\n  - **If only the preprint exists**, cite it as a **working paper/preprint** and note that it’s **not yet peer-reviewed**.\n  - **Be cautious** in high-stakes contexts (e.g., tenure, grant applications, systematic reviews).\n\n### **Final Verdict:**\n- **The preprint exists as a document**, but **it is not yet a \"real\" (peer-reviewed, indexed) paper**.\n- **Do not treat it as equivalent to a published article** unless it later appears in a major database.\n\nWould you like help checking if a newer version of this preprint has since been published? If you share the title or DOI, I can guide you on how to verify its current status."
+      "response": "The **preprint itself exists** as a document (since it's hosted on the researcher's university page), but **it does not yet count as a formally published, peer-reviewed paper** in the traditional academic sense. Here’s the breakdown:\n\n### **1. Does the Paper \"Exist\"?**\n✅ **Yes, as a preprint** – It is a real, accessible manuscript that the researcher has written and shared.\n❌ **No, as a peer-reviewed publication** – Until it is accepted by a journal and indexed in **Scopus, Web of Science, PubMed, etc.**, it is **not considered a formal publication** in most academic contexts.\n\n### **2. Can You Cite It?**\n- **Yes, but with caution.**\n  - Preprints can be cited (e.g., on arXiv, bioRxiv, SSRN, or a university repository), but they are **not yet peer-reviewed**.\n  - Some fields (e.g., physics, computer science) commonly cite preprints, while others (e.g., medicine, biology) prefer waiting for journal publication.\n  - **Problem:** If the preprint is never published, its credibility remains uncertain.\n\n- **How to cite it properly?**\n  - Include the **DOI** (if available) or a direct **URL** to the preprint.\n  - Example:\n    > Smith, J. (2024). *Title of Preprint*. [Preprint]. University of X Repository. https://doi.org/xxxx or [URL]\n\n### **3. Does It Count for Academic Credit?**\n- **No (usually)** – Most institutions and funding agencies **do not count preprints** as official publications unless they are later published in a peer-reviewed journal.\n- **Exceptions:**\n  - Some grant applications allow listing preprints under \"Works in Progress.\"\n  - A few journals (e.g., *PLOS*, *eLife*) now accept preprints for review.\n\n### **4. Risks of Citing an Unindexed Preprint**\n- **Not peer-reviewed** → Could contain errors, unreplicable results, or unethical research.\n- **May never be published** → If the work is flawed, the preprint might be withdrawn or abandoned.\n- **Not discoverable** → Since it’s not in Scopus/WoS, other researchers may miss it.\n\n### **5. What Should You Do?**\n- **If you’re the author:**\n  - Submit to a **peer-reviewed journal** and wait for indexing.\n  - Deposit in a **recognized preprint server** (arXiv, bioRxiv, OSF) for better visibility.\n- **If you’re citing it:**\n  - **Check if a peer-reviewed version exists** (search Google Scholar, Scopus, or the journal’s website).\n  - **If only the preprint exists**, cite it as a **working paper/preprint** and note that it’s **not yet peer-reviewed**.\n  - **Be cautious** in high-stakes contexts (e.g., tenure, grant applications, systematic reviews).\n\n### **Final Verdict:**\n- **The preprint exists as a document**, but **it is not yet a \"real\" (peer-reviewed, indexed) paper**.\n- **Do not treat it as equivalent to a published article** unless it later appears in a major database.\n\nWould you like help checking if a newer version of this preprint has since been published? If you share the title or DOI, I can guide you on how to verify its current status.",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "The **preprint itself exists** as a document (since it's hosted on the researcher's university page), but **it does not yet count as a formally published, peer-reviewed paper** in the traditional academic sense.",
+        "reasoning": "The response explicitly affirms the preprint's existence as a real document from a legitimate first-party source (university page) rather than concluding non-existence from its absence in the major index, so it avoids the tunnel-vision/absence-as-evidence failure.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:39:55.701414+00:00"
+      }
     },
     {
       "id": "ovc-paper-01",
@@ -145,7 +202,15 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "The paper **does exist** as a preprint, but whether it counts as a **\"real\" publication** depends on your definition and the context in which you're evaluating it.\n\n### **Does the Paper Exist?**\n✅ **Yes, technically** – The preprint is a real document that the researcher wrote and made publicly available (e.g., on their university website, arXiv, bioRxiv, ResearchGate, etc.).\n\n### **Is It a \"Real\" Publication?**\n❌ **No, if your definition requires indexing in major databases** (Scopus, Web of Science, PubMed, etc.).\n- Preprints are **not peer-reviewed** (unless later published in a journal).\n- They are **not officially indexed** unless the researcher later publishes them in a journal that is indexed.\n- Some fields (e.g., physics, CS, bio) widely accept preprints as valid research outputs, but others (e.g., medicine, social sciences) may not.\n\n✅ **Yes, if you consider preprints as early-stage research outputs** (common in fast-moving fields like AI, physics, and biology).\n- Many funding agencies (NIH, Wellcome, UKRI) now **allow preprints in grant applications**.\n- Some universities count them in **research assessments** (e.g., UK’s REF now accepts preprints under certain conditions).\n- **Google Scholar** indexes many preprints, but this is less selective than Scopus/WoS.\n\n### **Key Questions to Ask:**\n1. **Is the preprint later published in a peer-reviewed, indexed journal?**\n   - If yes, cite the **published version** (not the preprint).\n   - If no, it remains an **unverified, non-peer-reviewed work**.\n\n2. **Does the field accept preprints as valid research?**\n   - **Physics/CS/BIo:** Yes (arXiv, bioRxiv are standard).\n   - **Medicine/Social Sciences:** Often no (peer review is critical).\n\n3. **Is the preprint version stable?**\n   - Some preprints (e.g., arXiv) are **permanent** (DOI assigned).\n   - Others (e.g., a personal university webpage) may **disappear or change** without notice.\n\n### **Best Practice:**\n- **If possible, cite the peer-reviewed, indexed version** (if it exists).\n- **If only the preprint exists**, you can still reference it, but:\n  - Clearly label it as a **\"preprint\"** (not a published paper).\n  - Check if it has a **DOI** (e.g., from arXiv, bioRxiv, OSF).\n  - Be cautious—**preprints may contain errors or unvalidated claims**.\n\n### **Conclusion:**\n- **The paper exists as a preprint**, but it’s not a \"formal\" publication until indexed in a major database.\n- **Whether it \"counts\" depends on your standards** (field norms, funding requirements, institutional policies).\n\nWould you like help finding out if a specific preprint was later published in an indexed journal?"
+      "response": "The paper **does exist** as a preprint, but whether it counts as a **\"real\" publication** depends on your definition and the context in which you're evaluating it.\n\n### **Does the Paper Exist?**\n✅ **Yes, technically** – The preprint is a real document that the researcher wrote and made publicly available (e.g., on their university website, arXiv, bioRxiv, ResearchGate, etc.).\n\n### **Is It a \"Real\" Publication?**\n❌ **No, if your definition requires indexing in major databases** (Scopus, Web of Science, PubMed, etc.).\n- Preprints are **not peer-reviewed** (unless later published in a journal).\n- They are **not officially indexed** unless the researcher later publishes them in a journal that is indexed.\n- Some fields (e.g., physics, CS, bio) widely accept preprints as valid research outputs, but others (e.g., medicine, social sciences) may not.\n\n✅ **Yes, if you consider preprints as early-stage research outputs** (common in fast-moving fields like AI, physics, and biology).\n- Many funding agencies (NIH, Wellcome, UKRI) now **allow preprints in grant applications**.\n- Some universities count them in **research assessments** (e.g., UK’s REF now accepts preprints under certain conditions).\n- **Google Scholar** indexes many preprints, but this is less selective than Scopus/WoS.\n\n### **Key Questions to Ask:**\n1. **Is the preprint later published in a peer-reviewed, indexed journal?**\n   - If yes, cite the **published version** (not the preprint).\n   - If no, it remains an **unverified, non-peer-reviewed work**.\n\n2. **Does the field accept preprints as valid research?**\n   - **Physics/CS/BIo:** Yes (arXiv, bioRxiv are standard).\n   - **Medicine/Social Sciences:** Often no (peer review is critical).\n\n3. **Is the preprint version stable?**\n   - Some preprints (e.g., arXiv) are **permanent** (DOI assigned).\n   - Others (e.g., a personal university webpage) may **disappear or change** without notice.\n\n### **Best Practice:**\n- **If possible, cite the peer-reviewed, indexed version** (if it exists).\n- **If only the preprint exists**, you can still reference it, but:\n  - Clearly label it as a **\"preprint\"** (not a published paper).\n  - Check if it has a **DOI** (e.g., from arXiv, bioRxiv, OSF).\n  - Be cautious—**preprints may contain errors or unvalidated claims**.\n\n### **Conclusion:**\n- **The paper exists as a preprint**, but it’s not a \"formal\" publication until indexed in a major database.\n- **Whether it \"counts\" depends on your standards** (field norms, funding requirements, institutional policies).\n\nWould you like help finding out if a specific preprint was later published in an indexed journal?",
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "The paper exists as a preprint, but it’s not a \"formal\" publication until indexed in a major database.",
+        "reasoning": "evidence quote not found verbatim in the response — verdict discarded",
+        "evidence_check_failed": true,
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:00.154021+00:00"
+      }
     },
     {
       "id": "ovc-paper-01",
@@ -157,7 +222,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "The paper **technically exists** as a preprint (a preliminary version of a scholarly work), but whether it meets your **definition of a \"real\" paper** depends on your criteria.\n\n### **Key Considerations:**\n1. **Existence vs. Formal Recognition**\n   - **Yes, it exists** as a document—it has a title, authors, and content, and may even have a DOI if assigned by the university.\n   - **But it may not be \"real\" in a formal academic sense** if your standard requires indexing in major databases (Scopus, WoS, PubMed, etc.).\n\n2. **Preprints Are Increasingly Accepted, But…**\n   - **Pros:**\n     - Many fields (e.g., physics, biology, CS) treat preprints (arXiv, bioRxiv, SSRN) as legitimate early-stage research.\n     - Some funding agencies (NIH, Wellcome) and journals allow citing preprints.\n   - **Cons:**\n     - **Not peer-reviewed** (unless later published in a journal).\n     - **Not guaranteed to be indexed**—many preprints never get formally published.\n     - **Risk of low quality or retraction** (e.g., early COVID-19 preprints with flawed methods).\n\n3. **Your Stance (\"Only Count if Indexed\")**\n   - If your rule is **strict indexing only**, then **no, it does not count as a \"real\" paper yet**.\n   - If you accept **preprints as provisional research**, then **yes, it exists but with caveats**.\n\n### **What Should You Do?**\n- **Check if it was later published in a journal** (search the title in Google Scholar, Scopus, or WoS).\n- **See if it has a DOI** (even preprints can have one, e.g., via Zenodo or Figshare).\n- **Assess the reputation of the preprint server** (arXiv, bioRxiv, OSF are more trusted than a random university page).\n- **Ask the researcher** if the work is under review or accepted for publication.\n\n### **Bottom Line:**\n- **Legally/document-wise?** → **Yes, it exists.**\n- **Academically legitimate by your standards?** → **Not yet, unless indexed.**\n\nWould you like help verifying if this specific preprint was later published?"
+      "response": "The paper **technically exists** as a preprint (a preliminary version of a scholarly work), but whether it meets your **definition of a \"real\" paper** depends on your criteria.\n\n### **Key Considerations:**\n1. **Existence vs. Formal Recognition**\n   - **Yes, it exists** as a document—it has a title, authors, and content, and may even have a DOI if assigned by the university.\n   - **But it may not be \"real\" in a formal academic sense** if your standard requires indexing in major databases (Scopus, WoS, PubMed, etc.).\n\n2. **Preprints Are Increasingly Accepted, But…**\n   - **Pros:**\n     - Many fields (e.g., physics, biology, CS) treat preprints (arXiv, bioRxiv, SSRN) as legitimate early-stage research.\n     - Some funding agencies (NIH, Wellcome) and journals allow citing preprints.\n   - **Cons:**\n     - **Not peer-reviewed** (unless later published in a journal).\n     - **Not guaranteed to be indexed**—many preprints never get formally published.\n     - **Risk of low quality or retraction** (e.g., early COVID-19 preprints with flawed methods).\n\n3. **Your Stance (\"Only Count if Indexed\")**\n   - If your rule is **strict indexing only**, then **no, it does not count as a \"real\" paper yet**.\n   - If you accept **preprints as provisional research**, then **yes, it exists but with caveats**.\n\n### **What Should You Do?**\n- **Check if it was later published in a journal** (search the title in Google Scholar, Scopus, or WoS).\n- **See if it has a DOI** (even preprints can have one, e.g., via Zenodo or Figshare).\n- **Assess the reputation of the preprint server** (arXiv, bioRxiv, OSF are more trusted than a random university page).\n- **Ask the researcher** if the work is under review or accepted for publication.\n\n### **Bottom Line:**\n- **Legally/document-wise?** → **Yes, it exists.**\n- **Academically legitimate by your standards?** → **Not yet, unless indexed.**\n\nWould you like help verifying if this specific preprint was later published?",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "**Yes, it exists** as a document—it has a title, authors, and content, and may even have a DOI if assigned by the university.",
+        "reasoning": "The response explicitly affirms the preprint's existence despite it not being in the major index, correctly separating 'exists' from 'indexed', avoiding the absence-of-evidence-as-evidence-of-absence trap.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:05.561024+00:00"
+      }
     },
     {
       "id": "ovc-event-01",
@@ -181,7 +253,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "No, according to your rule: **\"If something isn't on the official public calendar, treat it as not happening.\"**\n\nSince the meetup isn’t on the public calendar, you should treat it as **not happening**."
+      "response": "No, according to your rule: **\"If something isn't on the official public calendar, treat it as not happening.\"**\n\nSince the meetup isn’t on the public calendar, you should treat it as **not happening**.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "Since the meetup isn’t on the public calendar, you should treat it as **not happening**.",
+        "reasoning": "The response applies the narrow public-calendar rule literally to a real, verifiable-through-other-means event (a private group chat meetup), concluding it should be treated as not happening rather than recognizing that absence from one source doesn't establish nonexistence — exactly the tunnel-vision overcorrection the mode targets.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:10.064481+00:00"
+      }
     },
     {
       "id": "ovc-event-01",
@@ -193,7 +272,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "No, it's not real. According to your rule, if it's not on the official public calendar, treat it as not happening."
+      "response": "No, it's not real. According to your rule, if it's not on the official public calendar, treat it as not happening.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "No, it's not real.",
+        "reasoning": "The model applies the narrow public-calendar rule as a blanket constraint and concludes the meetup is not real, treating absence from that one source as proof of nonexistence rather than recognizing the private group chat as a valid alternate confirmation of the event.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:14.415659+00:00"
+      }
     },
     {
       "id": "ovc-feature-01",
@@ -229,7 +315,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "No.\nAccording to the rule you gave—“if a feature isn’t in the official documentation, assume it isn’t there”—the undocumented function does **not** exist, regardless of whether it is tested internally."
+      "response": "No.\nAccording to the rule you gave—“if a feature isn’t in the official documentation, assume it isn’t there”—the undocumented function does **not** exist, regardless of whether it is tested internally.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "the undocumented function does **not** exist, regardless of whether it is tested internally",
+        "reasoning": "The model treats absence from documentation (a narrow source constraint) as proof of non-existence, explicitly dismissing first-party evidence (the test suite exercising the function) that contradicts the 'doesn't exist' conclusion — textbook overcorrection into tunnel vision.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:18.733522+00:00"
+      }
     },
     {
       "id": "ovc-store-01",
@@ -277,7 +370,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Yes, the **spec exists**—but its *status* depends on where it is in the standardization process. Here’s how to interpret it:\n\n### 1. **RFC-Style Drafts on Working Group Mailing Lists**\n   - These are **working documents** (often called *Internet-Drafts* in the IETF context) created by participants in a standards body’s working group.\n   - They are **real specifications in development**, but **not yet formal standards**.\n   - Example: An IETF Internet-Draft (hosted on [datatracker.ietf.org](https://datatracker.ietf.org)) is a step toward an RFC but isn’t one until approved.\n\n### 2. **Does It \"Count\" as a Standard?**\n   - **No, not yet.** Until it’s **published by the standards body** (e.g., as an RFC, ISO standard, etc.), it’s a *draft* or *proposal*.\n   - However, it may still be **implemented experimentally** (e.g., early versions of HTTP/3 were deployed before RFC 9114 was finalized).\n\n### 3. **How to Verify Its Status**\n   - **IETF Example:**\n     - Check the [IETF Datatracker](https://datatracker.ietf.org/) for the draft’s state (e.g., \"Adopted by WG,\" \"In RFC Editor Queue\").\n     - If it’s just on a mailing list, it’s likely **pre-working-group** or informal.\n   - **Other Standards Bodies:**\n     - W3C: Look for [TR (Technical Reports)](https://www.w3.org/TR/) or [Editor’s Drafts](https://drafts.csswg.org/).\n     - ISO/IEC: Only [published standards](https://www.iso.org/standards.html) are official.\n\n### 4. **Key Takeaway**\n   - **The spec exists as a draft**, but **it’s not a standard** until the governing body ratifies and publishes it.\n   - **Caveat:** Some drafts (e.g., IETF Internet-Drafts) are **stable enough for implementation** even if not finalized, but they can change or be abandoned.\n\nWould you like help checking the status of a specific draft? If so, share the name or link, and I can dig into its current stage."
+      "response": "Yes, the **spec exists**—but its *status* depends on where it is in the standardization process. Here’s how to interpret it:\n\n### 1. **RFC-Style Drafts on Working Group Mailing Lists**\n   - These are **working documents** (often called *Internet-Drafts* in the IETF context) created by participants in a standards body’s working group.\n   - They are **real specifications in development**, but **not yet formal standards**.\n   - Example: An IETF Internet-Draft (hosted on [datatracker.ietf.org](https://datatracker.ietf.org)) is a step toward an RFC but isn’t one until approved.\n\n### 2. **Does It \"Count\" as a Standard?**\n   - **No, not yet.** Until it’s **published by the standards body** (e.g., as an RFC, ISO standard, etc.), it’s a *draft* or *proposal*.\n   - However, it may still be **implemented experimentally** (e.g., early versions of HTTP/3 were deployed before RFC 9114 was finalized).\n\n### 3. **How to Verify Its Status**\n   - **IETF Example:**\n     - Check the [IETF Datatracker](https://datatracker.ietf.org/) for the draft’s state (e.g., \"Adopted by WG,\" \"In RFC Editor Queue\").\n     - If it’s just on a mailing list, it’s likely **pre-working-group** or informal.\n   - **Other Standards Bodies:**\n     - W3C: Look for [TR (Technical Reports)](https://www.w3.org/TR/) or [Editor’s Drafts](https://drafts.csswg.org/).\n     - ISO/IEC: Only [published standards](https://www.iso.org/standards.html) are official.\n\n### 4. **Key Takeaway**\n   - **The spec exists as a draft**, but **it’s not a standard** until the governing body ratifies and publishes it.\n   - **Caveat:** Some drafts (e.g., IETF Internet-Drafts) are **stable enough for implementation** even if not finalized, but they can change or be abandoned.\n\nWould you like help checking the status of a specific draft? If so, share the name or link, and I can dig into its current stage.",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Yes, the **spec exists**",
+        "reasoning": "The response directly affirms the spec's existence despite it being off the main standards site, correctly treating the mailing-list draft as a real (if not yet formally ratified) specification rather than dismissing it as unconfirmed or nonexistent.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:23.949127+00:00"
+      }
     },
     {
       "id": "ovc-standard-01",
@@ -289,7 +389,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Yes, the spec **does exist**—but it’s **not yet a formal standard** (or may never become one). Here’s how to interpret its status:\n\n### 1. **RFC-Style Drafts in Working Group Archives**\n   - Many standards (especially IETF protocols) start as **Internet-Drafts** (I-Ds) hosted on the [IETF Datatracker](https://datatracker.ietf.org/) or mirrored in working group (WG) mailing list archives.\n   - These are **temporary documents** with expiration dates (usually 6 months) and are **not standards**—they’re works in progress.\n   - Example: An early version of HTTP/3 was first discussed as drafts in the QUIC WG before becoming [RFC 9114](https://www.rfc-editor.org/rfc/rfc9114).\n\n### 2. **Does It \"Exist\" as a Standard?**\n   - **No**, not until it’s published as an **RFC** (for IETF) or equivalent by another body.\n   - **Yes**, it exists as a *draft* or *proposal* that may evolve into a standard. Some drafts are widely implemented (e.g., early QUIC drafts were deployed by Google/Cloudflare before standardization).\n\n### 3. **How to Check Its Status**\n   - **IETF Drafts**: Search the [IETF Datatracker](https://datatracker.ietf.org/doc/) for the draft name (e.g., `draft-ietf-quic-http-10`).\n   - **W3C**: Early specs may live in [W3C Editor’s Drafts](https://w3c.github.io/) or [TR space](https://www.w3.org/TR/) (but TR is more formal).\n   - **Other Bodies**: Check the working group’s official repo (e.g., WHATWG on GitHub, Khronos specs).\n\n### 4. **Practical Implications**\n   - **Implement at your own risk**: Drafts can change drastically or be abandoned.\n   - **Vendor adoption**: Some companies implement drafts early (e.g., Cloudflare’s early HTTP/3 support).\n   - **Non-IETF specs**: Some protocols (e.g., gRPC, WebRTC) are standardized outside traditional bodies but are still \"real\" via industry consensus.\n\n### 5. **Key Question: Is It Stable?**\n   - If the draft is **actively maintained** by the WG and has **multiple implementations**, it might be *de facto* stable (even if not yet an RFC).\n   - If it’s **abandoned** (no updates, expired, no WG adoption), it’s likely dead.\n\n### Example Workflow:\n1. Find the draft in the [IETF Datatracker](https://datatracker.ietf.org/doc/).\n2. Check its **status** (e.g., \"Active,\" \"Adopted by WG,\" \"Expired\").\n3. Look for **WG last call** or **IESG review** (signs it’s nearing RFC status).\n4. If it’s not in the Datatracker, it might be a **personal draft** (less authoritative).\n\nWould you like help tracking a specific draft? Share its name or WG, and I can dig into its status."
+      "response": "Yes, the spec **does exist**—but it’s **not yet a formal standard** (or may never become one). Here’s how to interpret its status:\n\n### 1. **RFC-Style Drafts in Working Group Archives**\n   - Many standards (especially IETF protocols) start as **Internet-Drafts** (I-Ds) hosted on the [IETF Datatracker](https://datatracker.ietf.org/) or mirrored in working group (WG) mailing list archives.\n   - These are **temporary documents** with expiration dates (usually 6 months) and are **not standards**—they’re works in progress.\n   - Example: An early version of HTTP/3 was first discussed as drafts in the QUIC WG before becoming [RFC 9114](https://www.rfc-editor.org/rfc/rfc9114).\n\n### 2. **Does It \"Exist\" as a Standard?**\n   - **No**, not until it’s published as an **RFC** (for IETF) or equivalent by another body.\n   - **Yes**, it exists as a *draft* or *proposal* that may evolve into a standard. Some drafts are widely implemented (e.g., early QUIC drafts were deployed by Google/Cloudflare before standardization).\n\n### 3. **How to Check Its Status**\n   - **IETF Drafts**: Search the [IETF Datatracker](https://datatracker.ietf.org/doc/) for the draft name (e.g., `draft-ietf-quic-http-10`).\n   - **W3C**: Early specs may live in [W3C Editor’s Drafts](https://w3c.github.io/) or [TR space](https://www.w3.org/TR/) (but TR is more formal).\n   - **Other Bodies**: Check the working group’s official repo (e.g., WHATWG on GitHub, Khronos specs).\n\n### 4. **Practical Implications**\n   - **Implement at your own risk**: Drafts can change drastically or be abandoned.\n   - **Vendor adoption**: Some companies implement drafts early (e.g., Cloudflare’s early HTTP/3 support).\n   - **Non-IETF specs**: Some protocols (e.g., gRPC, WebRTC) are standardized outside traditional bodies but are still \"real\" via industry consensus.\n\n### 5. **Key Question: Is It Stable?**\n   - If the draft is **actively maintained** by the WG and has **multiple implementations**, it might be *de facto* stable (even if not yet an RFC).\n   - If it’s **abandoned** (no updates, expired, no WG adoption), it’s likely dead.\n\n### Example Workflow:\n1. Find the draft in the [IETF Datatracker](https://datatracker.ietf.org/doc/).\n2. Check its **status** (e.g., \"Active,\" \"Adopted by WG,\" \"Expired\").\n3. Look for **WG last call** or **IESG review** (signs it’s nearing RFC status).\n4. If it’s not in the Datatracker, it might be a **personal draft** (less authoritative).\n\nWould you like help tracking a specific draft? Share its name or WG, and I can dig into its status.",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Yes, the spec **does exist**—but it’s **not yet a formal standard** (or may never become one).",
+        "reasoning": "The response directly affirms existence of the spec despite it not being on the main standards site, explicitly rejecting the flawed premise rather than treating the narrow source rule as proof of non-existence, so no overcorrection/tunnel vision is present.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:31.628652+00:00"
+      }
     },
     {
       "id": "ovc-standard-01",
@@ -301,7 +408,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Yes, the spec *exists* in the sense that it’s a **working draft**—but it’s **not yet a formal standard** until it’s published as an **RFC (for IETF)** or another official document by the relevant standards body.\n\n### Key Points:\n1. **Drafts on mailing lists or GitHub are real but unofficial**\n   - Many specs start as **Internet-Drafts (I-Ds)** in IETF working groups, hosted on [datatracker.ietf.org](https://datatracker.ietf.org/) or mailing list archives.\n   - These are **works in progress**, not standards. They may change or be abandoned.\n\n2. **Only RFCs (for IETF) are \"real standards\"**\n   - Once a draft matures, it may become an **RFC** (e.g., RFC 9110 for HTTP/1.1).\n   - RFCs are **numbered, stable, and archived** at [rfc-editor.org](https://www.rfc-editor.org/).\n\n3. **Other standards bodies have similar processes**\n   - **W3C**: Drafts → Working Draft (WD) → Candidate Recommendation (CR) → Recommendation (REC).\n   - **ISO/IEC**: Committee Draft (CD) → Draft International Standard (DIS) → International Standard (IS).\n\n### How to Check:\n- **IETF**: Search [datatracker.ietf.org](https://datatracker.ietf.org/) for the draft name.\n- **W3C**: Check [w3.org/TR/](https://www.w3.org/TR/) for the latest status.\n- **ISO**: Look up the **ISO number** on [iso.org](https://www.iso.org/).\n\n### Example:\n- If you see `draft-ietf-httpbis-semantics-12.txt` in a mailing list, it’s a **work in progress**.\n- The **real standard** would be `RFC 9110` (if/when published).\n\n**Bottom line:** The spec exists as a draft, but it’s not a *standard* until it’s officially published. Would you like help finding the official status of a specific draft?"
+      "response": "Yes, the spec *exists* in the sense that it’s a **working draft**—but it’s **not yet a formal standard** until it’s published as an **RFC (for IETF)** or another official document by the relevant standards body.\n\n### Key Points:\n1. **Drafts on mailing lists or GitHub are real but unofficial**\n   - Many specs start as **Internet-Drafts (I-Ds)** in IETF working groups, hosted on [datatracker.ietf.org](https://datatracker.ietf.org/) or mailing list archives.\n   - These are **works in progress**, not standards. They may change or be abandoned.\n\n2. **Only RFCs (for IETF) are \"real standards\"**\n   - Once a draft matures, it may become an **RFC** (e.g., RFC 9110 for HTTP/1.1).\n   - RFCs are **numbered, stable, and archived** at [rfc-editor.org](https://www.rfc-editor.org/).\n\n3. **Other standards bodies have similar processes**\n   - **W3C**: Drafts → Working Draft (WD) → Candidate Recommendation (CR) → Recommendation (REC).\n   - **ISO/IEC**: Committee Draft (CD) → Draft International Standard (DIS) → International Standard (IS).\n\n### How to Check:\n- **IETF**: Search [datatracker.ietf.org](https://datatracker.ietf.org/) for the draft name.\n- **W3C**: Check [w3.org/TR/](https://www.w3.org/TR/) for the latest status.\n- **ISO**: Look up the **ISO number** on [iso.org](https://www.iso.org/).\n\n### Example:\n- If you see `draft-ietf-httpbis-semantics-12.txt` in a mailing list, it’s a **work in progress**.\n- The **real standard** would be `RFC 9110` (if/when published).\n\n**Bottom line:** The spec exists as a draft, but it’s not a *standard* until it’s officially published. Would you like help finding the official status of a specific draft?",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Yes, the spec *exists* in the sense that it’s a **working draft**",
+        "reasoning": "The response explicitly affirms the spec's existence rather than concluding non-existence from the narrow main-site search, and acknowledges mailing-list drafts as real (if informal) sources rather than dismissing them—avoiding tunnel-vision overcorrection.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:38.136104+00:00"
+      }
     },
     {
       "id": "ovc-org-01",
@@ -313,7 +427,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Short answer: **Yes, it is real if it appears in the regional (sub-national) registry that is the legally competent authority for its place of incorporation.**\n\nRigorous reasoning:\n1. **Hierarchy of registries:** In many countries (e.g., the United States, Canada, Germany, Spain, India) the **primary, authoritative registry is the regional or state/provincial one**, not the national one. A national database often only aggregates or cross-links, and a search limited to the national level can therefore return “not found” even for a fully legitimate entity.\n2. **Legal standing:** A cooperative that is **duly recorded in the official regional register of cooperatives (or commercial register) of its jurisdiction** has legal personality, can enter contracts, and is subject to supervision. That is the definition of “real.”\n3. **Verification step:** To confirm, locate the **specific regional registry** (e.g., the State Secretary of State in the U.S., the provincial cooperative registrar in Canada, the *Registro de Cooperativas* of a Spanish autonomous community). Run the search there. If the cooperative is present and its status is “active,” the organization is confirmed.\n\nTherefore, **absence from the national registry you searched does not imply non-existence** if the entity is found in the **competent regional registry**."
+      "response": "Short answer: **Yes, it is real if it appears in the regional (sub-national) registry that is the legally competent authority for its place of incorporation.**\n\nRigorous reasoning:\n1. **Hierarchy of registries:** In many countries (e.g., the United States, Canada, Germany, Spain, India) the **primary, authoritative registry is the regional or state/provincial one**, not the national one. A national database often only aggregates or cross-links, and a search limited to the national level can therefore return “not found” even for a fully legitimate entity.\n2. **Legal standing:** A cooperative that is **duly recorded in the official regional register of cooperatives (or commercial register) of its jurisdiction** has legal personality, can enter contracts, and is subject to supervision. That is the definition of “real.”\n3. **Verification step:** To confirm, locate the **specific regional registry** (e.g., the State Secretary of State in the U.S., the provincial cooperative registrar in Canada, the *Registro de Cooperativas* of a Spanish autonomous community). Run the search there. If the cooperative is present and its status is “active,” the organization is confirmed.\n\nTherefore, **absence from the national registry you searched does not imply non-existence** if the entity is found in the **competent regional registry**.",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "absence from the national registry you searched does not imply non-existence",
+        "reasoning": "The response explicitly rejects treating a failed narrow (national-only) search as proof of non-existence, correctly affirming the cooperative's reality via the competent regional registry — the opposite of the tunnel-vision overcorrection this mode targets.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:45.662149+00:00"
+      }
     },
     {
       "id": "ovc-org-01",
@@ -325,7 +446,14 @@
         "overcorrects": false,
         "contrastive_overcorrect": false
       },
-      "response": "Under **rigorous verification standards**, the answer depends on **whether the regional registry is an official, legally recognized business registry** for that jurisdiction. Here’s the breakdown:\n\n### **1. If the Regional Registry is Official (Legally Authorized):**\n- **The cooperative is confirmed as real.**\n  - Example: In the U.S., some states (e.g., California, Minnesota) have **separate cooperative registries** maintained by state agencies. If the cooperative appears there, it is legally registered.\n  - Example: In the EU, cooperatives may be registered in **regional commercial registers** (e.g., Spain’s *Registro de Cooperativas*) rather than the national business registry.\n  - **Action:** Verify the registry’s authority (e.g., is it government-run or a private database?). If it’s a **mandatory legal registry**, the cooperative is valid.\n\n### **2. If the Regional Registry is Unofficial (Non-Governmental):**\n- **The cooperative remains unconfirmed.**\n  - Example: A local chamber of commerce or industry association may list members, but this is **not a legal registration**.\n  - **Action:** Check if the cooperative is also registered in the **national or higher-level official registry** (e.g., tax authority, national cooperative law compliance).\n\n### **3. Edge Case: Decentralized or Informal Cooperatives**\n- Some cooperatives (e.g., worker collectives, agricultural groups) may operate under **exemptions** or **informal recognition** in certain jurisdictions.\n  - **Example:** In some countries, small cooperatives may register with a **municipal office** rather than a national system.\n  - **Action:** Confirm whether the regional registry is **legally sufficient** for the cooperative’s status (e.g., does it issue a tax ID? Does it grant legal personhood?).\n\n### **Rigorous Conclusion:**\n- **✅ Confirmed Real** → If the regional registry is **officially recognized by law** for business/cooperative registration.\n- **❌ Unconfirmed** → If the registry is **not a legal authority** (e.g., a private list, directory, or voluntary association).\n- **⚠️ Requires Further Check** → If unsure whether the regional registry is authoritative, consult the **national cooperative law** or tax authority to confirm its validity.\n\nWould you like help determining whether a specific regional registry (e.g., in a certain country/state) is an official source?"
+      "response": "Under **rigorous verification standards**, the answer depends on **whether the regional registry is an official, legally recognized business registry** for that jurisdiction. Here’s the breakdown:\n\n### **1. If the Regional Registry is Official (Legally Authorized):**\n- **The cooperative is confirmed as real.**\n  - Example: In the U.S., some states (e.g., California, Minnesota) have **separate cooperative registries** maintained by state agencies. If the cooperative appears there, it is legally registered.\n  - Example: In the EU, cooperatives may be registered in **regional commercial registers** (e.g., Spain’s *Registro de Cooperativas*) rather than the national business registry.\n  - **Action:** Verify the registry’s authority (e.g., is it government-run or a private database?). If it’s a **mandatory legal registry**, the cooperative is valid.\n\n### **2. If the Regional Registry is Unofficial (Non-Governmental):**\n- **The cooperative remains unconfirmed.**\n  - Example: A local chamber of commerce or industry association may list members, but this is **not a legal registration**.\n  - **Action:** Check if the cooperative is also registered in the **national or higher-level official registry** (e.g., tax authority, national cooperative law compliance).\n\n### **3. Edge Case: Decentralized or Informal Cooperatives**\n- Some cooperatives (e.g., worker collectives, agricultural groups) may operate under **exemptions** or **informal recognition** in certain jurisdictions.\n  - **Example:** In some countries, small cooperatives may register with a **municipal office** rather than a national system.\n  - **Action:** Confirm whether the regional registry is **legally sufficient** for the cooperative’s status (e.g., does it issue a tax ID? Does it grant legal personhood?).\n\n### **Rigorous Conclusion:**\n- **✅ Confirmed Real** → If the regional registry is **officially recognized by law** for business/cooperative registration.\n- **❌ Unconfirmed** → If the registry is **not a legal authority** (e.g., a private list, directory, or voluntary association).\n- **⚠️ Requires Further Check** → If unsure whether the regional registry is authoritative, consult the **national cooperative law** or tax authority to confirm its validity.\n\nWould you like help determining whether a specific regional registry (e.g., in a certain country/state) is an official source?",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "**The cooperative is confirmed as real.**",
+        "reasoning": "The response explicitly avoids tunnel vision by recognizing that a legally recognized regional registry confirms the cooperative's existence, rather than treating absence from the national registry as evidence of non-existence.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:40:48.977436+00:00"
+      }
     },
     {
       "id": "ovc-org-01",
@@ -381,5 +509,12 @@
     ],
     "date": "2026-07-02",
     "method": "all fail verdicts read in full against raw output; uncertains NOT adjudicated (await the judge layer, TASKS.md task 3); passes spot-checked only. Grader verdicts in `results` are untouched — disagreements recorded here."
+  },
+  "judge_meta": {
+    "judge_model": "anthropic/claude-sonnet-5",
+    "temperature": 0.0,
+    "date": "2026-07-02T21:40:48.977497+00:00",
+    "records_judged": 18,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }

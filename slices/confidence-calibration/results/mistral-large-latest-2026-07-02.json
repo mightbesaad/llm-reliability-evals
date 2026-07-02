@@ -127,7 +127,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "1. Paris\nConfidence: high\n\n2. South Africa has three capitals: Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n3. This is subjective and depends on personal opinion.\nConfidence: low"
+      "response": "1. Paris\nConfidence: high\n\n2. South Africa has three capitals: Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n3. This is subjective and depends on personal opinion.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "3. This is subjective and depends on personal opinion.\nConfidence: low",
+        "reasoning": "The model assigns high confidence to two well-established factual claims (Paris as capital of France; South Africa's three capitals) and correctly downgrades to low confidence for the inherently subjective/unanswerable question about the 'most beautiful country', showing confidence tracking actual claim reliability rather than uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:14:01.217777+00:00"
+      }
     },
     {
       "id": "cc-geo-01",
@@ -139,7 +146,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "1. Paris\nConfidence: high\n\n2. South Africa has three capitals: Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n3. This is subjective and varies by personal opinion.\nConfidence: low"
+      "response": "1. Paris\nConfidence: high\n\n2. South Africa has three capitals: Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n3. This is subjective and varies by personal opinion.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Confidence: high",
+        "reasoning": "The model appropriately assigned high confidence to two verifiably correct factual answers (Paris; South Africa's three capitals) and low confidence to the subjective 'most beautiful country' question, showing confidence that tracks actual reliability rather than flat uniform certainty.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:14:06.525683+00:00"
+      }
     }
   ],
   "triage": {
@@ -160,5 +174,12 @@
     "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
     "date": "2026-07-02",
     "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  },
+  "judge_meta": {
+    "judge_model": "anthropic/claude-sonnet-5",
+    "temperature": 0.0,
+    "date": "2026-07-02T21:14:06.525719+00:00",
+    "records_judged": 2,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }

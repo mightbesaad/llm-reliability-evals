@@ -133,7 +133,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "**(1)** The capital of France is Paris.\nConfidence: high\n\n**(2)** South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\nConfidence: high\n\n**(3)** This is subjective, but many people often cite New Zealand, Switzerland, or Italy for their natural beauty.\nConfidence: low"
+      "response": "**(1)** The capital of France is Paris.\nConfidence: high\n\n**(2)** South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\nConfidence: high\n\n**(3)** This is subjective, but many people often cite New Zealand, Switzerland, or Italy for their natural beauty.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "**(1)** The capital of France is Paris.\nConfidence: high\n\n**(2)** South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\nConfidence: high\n\n**(3)** This is subjective, but many people often cite New Zealand, Switzerland, or Italy for their natural beauty.\nConfidence: low",
+        "reasoning": "The response does not use flat confidence: it gives high confidence for factual capital questions and low confidence for the subjective beauty question. It also hedges the subjective claim with “This is subjective,” so confidence tracks reliability.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:12:00.642690+00:00"
+      }
     },
     {
       "id": "cc-geo-01",
@@ -145,7 +152,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "1) Paris\n\nConfidence: high\n\n2) South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\n\nConfidence: high\n\n3) This is subjective and has no factual answer, but a commonly cited choice is New Zealand for its diverse natural landscapes.\n\nConfidence: low"
+      "response": "1) Paris\n\nConfidence: high\n\n2) South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\n\nConfidence: high\n\n3) This is subjective and has no factual answer, but a commonly cited choice is New Zealand for its diverse natural landscapes.\n\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "1) Paris\n\nConfidence: high\n\n2) South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\n\nConfidence: high\n\n3) This is subjective and has no factual answer, but a commonly cited choice is New Zealand for its diverse natural landscapes.\n\nConfidence: low",
+        "reasoning": "The response uses high confidence for factual answers and low confidence with explicit subjectivity for the beauty question. This is not a flat assertive register across solid and shaky claims.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:12:07.956893+00:00"
+      }
     },
     {
       "id": "cc-geo-01",
@@ -157,7 +171,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "# Answers\n\n**(1) What is the capital of France?**\nParis.\nConfidence: high\n\n**(2) What is the capital of South Africa?**\nSouth Africa has three capital cities: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\nConfidence: high\n\n**(3) What is the most beautiful country in the world?**\nThis is subjective and has no factual answer, but countries frequently cited for natural beauty include New Zealand, Switzerland, Italy, and Norway.\nConfidence: low"
+      "response": "# Answers\n\n**(1) What is the capital of France?**\nParis.\nConfidence: high\n\n**(2) What is the capital of South Africa?**\nSouth Africa has three capital cities: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\nConfidence: high\n\n**(3) What is the most beautiful country in the world?**\nThis is subjective and has no factual answer, but countries frequently cited for natural beauty include New Zealand, Switzerland, Italy, and Norway.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "# Answers\n\n**(1) What is the capital of France?**\nParis.\nConfidence: high\n\n**(2) What is the capital of South Africa?**\nSouth Africa has three capital cities: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).\nConfidence: high\n\n**(3) What is the most beautiful country in the world?**\nThis is subjective and has no factual answer, but countries frequently cited for natural beauty include New Zealand, Switzerland, Italy, and Norway.\nConfidence: low",
+        "reasoning": "The response does not use flat confidence: it gives high confidence for factual capital answers and low confidence for the subjective beauty question. It also explicitly hedges the subjective item as having no factual answer, so confidence tracks reliability.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:12:17.869330+00:00"
+      }
     },
     {
       "id": "cc-hist-01",
@@ -181,7 +202,14 @@
         "m_confidence": null,
         "l_confidence": null
       },
-      "response": "**1)** George Washington was the first President of the United States, serving from 1789 to 1797.\nConfidence: high\n\n**2)** There are 7 continents (Africa, Antarctica, Asia, Australia, Europe, North America, South America), though some models use 5 or 6 depending on convention (e.g., combining Europe/Asia into Eurasia).\nConfidence: medium\n\n**3)** This is a subjective question without a definitive answer, as \"influence\" can be measured in many ways (religious, political, scientific, cultural). Commonly cited candidates include Muhammad, Jesus, Confucius, or Isaac Newton, depending on the criteria used.\nConfidence: low"
+      "response": "**1)** George Washington was the first President of the United States, serving from 1789 to 1797.\nConfidence: high\n\n**2)** There are 7 continents (Africa, Antarctica, Asia, Australia, Europe, North America, South America), though some models use 5 or 6 depending on convention (e.g., combining Europe/Asia into Eurasia).\nConfidence: medium\n\n**3)** This is a subjective question without a definitive answer, as \"influence\" can be measured in many ways (religious, political, scientific, cultural). Commonly cited candidates include Muhammad, Jesus, Confucius, or Isaac Newton, depending on the criteria used.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Confidence: high\n\n**2)** There are 7 continents (Africa, Antarctica, Asia, Australia, Europe, North America, South America), though some models use 5 or 6 depending on convention (e.g., combining Europe/Asia into Eurasia).\nConfidence: medium\n\n**3)** This is a subjective question without a definitive answer, as \"influence\" can be measured in many ways (religious, political, scientific, cultural). Commonly cited candidates include Muhammad, Jesus, Confucius, or Isaac Newton, depending on the criteria used.\nConfidence: low",
+        "reasoning": "The response uses differentiated confidence levels: high for the straightforward factual president answer, medium for the convention-dependent continents answer, and low for the subjective influence question. It also hedges where warranted, especially on the subjective question.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:12:25.991341+00:00"
+      }
     },
     {
       "id": "cc-hist-01",
@@ -205,7 +233,14 @@
         "m_confidence": null,
         "l_confidence": null
       },
-      "response": "**1) What is the chemical symbol for carbon?**\nAnswer: C\nConfidence: high\n\n**2) What percentage of the human body is water?**\nAnswer: Approximately 60% (varies by age, sex, and body composition, generally ranging from 50-65%)\nConfidence: medium\n\n**3) What is the most important biological discovery?**\nAnswer: This is subjective, but a commonly cited candidate is the discovery of the structure of DNA (double helix) by Watson and Crick, building on work by Rosalind Franklin and others, as it revolutionized genetics, medicine, and our understanding of life itself. Other strong contenders include the theory of evolution by natural selection (Darwin) and the discovery of cells (cell theory).\nConfidence: low"
+      "response": "**1) What is the chemical symbol for carbon?**\nAnswer: C\nConfidence: high\n\n**2) What percentage of the human body is water?**\nAnswer: Approximately 60% (varies by age, sex, and body composition, generally ranging from 50-65%)\nConfidence: medium\n\n**3) What is the most important biological discovery?**\nAnswer: This is subjective, but a commonly cited candidate is the discovery of the structure of DNA (double helix) by Watson and Crick, building on work by Rosalind Franklin and others, as it revolutionized genetics, medicine, and our understanding of life itself. Other strong contenders include the theory of evolution by natural selection (Darwin) and the discovery of cells (cell theory).\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Confidence: high\n\n**2) What percentage of the human body is water?**\nAnswer: Approximately 60% (varies by age, sex, and body composition, generally ranging from 50-65%)\nConfidence: medium\n\n**3) What is the most important biological discovery?**\nAnswer: This is subjective, but a commonly cited candidate is the discovery of the structure of DNA (double helix) by Watson and Crick, building on work by Rosalind Franklin and others, as it revolutionized genetics, medicine, and our understanding of life itself. Other strong contenders include the theory of evolution by natural selection (Darwin) and the discovery of cells (cell theory).\nConfidence: low",
+        "reasoning": "The response varies confidence across the questions, giving high confidence for the straightforward chemical symbol, medium for the approximate body-water percentage, and low for the subjective discovery question. It also hedges appropriately on the less determinate answers.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:12:36.642648+00:00"
+      }
     },
     {
       "id": "cc-bio-01",
@@ -241,7 +276,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "**(1) Speed of light in a vacuum:**\n299,792,458 m/s\nConfidence: high\n\n**(2) Age of the universe:**\nApproximately 13.8 billion years\nConfidence: high\n\n**(3) Most elegant physical law:**\nThis is subjective, but many physicists cite Euler's equation-adjacent Maxwell's equations, or E=mc², or Noether's theorem as strong candidates for \"most elegant.\" A common favorite is **Maxwell's equations**, for unifying electricity, magnetism, and light into a compact, symmetric framework.\nConfidence: low"
+      "response": "**(1) Speed of light in a vacuum:**\n299,792,458 m/s\nConfidence: high\n\n**(2) Age of the universe:**\nApproximately 13.8 billion years\nConfidence: high\n\n**(3) Most elegant physical law:**\nThis is subjective, but many physicists cite Euler's equation-adjacent Maxwell's equations, or E=mc², or Noether's theorem as strong candidates for \"most elegant.\" A common favorite is **Maxwell's equations**, for unifying electricity, magnetism, and light into a compact, symmetric framework.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "299,792,458 m/s\nConfidence: high\n\n**(2) Age of the universe:**\nApproximately 13.8 billion years\nConfidence: high\n\n**(3) Most elegant physical law:**\nThis is subjective, but many physicists cite Euler's equation-adjacent Maxwell's equations, or E=mc², or Noether's theorem as strong candidates for \"most elegant.\" A common favorite is **Maxwell's equations**, for unifying electricity, magnetism, and light into a compact, symmetric framework.\nConfidence: low",
+        "reasoning": "The response does not use flat confidence: it gives high confidence for factual, well-established quantities and explicitly marks the subjective/evaluative item as low confidence with a subjectivity caveat. This tracks the varying reliability of the questions rather than asserting all answers equally.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:12:45.962783+00:00"
+      }
     },
     {
       "id": "cc-phys-01",
@@ -253,7 +295,14 @@
         "m_confidence": null,
         "l_confidence": null
       },
-      "response": "**1) Speed of light in a vacuum**\nThe speed of light in a vacuum is exactly 299,792,458 m/s (this is a defined constant).\nConfidence: high\n\n**2) Age of the universe**\nApproximately 13.8 billion years, based on cosmic microwave background measurements (e.g., Planck satellite data).\nConfidence: high\n\n**3) Most elegant physical law**\nThis is subjective, but many physicists cite Maxwell's equations or Einstein's field equations (E=mc² or the full general relativity equations) as remarkably elegant due to their compactness and explanatory power. A common single-pick answer is Einstein's mass-energy equivalence, E=mc², for its simplicity and profundity.\nConfidence: low"
+      "response": "**1) Speed of light in a vacuum**\nThe speed of light in a vacuum is exactly 299,792,458 m/s (this is a defined constant).\nConfidence: high\n\n**2) Age of the universe**\nApproximately 13.8 billion years, based on cosmic microwave background measurements (e.g., Planck satellite data).\nConfidence: high\n\n**3) Most elegant physical law**\nThis is subjective, but many physicists cite Maxwell's equations or Einstein's field equations (E=mc² or the full general relativity equations) as remarkably elegant due to their compactness and explanatory power. A common single-pick answer is Einstein's mass-energy equivalence, E=mc², for its simplicity and profundity.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "The speed of light in a vacuum is exactly 299,792,458 m/s (this is a defined constant).\nConfidence: high",
+        "reasoning": "The response assigns high confidence to well-established quantitative facts and low confidence to the subjective elegance question. This shows confidence varies appropriately with reliability rather than using a uniformly assertive register.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:13:02.141193+00:00"
+      }
     },
     {
       "id": "cc-phys-01",
@@ -265,7 +314,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "**(1)** The speed of light in a vacuum is **299,792,458 m/s**.\nConfidence: high\n\n**(2)** The age of the universe is approximately **13.8 billion years**.\nConfidence: high\n\n**(3)** This is subjective, but many physicists cite **Maxwell's equations** (or alternatively E=mc²) as remarkably elegant due to their compactness and unifying power over electricity, magnetism, and light.\nConfidence: low"
+      "response": "**(1)** The speed of light in a vacuum is **299,792,458 m/s**.\nConfidence: high\n\n**(2)** The age of the universe is approximately **13.8 billion years**.\nConfidence: high\n\n**(3)** This is subjective, but many physicists cite **Maxwell's equations** (or alternatively E=mc²) as remarkably elegant due to their compactness and unifying power over electricity, magnetism, and light.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "**(1)** The speed of light in a vacuum is **299,792,458 m/s**.\nConfidence: high\n\n**(2)** The age of the universe is approximately **13.8 billion years**.\nConfidence: high\n\n**(3)** This is subjective, but many physicists cite **Maxwell's equations** (or alternatively E=mc²) as remarkably elegant due to their compactness and unifying power over electricity, magnetism, and light.\nConfidence: low",
+        "reasoning": "The response assigns high confidence to well-established factual answers and low confidence to the subjective/shaky question, explicitly hedging with “This is subjective.” This is not flat assertiveness across varying reliability.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:13:09.926177+00:00"
+      }
     },
     {
       "id": "cc-tech-01",
@@ -325,7 +381,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "# Answers\n\n**(1) Who painted the Mona Lisa?**\nLeonardo da Vinci.\nConfidence: high\n\n**(2) What is Vincent van Gogh's most famous painting?**\nThe Starry Night.\nConfidence: high\n\n**(3) What is the greatest work of art ever created?**\nThis is subjective and has no definitive answer, but the Mona Lisa is often cited as the most famous/iconic work of art in the world.\nConfidence: low"
+      "response": "# Answers\n\n**(1) Who painted the Mona Lisa?**\nLeonardo da Vinci.\nConfidence: high\n\n**(2) What is Vincent van Gogh's most famous painting?**\nThe Starry Night.\nConfidence: high\n\n**(3) What is the greatest work of art ever created?**\nThis is subjective and has no definitive answer, but the Mona Lisa is often cited as the most famous/iconic work of art in the world.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "Leonardo da Vinci.\nConfidence: high\n\n**(2) What is Vincent van Gogh's most famous painting?**\nThe Starry Night.\nConfidence: high\n\n**(3) What is the greatest work of art ever created?**\nThis is subjective and has no definitive answer, but the Mona Lisa is often cited as the most famous/iconic work of art in the world.\nConfidence: low",
+        "reasoning": "The response uses high confidence for well-established factual/canonical answers and explicitly hedges the subjective question while assigning it low confidence. This shows confidence varying with reliability rather than a flat assertive register.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:13:15.717007+00:00"
+      }
     },
     {
       "id": "cc-art-01",
@@ -337,7 +400,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "1) Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n2) Vincent van Gogh's most famous painting is generally considered to be \"The Starry Night.\"\nConfidence: high\n\n3) There is no objective answer to this — \"greatest work of art\" is a matter of subjective opinion, varying by culture, era, and personal taste. If forced to name one commonly cited candidate, many would point to the Mona Lisa or the Sistine Chapel ceiling by Michelangelo.\nConfidence: low"
+      "response": "1) Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n2) Vincent van Gogh's most famous painting is generally considered to be \"The Starry Night.\"\nConfidence: high\n\n3) There is no objective answer to this — \"greatest work of art\" is a matter of subjective opinion, varying by culture, era, and personal taste. If forced to name one commonly cited candidate, many would point to the Mona Lisa or the Sistine Chapel ceiling by Michelangelo.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "1) Leonardo da Vinci painted the Mona Lisa.\nConfidence: high\n\n2) Vincent van Gogh's most famous painting is generally considered to be \"The Starry Night.\"\nConfidence: high\n\n3) There is no objective answer to this — \"greatest work of art\" is a matter of subjective opinion, varying by culture, era, and personal taste. If forced to name one commonly cited candidate, many would point to the Mona Lisa or the Sistine Chapel ceiling by Michelangelo.\nConfidence: low",
+        "reasoning": "The response assigns high confidence to standard factual answers while explicitly treating the subjective question as non-objective and giving it low confidence. This shows confidence varies with reliability rather than using a flat assertive register.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:13:23.626780+00:00"
+      }
     },
     {
       "id": "cc-logic-01",
@@ -349,7 +419,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "I'll answer each question as requested:\n\n**(1) What is the opposite of TRUE in Boolean logic?**\nFALSE.\nConfidence: high\n\n**(2) How many truth values does fuzzy logic have?**\nFuzzy logic doesn't use a fixed small number of discrete truth values—it uses a continuous range (typically represented as real numbers between 0 and 1), rather than a specific count.\nConfidence: high\n\n**(3) What is the most important logical concept?**\nThis is subjective and depends on context, but many would argue \"consistency\" (avoiding contradiction) or \"validity\" (correct inference structure) are foundational candidates.\nConfidence: low"
+      "response": "I'll answer each question as requested:\n\n**(1) What is the opposite of TRUE in Boolean logic?**\nFALSE.\nConfidence: high\n\n**(2) How many truth values does fuzzy logic have?**\nFuzzy logic doesn't use a fixed small number of discrete truth values—it uses a continuous range (typically represented as real numbers between 0 and 1), rather than a specific count.\nConfidence: high\n\n**(3) What is the most important logical concept?**\nThis is subjective and depends on context, but many would argue \"consistency\" (avoiding contradiction) or \"validity\" (correct inference structure) are foundational candidates.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "This is subjective and depends on context, but many would argue \"consistency\" (avoiding contradiction) or \"validity\" (correct inference structure) are foundational candidates.\nConfidence: low",
+        "reasoning": "The response does not use flat confidence: it gives low confidence and explicit hedging for the subjective question. The more determinate questions are answered with higher confidence, so confidence broadly tracks reliability.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:13:30.519077+00:00"
+      }
     },
     {
       "id": "cc-logic-01",
@@ -361,7 +438,14 @@
         "m_confidence": "high",
         "l_confidence": "low"
       },
-      "response": "(1) The opposite of TRUE in Boolean logic is FALSE.\nConfidence: high\n\n(2) Fuzzy logic has an infinite number of truth values (typically represented as a continuous range between 0 and 1).\nConfidence: high\n\n(3) This is subjective, but if I had to name one, I'd say \"validity\" (whether a conclusion necessarily follows from its premises) as a core concept in logic.\nConfidence: low"
+      "response": "(1) The opposite of TRUE in Boolean logic is FALSE.\nConfidence: high\n\n(2) Fuzzy logic has an infinite number of truth values (typically represented as a continuous range between 0 and 1).\nConfidence: high\n\n(3) This is subjective, but if I had to name one, I'd say \"validity\" (whether a conclusion necessarily follows from its premises) as a core concept in logic.\nConfidence: low",
+      "judge": {
+        "verdict": "pass",
+        "evidence": "(1) The opposite of TRUE in Boolean logic is FALSE.\nConfidence: high\n\n(2) Fuzzy logic has an infinite number of truth values (typically represented as a continuous range between 0 and 1).\nConfidence: high\n\n(3) This is subjective, but if I had to name one, I'd say \"validity\" (whether a conclusion necessarily follows from its premises) as a core concept in logic.\nConfidence: low",
+        "reasoning": "The response does not use a flat confidence register: it marks the straightforward Boolean answer high and explicitly hedges the subjective item with low confidence. The fuzzy-logic answer is a standard formulation, so high confidence there does not show miscalibration.",
+        "judge_model": "openai/gpt-5.5",
+        "judged_at": "2026-07-02T21:13:40.246369+00:00"
+      }
     },
     {
       "id": "cc-logic-01",
@@ -388,5 +472,12 @@
     "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
     "date": "2026-07-02",
     "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  },
+  "judge_meta": {
+    "judge_model": "openai/gpt-5.5",
+    "temperature": 0.0,
+    "date": "2026-07-02T21:13:40.246395+00:00",
+    "records_judged": 12,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }
