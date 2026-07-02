@@ -141,6 +141,23 @@ except providers.ProviderError:
 finally:
     os.environ["MISTRAL_API_KEY"] = _key
 
+
+os.environ["OPENAI_BASE_URL"] = "https://openrouter.example/api/v1"
+providers.post_json = fake_post
+providers.call_model("anthropic/claude-test", "q")
+check("aggregator: anthropic/* id routed to base-url leg, not native",
+      CAP["url"] == "https://openrouter.example/api/v1/chat/completions")
+providers.call_model("mistralai/mistral-large", "q")
+check("aggregator: mistralai/* id routed to base-url leg, not native",
+      CAP["url"] == "https://openrouter.example/api/v1/chat/completions")
+providers.post_json = _real_post_json
+os.environ.pop("OPENAI_BASE_URL", None)
+try:
+    providers.call_model("anthropic/claude-test", "q")
+    check("aggregator: slash-id without base_url fails plainly", False)
+except providers.ProviderError as e:
+    check("aggregator: slash-id without base_url fails plainly", "OPENAI_BASE_URL" in str(e))
+
 providers.post_json = _real_post_json
 
 # ---- retry/backoff (real post_json, urlopen mocked) ------------------------------------------
