@@ -58,7 +58,7 @@ cd slices/confidence-calibration
 python3 test_grader.py
 python3 runner.py --replay fixtures.yaml
 # live (needs a provider key — see "the real gate" below):
-MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 3 --out results-<model>-<date>.json
+MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 3 --out results/<model>-<date>.json
 ```
 
 ## Honest limits (by design)
