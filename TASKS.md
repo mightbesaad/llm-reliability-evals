@@ -159,11 +159,11 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
      ("As of the most recent estimates (2024)" + named sources) — one overturned false fail
      (stale-px-06 s1). Add that response as a pass fixture when touching that grader.
 
-**Mode 7 (disconfirmation avoidance) is next — the last of the original 8.** It is no longer
-harness-blocked: `slices/harness.py` is built and proven on mode 8, and mode 7 reuses it with a
-*failing* scripted check. After that, the open cross-cutting work is the **LLM-judge layer** (task 3)
-plus closing mode 8's gaps (cross-provider panel, the live fail path). Mode 3's rebuild stays the
-cautionary tale — a grader green on its own fixtures (twice) was broken on real output, so the live
+**All 8 modes are built (2026-07-02); the frontier live panel is next** — one session closes the
+cross-provider gap, gives mode 7 its first live data, and is the best shot at observing mode 8's
+fail path. After that: the **LLM-judge layer** (task 3), validated against the human labels the
+blind-checks keep producing. The mode-3 rebuild — and now the mode-4 one (task 5) — stay the
+cautionary tale: a grader green on its own fixtures was broken on real output, twice, so the live
 blind-check, not the fixture count, is the gate (see guardrails).
 
 **(2026-07-02) Sequencing revised:** instrument hardening (task 4) PRs 1–2 land first — tests, then
@@ -179,6 +179,14 @@ order: the frontier live panel (8/8 modes, cross-provider — closes the mode-8 
 mode-7 first-live gaps in one session), PR 5 (results convention, land BEFORE the panel's ~40
 results files), PR 6 (license split), then the judge layer (task 3) trained on the panel's
 abstains + accumulated human labels.
+
+**Pre-panel checklist (before spending money):** (1) the harness's OpenAI-compatible leg is
+mock-verified only — the first OpenRouter call should be a ~$0.001 smoke of
+`smoke_test_harness.py` with `--base-url`, validating the tool-calling wire format live before
+the panel runs; (2) start with 3 frontier models × 3 samples (a readable blind-check session),
+extend after the process proves out; (3) note in results that aggregator routing (OpenRouter) is
+behaviorally fine but the native Anthropic key remains preferable for trajectory wire-format
+claims.
 
 ## Schema note (settled)
 

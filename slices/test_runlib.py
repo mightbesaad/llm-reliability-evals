@@ -133,6 +133,21 @@ check("base-url: flag exported to $OPENAI_BASE_URL for both call paths",
       os.environ.get("OPENAI_BASE_URL") == "http://localhost:9/v1")
 os.environ.pop("OPENAI_BASE_URL", None)
 
+
+# ---- replay regression contract -------------------------------------------------------------
+
+def fake_replay_mismatch(path):
+    return [{"id": "m", "verdict": "pass", "reason": "r", "signals": {},
+             "expect": "fail", "grader_agrees": False}]
+
+try:
+    with redirect_stdout(io.StringIO()):
+        runlib.main("t", "test-mode", TMP, fake_replay_mismatch, fake_live,
+                    argv=["--replay", "unused.yaml"])
+    check("replay: label mismatch exits nonzero", False)
+except SystemExit as e:
+    check("replay: label mismatch exits nonzero", e.code == 1)
+
 # ---- summary --------------------------------------------------------------------------------
 
 total = PASSED + len(FAILED)

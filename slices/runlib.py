@@ -168,3 +168,8 @@ def main(description: str, mode_name: str, here: str, run_replay, run_live,
     if args.out:
         write_results(args.out, model_label, mode_name, summary, results, params)
         print(f"\nwrote {args.out}")
+
+    # Replay of a labelled file is a regression check: any grader-vs-label disagreement is a
+    # nonzero exit, so `run.py` / CI can catch grader drift through the real runner path.
+    if args.replay and any(r.get("grader_agrees") is False for r in results):
+        sys.exit(1)

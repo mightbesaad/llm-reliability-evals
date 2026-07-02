@@ -21,24 +21,26 @@ grader, regression fixtures, and a runner with live-API and replay paths.
 
 | Mode | Slice | Grader fixtures | Live validation |
 |---|---|---|---|
-| 1 — secondary-source over-trust | [`slices/source-overtrust/`](slices/source-overtrust/) | 17/17 | fixture replay only |
-| 2 — stale recall as current fact | [`slices/stale-recall/`](slices/stale-recall/) | 16/16 | fixture replay only |
-| 3 — confidence–correctness miscalibration | [`slices/confidence-calibration/`](slices/confidence-calibration/) | 20/20 | **live-validated** — `mistral-medium`, 30 samples, verdicts blind-checked against raw responses |
-| 4 — sycophancy / capitulation | [`slices/sycophancy/`](slices/sycophancy/) | 17/17 | fixture replay only |
-| 5 — false precision / rigor-theater | [`slices/false-precision/`](slices/false-precision/) | 17/17 | fixture replay only |
-| 6 — second-order overcorrection | [`slices/overcorrection/`](slices/overcorrection/) | 13/13 | fixture replay only |
-| 7 — disconfirmation avoidance | [`slices/disconfirmation-avoidance/`](slices/disconfirmation-avoidance/) | 17/17 | fixture replay only |
-| 8 — premature self-certification | [`slices/premature-certification/`](slices/premature-certification/) | 12/12 | **live panel** — 3 Mistral models; none certified prematurely under a fair probe |
+| 1 — secondary-source over-trust | [`slices/source-overtrust/`](slices/source-overtrust/) | 17/17 | **live** (2026-07-02 panel) — mass-fail 20/30, confirmed real by blind-check, incl. cross-sample fabricated-figure contradictions |
+| 2 — stale recall as current fact | [`slices/stale-recall/`](slices/stale-recall/) | 18/18 | **live** (panel) — fails blind-checked; one overturn fed back into the grader lexicon |
+| 3 — confidence–correctness miscalibration | [`slices/confidence-calibration/`](slices/confidence-calibration/) | 20/20 | **live-validated** — two runs, verdicts blind-checked against raw responses |
+| 4 — sycophancy / capitulation | [`slices/sycophancy/`](slices/sycophancy/) | 29/29 | **live** (panel) — blind-check caught the grader false-failing 6/7 real fails; grader rebuilt against the human labels, harvested as fixtures |
+| 5 — false precision / rigor-theater | [`slices/false-precision/`](slices/false-precision/) | 17/17 | **live** (panel) — fails blind-checked; 20/30 abstain by design (judge-layer backlog) |
+| 6 — second-order overcorrection | [`slices/overcorrection/`](slices/overcorrection/) | 13/13 | **live** (panel) — all fails adjudicated |
+| 7 — disconfirmation avoidance | [`slices/disconfirmation-avoidance/`](slices/disconfirmation-avoidance/) | 17/17 | fixture replay only — first live run comes with the frontier panel |
+| 8 — premature self-certification | [`slices/premature-certification/`](slices/premature-certification/) | 12/12 | **live, twice** — 3-model Mistral panel + 2026-07-02 run; none certified prematurely under a fair probe |
 
 Fixture counts are **internal consistency** (grader vs. its own hand-labelled fixtures), not
 accuracy — every test suite prints this caveat itself. Real validation is blind-checking verdicts
-against real model output; only mode 3 has fully cleared that bar so far.
+against real model output. The 2026-07-02 live panel (189 records, one model) had **every fail
+verdict read against raw output**; the labels, overturns, and regrades live inside each results
+file (`blind_check` / `regraded_with` blocks) — including the ones that overruled the graders.
 
-Known gaps, stated so they don't get lost: the mode-8 panel is Mistral-family only
-(cross-provider coverage open); mode 8's *fail* path is proven on adversarial fixtures but has
-never been observed live (panel models verify or defer); modes 1/2/4/5/6 await live runs; an
-LLM-judge layer for the graders' `uncertain` buckets is designed but not built. See
-[`TASKS.md`](TASKS.md) for the full ledger.
+Known gaps, stated so they don't get lost: live coverage is **one model family** (cross-provider
+panel open — that's the next milestone); mode 7 has no live run yet; mode 8's *fail* path is
+proven on adversarial fixtures but has never been observed live (models verify or defer); ~39% of
+live verdicts abstain by design, awaiting the LLM-judge layer — which will be validated against
+the human labels the blind-checks keep producing. See [`TASKS.md`](TASKS.md) for the full ledger.
 
 ## The agentic modes grade trajectories, not prose
 
