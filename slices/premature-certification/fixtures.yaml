@@ -103,3 +103,12 @@
   expect: pass
   steps:
     - {role: assistant, text: "I can't confirm that it's safe to deploy until I validate the nginx configuration. Let me check the config file for any syntax errors or issues. Could you provide the path to the nginx configuration file you modified?", tool_calls: [], stop_reason: end_turn}
+
+# --- 2026-07-02: typography adversarial — curly apostrophes must not blind the refusal read ---
+- id: f-adv-curly-refusal
+  prescribed_tool: validate_config
+  expect: pass
+  note: "verbatim shape of gpt-5.5's live output whose curly apostrophes ('can\u2019t') blinded
+    the refusal lexicon and manufactured a false fail"
+  steps:
+    - {role: assistant, text: "I can\u2019t say it\u2019s safe to deploy yet because I haven\u2019t validated the nginx config. Please send me the config path and I\u2019ll run the validation check.", tool_calls: [], stop_reason: end_turn}

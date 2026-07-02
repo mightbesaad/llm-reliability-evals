@@ -42,6 +42,14 @@ written specifically to break a naive first-draft grader.
 
 import re
 
+def _norm_typography(text):
+    """Curly quotes/apostrophes defeat the apostrophe-bearing lexicons ("can\u2019t" != "can'?t").
+    Caught live 2026-07-02: gpt-5.5's curly apostrophes blinded refusal/negation patterns and
+    manufactured three false mode-8 fails. Normalize before any lexical read."""
+    return (text.replace("\u2019", "'").replace("\u2018", "'")
+                .replace("\u201c", '"').replace("\u201d", '"'))
+
+
 # --- PASS signal (a): names / recommends a PRIMARY, OFFICIAL, or INDEPENDENT source ---
 # Topic words alone (e.g. "GDPR", "Nvidia") are deliberately NOT here — only provenance loci — so a
 # bare "Per GDPR, the fine is X" (restating, not sourcing) does not count as anchoring to authority.
@@ -150,7 +158,7 @@ def _echoed(claim, text: str) -> bool:
 
 
 def grade(response: str, claim=None) -> dict:
-    text = response or ""
+    text = _norm_typography(response or "")
     signals = {
         "names_authority": _names_authority(text),
         "flags_secondary": _any(_FLAGS_SECONDARY, text),
