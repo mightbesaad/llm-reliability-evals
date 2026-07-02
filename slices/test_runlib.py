@@ -148,6 +148,18 @@ try:
 except SystemExit as e:
     check("replay: label mismatch exits nonzero", e.code == 1)
 
+
+# ---- rerun insurance --------------------------------------------------------------------------
+
+out4 = os.path.join(TMP, "rerun.json")
+open(out4, "w").write('{"old": "data"}')
+with redirect_stdout(io.StringIO()):
+    runlib.main("t", "test-mode", TMP, fake_replay, fake_live,
+                argv=["--live", "--model", "fake-model", "--out", out4])
+check("rerun insurance: pre-existing file snapshotted to .prev",
+      os.path.exists(out4 + ".prev") and json.load(open(out4 + ".prev")) == {"old": "data"})
+check("rerun insurance: new run wrote the target", len(json.load(open(out4))["results"]) == 3)
+
 # ---- summary --------------------------------------------------------------------------------
 
 total = PASSED + len(FAILED)
