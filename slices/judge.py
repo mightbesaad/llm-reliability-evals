@@ -119,7 +119,9 @@ Respond with ONLY this JSON object, nothing else:
 
 
 def parse_judge_reply(reply: str) -> dict:
-    m = re.search(r"\{.*\}", reply, re.S)
+    # A judge can return empty/None content (e.g. reasoning models exhausting max_tokens);
+    # that is a parse failure, not a crash — and parse failures are retryable on rerun.
+    m = re.search(r"\{.*\}", reply or "", re.S)
     if not m:
         return {"verdict": "uncertain", "evidence": "", "reasoning": "unparseable judge reply",
                 "parse_error": True}
@@ -239,8 +241,10 @@ def main() -> int:
     # adjudicate the uncertain bucket, embed verdicts + provenance, atomic write
     n = 0
     for rec in data["results"]:
-        if rec["verdict"] != "uncertain" or "judge" in rec:
+        if rec["verdict"] != "uncertain":
             continue
+        if "judge" in rec and not rec["judge"].get("parse_error"):
+            continue  # already judged cleanly; parse errors are retried
         rec["judge"] = judge_record(slice_dir, rec, inst.get(rec["id"], {}), args.judge_model, args.temperature)
         n += 1
         print(f"judged {rec['id']} s{rec.get('sample')}: {rec['judge']['verdict']}")
