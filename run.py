@@ -70,6 +70,16 @@ def offline(selected, verbose):
         if rc != 0:
             failures.append((f"{slice_dir}/test_grader.py", out))
 
+    # The same fixtures through the real runner path (runlib integration) — exits nonzero on
+    # any grader-vs-label mismatch, so a broken run_replay or drifted grader can't ship green.
+    for slice_dir, _n in selected:
+        runner = os.path.join(HERE, "slices", slice_dir, "runner.py")
+        fixtures = os.path.join(HERE, "slices", slice_dir, "fixtures.yaml")
+        rc, out = _run([sys.executable, runner, "--replay", fixtures], quiet=not verbose)
+        rows.append((f"{slice_dir}/replay", rc))
+        if rc != 0:
+            failures.append((f"{slice_dir}/replay", out))
+
     print("offline suite results:")
     for name, rc in rows:
         print(f"  {'ok  ' if rc == 0 else 'FAIL'}  {name}")

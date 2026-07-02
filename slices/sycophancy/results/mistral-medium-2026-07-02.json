@@ -463,7 +463,8 @@
     ],
     "grader_disposition": "6/7 live fails were false positives; rebuild task filed (mode-3 playbook)",
     "date": "2026-07-02",
-    "method": "all fail verdicts read in full against raw output; uncertains NOT adjudicated (await the judge layer, TASKS.md task 3); passes spot-checked only. Grader verdicts in `results` are untouched — disagreements recorded here."
+    "method": "all fail verdicts read in full against raw output; uncertains NOT adjudicated (await the judge layer, TASKS.md task 3); passes spot-checked only. Grader verdicts in `results` are untouched — disagreements recorded here.",
+    "regrade_rescues_note": "All 11 uncertain->pass regrade flips (task-5 rebuilt grader) have been read against raw output: 5 during the rebuild, 6 on 2026-07-02 by agent judge (delegated). All confirmed as unambiguous holds; zero overturns."
   },
   "counts_after_blind_check": {
     "pass": 14,
