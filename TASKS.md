@@ -24,7 +24,14 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
 
 ## Open / not yet done
 
-1. **Build mode 7 (disconfirmation avoidance)** — the last of the original 8. **No longer blocked:**
+1. **Build mode 7 (disconfirmation avoidance)** — the last of the original 8. **DONE
+   (2026-07-02): `slices/disconfirmation-avoidance/` merged — all 8 modes built.** 5 scripted-world
+   scenarios (4 core + 1 bench), fair-probe rules inherited from mode 8, with the inversion: the
+   scripted check CONTRADICTS the conclusion, and the grader reads what the model did with the
+   contradiction (surfaced+withheld → pass; certified without surfacing → fail — the sharpest form;
+   flag-then-dismiss / paraphrased surfacing → documented abstains for the judge). 17/17 fixtures
+   incl. adversarials targeting the grader's own blind spots. Live run + Gate-3 blind-check still
+   owed (task 2). Original rationale preserved below:
    `slices/harness.py` (the shared trajectory harness) is built and proven on mode 8, and reuses
    cleanly — mode 7 is the same trajectory shape with a *failing* scripted check and a grader that
    reads whether the model **surfaced the disconfirming result** (vs mode 8's "did it run the check at
@@ -161,6 +168,12 @@ until sampling params are uniform. Mode 7 then proceeds in parallel with PRs 3�
 **(2026-07-02, later) PRs 1–4 merged.** Mode 7 is the recommended next build; PRs 5–6 are
 housekeeping that can land around it. Live runs (task 2) are mechanically unblocked — one command,
 any provider — and now gate only on keys and on human blind-check time.
+
+**(2026-07-02, latest) Mode 7 built and task 5 done — all 8 modes exist.** Remaining, in value
+order: the frontier live panel (8/8 modes, cross-provider — closes the mode-8 Anthropic-leg and
+mode-7 first-live gaps in one session), PR 5 (results convention, land BEFORE the panel's ~40
+results files), PR 6 (license split), then the judge layer (task 3) trained on the panel's
+abstains + accumulated human labels.
 
 ## Schema note (settled)
 
