@@ -46,11 +46,18 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
    positive, abstentions honest). Modes 1/2/4/5/6 still have only synthetic-fixture replay and want
    the same treatment.
    ```sh
-   # Live (API):
+   # Live — the whole panel in one command (dated results file per slice, params recorded):
+   MISTRAL_API_KEY=... python3 run.py --live --model mistral-medium --samples 3
+   # or per slice:
    MISTRAL_API_KEY=... python3 slices/<mode>/runner.py --live --model mistral-medium --samples 3 --out results.json
+   # or any OpenAI-compatible endpoint (Ollama / vLLM / Groq / OpenRouter — no hosted key needed):
+   python3 run.py --live --model llama3.2 --base-url http://localhost:11434/v1
    # Or manual: paste a slice prompt into claude.ai, copy the literal reply into a fixtures-style
    # entry { id, response: "<verbatim>", expect: <blind label> }, then --replay it.
    ```
+   (Note: modes 4 and 6 had a broken live path — malformed payloads — until 2026-07-02, so no
+   earlier live attempt on them could have succeeded; fixture-only status was structural, not
+   just unattempted.)
    The **blind-check** (read the raw responses; confirm verdicts are sane) is the real gate — not the
    count of decisions. That is the step whose absence shipped a broken mode-3 grader twice. The
    confidence-calibration runner now keeps the raw response in `--live` records to make this possible.
@@ -63,32 +70,40 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
    (the deterministic grader reads only explicit confidence labels).
 
 4. **Instrument hardening — model-agnostic + one-command run.** A dependency-ordered PR ladder;
-   each PR is guarded by what the previous one built, and `main` stays shippable at every boundary.
-   - **PR 1 — harness offline tests**: `slices/test_harness.py`, mocked HTTP. Pins the trajectory
-     normalization contract (schema parity across providers, stop-reason mapping, unscripted-tool
-     error results, max-turns cap, parallel calls) *before* anything touches the harness. In CI.
-   - **PR 2 — provider layer**: uniform sampling params sent to *every* provider — today Anthropic
-     gets no temperature + `max_tokens: 512` while Mistral/OpenAI get `0.7` + provider-default
-     max_tokens, so any cross-provider comparison is confounded until this lands (this silently
-     blocks the mode-8 Anthropic leg in task 1). Plus: an OpenAI-compatible `base_url` path
-     (Ollama / vLLM / Groq / OpenRouter / local — model-agnostic for real); retry with backoff on
-     429/5xx (likely closes the `mistral-large` 429 gap without waiting on quota); urllib-only so
-     deps collapse to `pyyaml`; `ProviderError` raised from library modules instead of `SystemExit`.
-   - **PR 3 — live-run durability**: incremental flush (today a crash at sample 29/30 discards all
-     30 paid calls — results are only written at the end); extract *only* report/args/results-writing
-     into a shared runlib. `run_live` / `run_replay` stay per-slice — self-containment is deliberate.
-   - **PR 4 — entry point**: top-level `run.py`; bare invocation = all offline suites, zero keys,
-     green in under a minute (the contributor-conversion path). README rewritten around it.
-   - **PR 5 — results convention**: `slices/<mode>/results/<model>-<YYYY-MM-DD>.json` plus a
-     `params` block *inside* every results file — sampling params are currently recorded nowhere,
-     which quietly undermines the reproducibility claim. Retire `-latest` filenames.
-   - **PR 6 — license split**: Apache-2.0 for code, CC-BY-4.0 retained for TAXONOMY.md and docs
-     (CC licenses are not recommended for software; attribution keeps flowing where it matters —
-     the taxonomy). Owner eyeballs this one before it lands.
+   each PR guarded by what the previous one built. **Status (2026-07-02): PRs 1–4 merged; 5–6 open.**
+   - **PR 1 — harness offline tests** — **DONE** (#2): `slices/test_harness.py`, mocked HTTP. Pins
+     the trajectory normalization contract (schema parity across providers, stop-reason mapping,
+     unscripted-tool error results, max-turns cap, parallel calls). 33 checks after PR 2 extended
+     it. In CI.
+   - **PR 2 — provider layer** — **DONE** (#4; replaced #3, auto-closed when its stacked base was
+     deleted): uniform sampling params to every provider (temperature 0.7 / max_tokens 1024) — the
+     cross-provider confound is gone, so the mode-8 Anthropic leg is comparable the day a key
+     exists. OpenAI-compatible `$OPENAI_BASE_URL` path for BOTH `call_model` and the trajectory
+     harness (Ollama / vLLM / Groq / OpenRouter / local; key optional off api.openai.com). Retry
+     w/ backoff honoring Retry-After — the `mistral-large` 429 gap is likely closable by rerun.
+     urllib-only (deps = pyyaml). 21-check `test_providers.py`.
+   - **PR 3 — live-run durability + runlib** — **DONE** (#5): results flushed atomically after
+     EVERY record (`"partial": true` until the final summary write) — an aborted run keeps all
+     completed samples. Params `{temperature, samples, base_url}` recorded inside every live
+     results file. `--temperature` / `--base-url` on all 7 runners. `ProviderError` a real
+     exception owned by runlib. Replay outputs verified byte-identical to the pre-refactor
+     baseline. **Found + fixed a latent bug: modes 4/6 passed message lists as `prompt`,
+     double-wrapping into malformed payloads — never caught because those modes have never run
+     live (task 2's exposure, made concrete).** 16-check `test_runlib.py`.
+   - **PR 4 — entry point** — **DONE** (#6): top-level `run.py`; bare invocation = the whole
+     offline suite (10/10 suites, no keys, under a minute) and IS the CI command — local/CI
+     parity. `--live` panels every built slice with dated per-slice results files. The failure
+     path was proven by flipping a fixture label, not assumed.
+   - **PR 5 — results convention** — OPEN: `slices/<mode>/results/<model>-<YYYY-MM-DD>.json`;
+     move the existing files in, retire `-latest` names, update the mode-8 README pointers. (The
+     params-block half of this item already landed with PR 3.)
+   - **PR 6 — license split** — OPEN: Apache-2.0 for code, CC-BY-4.0 retained for TAXONOMY.md and
+     docs (CC licenses are not recommended for software; attribution keeps flowing where it
+     matters — the taxonomy). Owner eyeballs this one before it lands.
 
-   **Mode 7 starts after PR 2**, in parallel with PRs 3–5 — on a harness that is by then tested
-   (PR 1) and retry-hardened (PR 2). The mode-3 lesson applies to infrastructure too: don't build
-   the last mode on an untested substrate.
+   **Mode 7 is now fully unblocked** — the harness it builds on is tested, retry-hardened, and
+   model-agnostic. The mode-3 lesson applied to infrastructure too: the last mode was not built
+   on an untested substrate.
 
 ## Recommendation
 
@@ -102,6 +117,10 @@ blind-check, not the fixture count, is the gate (see guardrails).
 **(2026-07-02) Sequencing revised:** instrument hardening (task 4) PRs 1–2 land first — tests, then
 the provider layer — because mode 7 builds on the harness and the mode-8 Anthropic leg is confounded
 until sampling params are uniform. Mode 7 then proceeds in parallel with PRs 3–5.
+
+**(2026-07-02, later) PRs 1–4 merged.** Mode 7 is the recommended next build; PRs 5–6 are
+housekeeping that can land around it. Live runs (task 2) are mechanically unblocked — one command,
+any provider — and now gate only on keys and on human blind-check time.
 
 ## Schema note (settled)
 
