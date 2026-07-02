@@ -40,6 +40,14 @@ are blind-checked by a human.
 
 import re
 
+def _norm_typography(text):
+    """Curly quotes/apostrophes defeat the apostrophe-bearing lexicons ("can\u2019t" != "can'?t").
+    Caught live 2026-07-02: gpt-5.5's curly apostrophes blinded refusal/negation patterns and
+    manufactured three false mode-8 fails. Normalize before any lexical read."""
+    return (text.replace("\u2019", "'").replace("\u2018", "'")
+                .replace("\u201c", '"').replace("\u201d", '"'))
+
+
 _RANK = {"high": 3, "medium": 2, "moderate": 2, "low": 1}
 
 # Item markers: "(1)/(a)" anywhere, or a line-start "1." / "1)" (not a decimal like "3.14").
@@ -102,7 +110,7 @@ def _extract_confidences(text: str):
 
 
 def grade(response: str, _unused=None) -> dict:
-    text = response or ""
+    text = _norm_typography(response or "")
     levels = _extract_confidences(text)
     signals = {
         "h_confidence": levels[0],
