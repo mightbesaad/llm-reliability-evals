@@ -22,9 +22,8 @@ no temperature while Mistral/OpenAI got 0.7 and no max_tokens, confounding any p
 Pass temperature= / max_tokens= to call_model to override per run.
 
 HTTP is stdlib-only (urllib); post_json retries 429/5xx with exponential backoff,
-honoring Retry-After. Failures raise ProviderError. Transitional note: ProviderError
-subclasses SystemExit so the existing runners exit cleanly with the message; the shared
-runlib (TASKS.md task 4, PR 3) will catch it as a regular exception instead.
+honoring Retry-After. Failures raise ProviderError — runlib.main catches it for the
+runners (preserving any partial results); direct scripts wrap their own entry points.
 
 Usage in runners:
     from providers import call_model
@@ -57,9 +56,9 @@ MISTRAL_PREFIXES = ("mistral", "open-mistral", "open-mixtral", "codestral", "pix
 OPENAI_PREFIXES = ("gpt", "o1", "o3", "o4", "chatgpt")
 
 
-class ProviderError(SystemExit):
-    """A provider/API failure. Subclasses SystemExit (transitional) so runners exit cleanly
-    with the message; PR 3's shared runlib will catch it as a regular exception."""
+class ProviderError(RuntimeError):
+    """A provider/API failure (missing key, no route, HTTP error after retries). Callers own
+    the exit: runlib.main catches it for the runners; direct scripts wrap their entry points."""
 
 
 def _retry_delay(retry_after: str | None, attempt: int) -> float:
