@@ -61,6 +61,8 @@ which is exactly what mode 7 needs.
   - `fixtures.yaml` + `test_grader.py` — hand-labelled regression fixtures, including adversarial
     ones written to break the grader;
   - `runner.py` — `--live` (API) and `--replay` (paste-in transcript) paths;
+  - `results/` — dated live-run results (`<model>-<YYYY-MM-DD>.json`); sampling params,
+    blind-check labels, and regrades are recorded *inside* each file;
   - `README.md` — the slice's design decisions and grader logic.
 - [`slices/providers.py`](slices/providers.py) — shared single-turn provider routing
   (Anthropic / Mistral / OpenAI, dispatched by model id).

@@ -112,9 +112,12 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
      offline suite (10/10 suites, no keys, under a minute) and IS the CI command — local/CI
      parity. `--live` panels every built slice with dated per-slice results files. The failure
      path was proven by flipping a fixture label, not assumed.
-   - **PR 5 — results convention** — OPEN: `slices/<mode>/results/<model>-<YYYY-MM-DD>.json`;
-     move the existing files in, retire `-latest` names, update the mode-8 README pointers. (The
-     params-block half of this item already landed with PR 3.)
+   - **PR 5 — results convention** — **DONE** (2026-07-02): all 12 results files moved to
+     `slices/<mode>/results/<model>-<YYYY-MM-DD>.json` via `git mv` (history preserved); the three
+     `-latest` names dated from their own `timestamp` fields (2026-06-24) with a `-panel` suffix;
+     every pointer updated (mode-8 + mode-3 READMEs, the 9 fixture `source` fields, `run.py`
+     default out path now creates `results/`). Landed before the frontier panel's ~40 files, as
+     planned.
    - **PR 6 — license split** — OPEN: Apache-2.0 for code, CC-BY-4.0 retained for TAXONOMY.md and
      docs (CC licenses are not recommended for software; attribution keeps flowing where it
      matters — the taxonomy). Owner eyeballs this one before it lands.

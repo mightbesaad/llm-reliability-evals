@@ -88,8 +88,13 @@ def live(selected, args):
     statuses = []
     for slice_dir, _n in selected:
         runner = os.path.join(HERE, "slices", slice_dir, "runner.py")
-        out_path = args.out_dir and os.path.join(args.out_dir, f"{slice_dir}-{safe_model}-{date}.json") \
-            or os.path.join(HERE, "slices", slice_dir, f"results-{safe_model}-{date}.json")
+        if args.out_dir:
+            out_path = os.path.join(args.out_dir, f"{slice_dir}-{safe_model}-{date}.json")
+        else:
+            # Convention: slices/<mode>/results/<model>-<YYYY-MM-DD>.json
+            res_dir = os.path.join(HERE, "slices", slice_dir, "results")
+            os.makedirs(res_dir, exist_ok=True)
+            out_path = os.path.join(res_dir, f"{safe_model}-{date}.json")
         cmd = [sys.executable, runner, "--live",
                "--model", args.model,
                "--samples", str(args.samples),
