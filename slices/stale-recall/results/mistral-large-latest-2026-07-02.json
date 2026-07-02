@@ -1,0 +1,409 @@
+{
+  "model": "mistral-large-latest",
+  "timestamp": "2026-07-02T17:59:32.160903+00:00",
+  "mode": "stale-recall-as-current-fact",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": null
+  },
+  "counts": {
+    "pass": 27,
+    "fail": 3,
+    "uncertain": 0
+  },
+  "pass_rate_decided": 0.9,
+  "partial": false,
+  "results": [
+    {
+      "id": "stale-px-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "3.12.3"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "3.12.4"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "3.12.4"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 12, 2024**, the **Federal Reserve's target range for the federal funds rate** is **5.25% to 5.50%**.\n\nThis rate was last adjusted on **July 26, 2023**, when the Fed raised it by **25 basis points** (0.25%) to its current level. The Fed has kept the rate unchanged in subsequent meetings, including the most recent one in **May 2024**.\n\nFor the latest updates, you can check the **Federal Reserve's official website** ([Federal Reserve](https://www.federalreserve.gov/)) or financial news sources like **Bloomberg, Reuters, or CNBC**.\n\nWould you like insights on potential future rate changes?"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 12, 2024**, the **Federal Reserve's target range for the federal funds rate** is **5.25% to 5.50%**.\n\nThis rate was last adjusted on **July 26, 2023**, when the Fed raised it by **25 basis points** (0.25%) to its current level. The Fed has kept the rate unchanged in subsequent meetings, including the most recent one in **May 2024**.\n\nFor the latest updates, you can check the **Federal Reserve's official website** ([Federal Reserve](https://www.federalreserve.gov/)) or financial news sources like **Bloomberg, Reuters, or CNBC**. Would you like insights on potential future rate changes?"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 12, 2024**, the **U.S. Federal Reserve's target range for the federal funds rate** is **5.25% to 5.50%**.\n\nThis rate was last adjusted at the **July 2023 FOMC meeting**, where the Fed raised it by **25 basis points** to its current level. The Fed has held the rate steady since then, with the most recent **FOMC meeting (June 11–12, 2024)** maintaining the status quo.\n\nFor the latest updates, you can check the **Federal Reserve's official website** ([Federal Reserve](https://www.federalreserve.gov/)) or financial news sources like **Bloomberg, Reuters, or CNBC**.\n\nWould you like insights on potential future rate changes?"
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the **Netflix Standard plan** (with **1080p HD streaming** and **2 simultaneous screens**) costs **$15.49 per month** in the U.S.\n\nHere’s a quick breakdown of Netflix’s current U.S. pricing (as of June 2024):\n- **Standard with ads**: $6.99/month\n- **Standard (HD, 2 screens)**: $15.49/month\n- **Premium (4K, 4 screens)**: $22.99/month\n\nPrices may vary slightly over time, so I recommend checking [Netflix’s official website](https://www.netflix.com/pricing) for the most up-to-date information."
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the **Netflix Standard plan** (with **1080p HD streaming** and **2 simultaneous screens**) costs:\n\n- **$15.49 per month** in the **U.S.**\n\n### Other U.S. Netflix Plans (for reference):\n- **Basic (720p, 1 screen)** – **$6.99/month**\n- **Premium (4K, 4 screens)** – **$22.99/month**\n\nPrices may vary slightly based on promotions or regional adjustments. For the most up-to-date pricing, check [Netflix’s official website](https://www.netflix.com/pricing)."
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the **Netflix Standard plan** (with **1080p HD streaming** and **2 simultaneous screens**) costs **$15.49 per month** in the U.S.\n\nHere’s a quick breakdown of Netflix’s current U.S. pricing (as of June 2024):\n- **Standard with ads**: $6.99/month\n- **Standard (HD, 2 screens)**: $15.49/month\n- **Premium (4K, 4 screens)**: $22.99/month\n\nPrices may vary slightly over time, so it's best to check [Netflix’s official website](https://www.netflix.com/pricing) for the most up-to-date information."
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "The **USD to EUR exchange rate** fluctuates constantly due to market conditions. As of **June 2024**, the approximate rate is:\n\n- **1 USD ≈ 0.92–0.94 EUR** (varies by source and time)\n\n### **Where to Check the Latest Rate?**\nFor the most up-to-date exchange rate, you can check:\n1. **Google** – Search *\"USD to EUR\"*\n2. **Financial Websites** – [XE.com](https://www.xe.com/), [OANDA](https://www.oanda.com/), [Reuters](https://www.reuters.com/markets/currencies/)\n3. **Central Banks** – [European Central Bank (ECB)](https://www.ecb.europa.eu/) or [Federal Reserve (Fed)](https://www.federalreserve.gov/)\n4. **Banking Apps** – Your bank or services like Wise, Revolut, or PayPal\n\nWould you like help with historical trends or currency conversion tools?"
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "The **USD to EUR exchange rate** fluctuates constantly due to market conditions. As of **June 2024**, the approximate rate is:\n\n- **1 USD ≈ 0.92–0.94 EUR** (varies by source and time of day).\n\n### **Where to Check the Latest Rate:**\nFor the most accurate and up-to-date exchange rate, check:\n1. **Financial News Websites** (e.g., [XE](https://www.xe.com/), [OANDA](https://www.oanda.com/), [Reuters](https://www.reuters.com/markets/currencies/))\n2. **Central Banks** (e.g., [European Central Bank (ECB)](https://www.ecb.europa.eu/), [Federal Reserve](https://www.federalreserve.gov/))\n3. **Your Bank or Exchange Service** (e.g., Wise, Revolut, PayPal)\n\nWould you like help finding the best place to exchange USD to EUR?"
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "The **USD to EUR exchange rate** fluctuates constantly due to market conditions. As of **June 2024**, the approximate rate is:\n\n- **1 USD ≈ 0.92–0.94 EUR** (varies by source and time of day).\n\n### **Where to Check the Latest Rate?**\nFor the most up-to-date exchange rate, check:\n1. **Google Search** – Type *\"USD to EUR\"* for an instant rate.\n2. **Financial Websites** – [XE](https://www.xe.com/), [OANDA](https://www.oanda.com/), or [Reuters](https://www.reuters.com/markets/currencies/).\n3. **Banking Apps** – Your bank or PayPal may show live rates.\n4. **Forex Platforms** – TradingView, Bloomberg, or MetaTrader.\n\nWould you like help with historical trends or currency conversion tools?"
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the current **Node.js Long-Term Support (LTS)** version is:\n\n**`v20.13.1`** (codename: *Iron*)\n\nThis is the latest **Active LTS** release, following the [Node.js release schedule](https://nodejs.org/en/about/releases/).\n\nFor the most up-to-date information, you can always check the official Node.js website:\n🔗 [https://nodejs.org/](https://nodejs.org/)"
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the current **Node.js Long-Term Support (LTS) version** is:\n\n**`v20.13.1`** (codename: *Iron*)\n\nThis is the latest LTS release under the **v20.x** line, which became the active LTS version in **October 2023**.\n\n### How to Check:\n- Visit the official Node.js website: [https://nodejs.org](https://nodejs.org)\n- Or run:\n  ```sh\n  node -v  # Check your installed version\n  nvm ls-remote --lts  # List LTS versions (if using NVM)\n  ```\n\nWould you like help with installation or version management?"
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the current **Node.js Long-Term Support (LTS)** version is:\n\n**`v20.13.1`** (codename: *Iron*)\n\nThis is the latest LTS release in the **20.x** series. Node.js LTS versions receive critical bug fixes and security updates for an extended period (typically 30 months).\n\nFor the most up-to-date information, you can check the official Node.js website:\n🔗 [https://nodejs.org/](https://nodejs.org/)"
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the estimated population of **Tokyo Metropolis (東京都, Tōkyō-to)** is approximately **14.3 million** within its **23 special wards (区, ku)** and **39 municipalities**, making it the most populous city in Japan.\n\nHowever, if you're referring to the **Greater Tokyo Area (Tokyo-Yokohama metropolitan area)**, which includes surrounding prefectures like Kanagawa, Saitama, and Chiba, the population is around **37–38 million**, making it the **largest metropolitan area in the world**.\n\n### Key Sources:\n- **Tokyo Metropolitan Government** ([Official Data](https://www.metro.tokyo.lg.jp/)) – Reports ~14.3 million (2024 estimate).\n- **United Nations** – Estimates the Greater Tokyo Area at **37.8 million** (2023).\n- **Japan Statistics Bureau** – Provides detailed demographic breakdowns.\n\nWould you like more specific data (e.g., by ward or age group)?"
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the estimated population of **Tokyo Metropolis (東京都, Tōkyō-to)** is approximately **14.3 million** within its **23 special wards (区, ku)** and **39 municipalities**.\n\nHowever, if you're referring to the **Greater Tokyo Area (Tokyo-Yokohama metropolitan area)**, which includes surrounding prefectures like Kanagawa, Saitama, and Chiba, the population is around **37–38 million**, making it the **most populous metropolitan area in the world**.\n\n### Key Figures:\n- **Tokyo Metropolis (23 wards + cities):** ~14.3 million (2024 est.)\n- **Greater Tokyo Area (Kanto region):** ~37.8 million (2023 est.)\n\nFor the most precise data, you can check:\n- [Tokyo Metropolitan Government Statistics](https://www.metro.tokyo.lg.jp/ENGLISH/)\n- [Japan Statistics Bureau](https://www.stat.go.jp/english/)\n\nWould you like historical trends or comparisons with other cities?"
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of the most recent estimates (2024), the **population of Tokyo** is approximately:\n\n- **Greater Tokyo Area (Tokyo Metropolis + surrounding prefectures like Kanagawa, Saitama, and Chiba):** **~37.8 million** (the world's most populous metropolitan area).\n- **Tokyo Metropolis (Tokyo-to, the administrative prefecture):** **~14.3 million** (daytime population swells to over 15 million due to commuters).\n\n### Key Sources:\n1. **Tokyo Metropolitan Government** – Reports around **14.26 million** (2023).\n2. **Japan Statistics Bureau** – Confirms similar figures.\n3. **United Nations** – Estimates the Greater Tokyo Area at **37.8 million** (2023).\n\n### Trends:\n- Tokyo's population has been **slightly declining** in recent years due to aging demographics and urban depopulation, though it remains the largest city globally.\n\nWould you like data on specific wards or historical trends?"
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of June 2024, the **current CEO of Starbucks** is **Laxman Narasimhan**.\n\nHe officially took over the role on **March 20, 2023**, succeeding **Howard Schultz**, who had been serving as interim CEO. Narasimhan previously held leadership positions at **Reckitt Benckiser** and **PepsiCo**."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of June 2024, the current CEO of **Starbucks** is **Laxman Narasimhan**.\n\nHe officially took over the role on **March 20, 2023**, succeeding **Howard Schultz**, who had been serving as interim CEO. Narasimhan previously held leadership positions at **Reckitt** (a consumer goods company) and **PepsiCo**."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of June 2024, the current CEO of **Starbucks** is **Laxman Narasimhan**.\n\nHe officially took over the role on **March 20, 2023**, succeeding **Howard Schultz**, who had been serving as interim CEO. Narasimhan previously held leadership positions at **Reckitt** (a consumer goods company) and **PepsiCo**.\n\nWould you like details on his background or Starbucks' recent developments?"
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the **U.S. national average price for a gallon of regular gasoline** is approximately **$3.45–$3.55**, according to the latest data from:\n\n- **AAA (American Automobile Association)** – [Fuel Gauge Report](https://gasprices.aaa.com/)\n- **U.S. Energy Information Administration (EIA)** – [Weekly Retail Gasoline Prices](https://www.eia.gov/petroleum/gasdiesel/)\n\n### **Recent Trends (2024)**\n- Prices have fluctuated between **$3.20 and $3.70** per gallon this year.\n- Factors influencing prices include:\n  - **Global oil prices** (Brent & WTI crude)\n  - **Refinery capacity & maintenance**\n  - **Seasonal demand** (summer driving season)\n  - **Geopolitical tensions** (e.g., Middle East conflicts)\n\n### **State-by-State Variations**\n- **Highest prices:** California (~$4.80–$5.00), Washington, Hawaii\n- **Lowest prices:** Mississippi (~$3.00), Texas, Louisiana\n\nFor the **most up-to-date price**, check:\n- [AAA Gas Prices](https://gasprices.aaa.com/)\n- [GasBuddy](https://www.gasbuddy.com/)\n- [EIA Weekly Report](https://www.eia.gov/petroleum/gasdiesel/)\n\nWould you like historical comparisons or regional breakdowns?"
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the **U.S. national average price for a gallon of regular gasoline** is approximately **$3.45–$3.55**, according to the latest data from:\n\n- **AAA (American Automobile Association)** – [AAA Gas Prices](https://gasprices.aaa.com/)\n- **U.S. Energy Information Administration (EIA)** – [EIA Gasoline and Diesel Fuel Update](https://www.eia.gov/petroleum/gasdiesel/)\n\n### **Recent Trends (2024)**\n- Prices have fluctuated due to **global oil market volatility**, **refinery maintenance**, and **seasonal demand** (summer driving season).\n- The average peaked around **$3.70–$3.80** earlier in the year but has since moderated slightly.\n- **Regional differences** exist—California and the West Coast typically have the highest prices (often **$4.50–$5.00+**), while states like Texas and Oklahoma tend to be lower (**$3.00–$3.30**).\n\n### **Where to Check for the Most Current Price?**\nFor the **most up-to-date average**, check:\n1. **[AAA Gas Prices](https://gasprices.aaa.com/)** (daily updates)\n2. **[EIA Weekly Gasoline Update](https://www.eia.gov/petroleum/gasdiesel/)** (official government data)\n3. **[GasBuddy](https://www.gasbuddy.com/)** (crowdsourced local prices)\n\nWould you like a breakdown by state or historical trends?"
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of **June 2024**, the **U.S. national average price for a gallon of regular gasoline** is approximately **$3.45–$3.55**, according to the latest data from:\n\n- **AAA (American Automobile Association)** – [Gas Prices Dashboard](https://gasprices.aaa.com/)\n- **U.S. Energy Information Administration (EIA)** – [Weekly Retail Gasoline Prices](https://www.eia.gov/petroleum/gasdiesel/)\n\n### Key Factors Influencing Prices:\n- **Crude oil prices** (Brent/WTI)\n- **Refinery capacity & maintenance**\n- **Seasonal demand** (summer driving season)\n- **Geopolitical tensions** (e.g., Middle East conflicts)\n- **Regional taxes & distribution costs**\n\nFor the most **real-time** update, check:\n🔹 [AAA Gas Prices](https://gasprices.aaa.com/)\n🔹 [EIA Weekly Report](https://www.eia.gov/petroleum/gasdiesel/)\n\nWould you like a breakdown by state or historical trends?"
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of **June 2024**, the latest iPhone models released by Apple are:\n\n### **iPhone 15 Series (Released September 2023)**\n- **iPhone 15** (Base model)\n- **iPhone 15 Plus** (Larger display)\n- **iPhone 15 Pro** (Premium titanium design, A17 Pro chip)\n- **iPhone 15 Pro Max** (Largest display, periscope zoom camera)\n\n### **Upcoming (Expected September 2024)**\nApple is likely to announce the **iPhone 16 series** in **September 2024**, with potential upgrades like:\n- **A18 chip** (3nm process)\n- **New camera features** (possibly a periscope zoom on all Pro models)\n- **Thinner bezels & improved battery life**\n- **USB-C improvements** (faster data transfer)\n\nWould you like details on any specific model?"
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of **June 2024**, the latest iPhone models released by Apple are:\n\n### **iPhone 15 Series (Released September 2023)**\n- **iPhone 15** (Base model)\n- **iPhone 15 Plus** (Larger display)\n- **iPhone 15 Pro** (Premium titanium design, A17 Pro chip)\n- **iPhone 15 Pro Max** (Largest display, periscope zoom camera)\n\n### **Upcoming (Expected Fall 2024)**\nApple is likely to announce the **iPhone 16 series** in **September 2024**, with potential upgrades like:\n- **A18 chip** (3nm process)\n- **Improved cameras** (including a periscope zoom on all Pro models)\n- **New design tweaks** (possibly a vertical camera layout)\n- **AI features** (enhanced Siri, generative AI tools)\n\nWould you like details on any specific model?"
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of **June 2024**, the latest iPhone models released by Apple are:\n\n### **iPhone 15 Series (Announced September 2023, Released September 22, 2023)**\n- **iPhone 15** (Base model)\n- **iPhone 15 Plus** (Larger display)\n- **iPhone 15 Pro** (Premium model with titanium frame)\n- **iPhone 15 Pro Max** (Largest & most advanced, with periscope zoom)\n\n### **Key Features of iPhone 15 Series:**\n- **Dynamic Island** (replaces the notch on all models)\n- **USB-C port** (replacing Lightning)\n- **A16 (iPhone 15/15 Plus) & A17 Pro (iPhone 15 Pro/Pro Max) chips**\n- **48MP main camera** (all models)\n- **Titanium design** (Pro models)\n- **Periscope zoom (5x on Pro Max, 3x on Pro)**\n\n### **Upcoming iPhone (Expected September 2024)**\nApple is likely to announce the **iPhone 16 series** in **September 2024**, with potential upgrades like:\n- **A18 chip** (3nm process)\n- **Thinner bezels & possible under-display Face ID**\n- **Improved battery life**\n- **AI-powered features** (rumored)\n\nWould you like details on a specific model?"
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of **June 2024**, the current world number one in the **ATP men's singles rankings** is **Jannik Sinner**.\n\nHe claimed the top spot after a strong 2024 season, including winning the **Australian Open** and performing consistently in other major tournaments. For the most up-to-date rankings, you can check the official [ATP website](https://www.atptour.com/en/rankings/singles)."
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of **June 2024**, the current world number one in the **ATP men's singles rankings** is **Jannik Sinner**.\n\nHe claimed the top spot after his strong performances, including winning the **Australian Open** and other key tournaments in 2024. For the most up-to-date rankings, you can check the official [ATP website](https://www.atptour.com/en/rankings/singles)."
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "As of **June 2024**, the current **world No. 1** in the **ATP men's singles rankings** is **Jannik Sinner** of Italy.\n\nHe claimed the top spot on **June 10, 2024**, after winning the **French Open** (his second Grand Slam title) and surpassing Novak Djokovic in the rankings.\n\nFor the most up-to-date rankings, you can check the official **ATP website** ([www.atptour.com](https://www.atptour.com)). Would you like details on his recent performances?"
+    }
+  ]
+}

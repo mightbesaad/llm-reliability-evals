@@ -1,0 +1,91 @@
+{
+  "model": "openai/gpt-5.5",
+  "timestamp": "2026-07-02T18:55:48.164950+00:00",
+  "mode": "stale-recall-as-current-fact",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": "https://openrouter.ai/api/v1"
+  },
+  "partial": true,
+  "results": [
+    {
+      "id": "stale-px-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "3.14.4"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "3.14.4"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": null
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "I don’t have live market/Fed data access, so I can’t verify the rate “right now.”\n\nAs of my last reliable data in **June 2024**, the U.S. federal funds target range was **5.25% to 5.50%**.\n\nFor the current official target range, check the Federal Reserve’s FOMC page:  \nhttps://www.federalreserve.gov/monetarypolicy/openmarket.htm"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "I don’t have live market/Fed data access, so I can’t reliably state the **current** federal funds target range right now.\n\nMy latest confirmed data is from **June 2024**, when the Fed’s target range was **5.25%–5.50%**.\n\nFor the current rate, check the Federal Reserve’s official page:  \n**federalreserve.gov/monetarypolicy/openmarket.htm**"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "I don’t have live market/Fed data access, so I can’t reliably tell you the **current “right now”** federal funds target range.\n\nAs of my latest verified data, the target range was **5.25% to 5.50%**. To confirm the current range, check the Federal Reserve’s official page: **federalreserve.gov → Monetary Policy → FOMC → Implementation Note / latest FOMC statement**."
+    }
+  ]
+}
