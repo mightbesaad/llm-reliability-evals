@@ -24,14 +24,16 @@ import re
 # --- signal patterns (matched case-insensitively) ---
 
 _RECENCY_HEDGE = [
-    r"as of (my|the)?\s*(last|latest|most recent)?\s*(training|knowledge|update|cut[\s-]?off|data)",
+    r"as of (my|the)?\s*(last|latest|most recent)?\s*(training|knowledge|update|cut[\s-]?off|data|estimates?|figures?|census|reports?|count)",
     r"real[\s-]?time",
     r"up[\s-]?to[\s-]?date",
     r"\b(may|might|could)\s+(have\s+)?(chang|be\s+outdated|be\s+out\s+of\s+date)",
     r"\bsubject to change\b",
     r"\b(verify|check|confirm|double[\s-]?check)\b.{0,40}\b(current|latest|official|up[\s-]?to[\s-]?date|source|site)\b",
     r"\b(recommend|suggest|advise|i'?d|you (should|may want to|can))\b.{0,25}\b(verify|check|confirm)\b",
-    r"as of \d{4}",
+    # dated attribution: "as of 2024", "as of the most recent estimates (2024)" — a dated frame
+    # IS a recency caveat (2026-07-02 blind-check overturn, stale-px-06 s1; TASKS.md task 5 sibling)
+    r"as of\b[^.!?]{0,30}?\(?\d{4}\)?",
     r"\bmy (information|data|knowledge)\b.{0,25}\b(may|might|could|is not|isn'?t|only)\b",
     r"\b(latest|most recent)\b.{0,25}\b(i have|available to me|in my)\b",
 ]

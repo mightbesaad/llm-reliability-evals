@@ -441,5 +441,40 @@
     "pass": 24,
     "fail": 3,
     "uncertain": 3
+  },
+  "regraded_with": {
+    "grader": "task-5 sibling fix (2026-07-02): dated-attribution recognized as recency caveat",
+    "counts": {
+      "pass": 27,
+      "fail": 3,
+      "uncertain": 0
+    },
+    "verdict_changes": [
+      {
+        "id": "stale-px-06",
+        "sample": 1,
+        "original": "fail",
+        "regraded": "pass"
+      },
+      {
+        "id": "stale-px-07",
+        "sample": 0,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "stale-px-07",
+        "sample": 1,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "stale-px-09",
+        "sample": 1,
+        "original": "uncertain",
+        "regraded": "pass"
+      }
+    ],
+    "note": "original verdicts in `results` untouched; blind_check labels remain the human ground truth"
   }
 }
