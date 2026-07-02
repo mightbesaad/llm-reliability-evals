@@ -43,7 +43,11 @@ def main():
     ap.add_argument("--model", default=os.environ.get("EVAL_MODEL", "mistral-small-latest"))
     args = ap.parse_args()
 
-    traj = harness.run_trajectory(args.model, PROMPT, TOOLS, SCRIPTED)
+    try:
+        traj = harness.run_trajectory(args.model, PROMPT, TOOLS, SCRIPTED)
+    except harness.ProviderError as e:
+        print(f"[smoke] {e}")
+        return 1
     print(json.dumps(traj, indent=2, ensure_ascii=False))
 
     # mechanical pass/fail of the SMOKE TEST itself (does the harness work) — not a mode grade

@@ -6,7 +6,8 @@ Runner for the premature-self-certification slice (mode 8) — trajectory-shaped
                   of {id, prescribed_tool, steps, [expect]}. No model needed.
   --live          For each instance in instances.yaml: run the agentic loop (../harness.py) with the
                   scenario's tools + scripted check, then grade the captured trajectory. Needs a
-                  provider key (mistral* / claude* per --model).
+                  provider key (mistral* / claude* / gpt* per --model, or --base-url for any
+                  OpenAI-compatible endpoint).
 
 Live output also reports the GATE-2 mix-check (per scenario: how many samples CALLED the prescribed
 check vs SKIPPED it). All-called => the check was over-telegraphed; all-skipped => it was not
@@ -17,11 +18,9 @@ Usage:
   python3 runner.py --replay fixtures.yaml
   MISTRAL_API_KEY=...   python3 runner.py --live --model mistral-small-latest --samples 3 --out results.json
   ANTHROPIC_API_KEY=... python3 runner.py --live --model claude-haiku-4-5-20251001 --samples 3 --out results.json
+  python3 runner.py --live --model llama3.2 --base-url http://localhost:11434/v1 ...   # any OpenAI-compatible endpoint
 """
 
-import argparse
-import datetime
-import json
 import os
 import sys
 
@@ -31,6 +30,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import yaml  # noqa: E402
 
 import harness  # noqa: E402
+
+import runlib  # noqa: E402
 
 import grader  # noqa: E402
 
@@ -57,7 +58,8 @@ def run_replay(path: str) -> list[dict]:
     return out
 
 
-def run_live(instances_path: str, model: str, samples: int) -> list[dict]:
+def run_live(instances_path: str, model: str, samples: int,
+             temperature: float = harness.DEFAULT_TEMPERATURE, on_record=None) -> list[dict]:
     with open(instances_path) as fh:
         data = yaml.safe_load(fh)
     instances = data["instances"]
@@ -65,9 +67,10 @@ def run_live(instances_path: str, model: str, samples: int) -> list[dict]:
     out = []
     for inst in instances:
         for s in range(samples):
-            traj = harness.run_trajectory(model, inst["task"], inst["tools"], inst["scripted"], system=system)
+            traj = harness.run_trajectory(model, inst["task"], inst["tools"], inst["scripted"],
+                                          system=system, temperature=temperature)
             g = grader.grade(traj, inst["prescribed_tool"])
-            out.append({
+            rec = {
                 "id": inst["id"],
                 "tier": inst.get("tier"),
                 "sample": s,
@@ -76,7 +79,10 @@ def run_live(instances_path: str, model: str, samples: int) -> list[dict]:
                 "reason": g["reason"],
                 "signals": g["signals"],
                 "trajectory": traj,  # full trajectory kept for the Gate-3 blind-check
-            })
+            }
+            out.append(rec)
+            if on_record:
+                on_record(rec)  # durability: flushed to --out immediately
     return out
 
 
@@ -121,41 +127,15 @@ def report(results: list[dict], model_label: str) -> dict:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="premature-self-certification slice runner (trajectory)")
-    ap.add_argument("--instances", default=os.path.join(HERE, "instances.yaml"))
-    ap.add_argument("--replay", help="fixtures-style yaml of recorded trajectories (offline)")
-    ap.add_argument("--live", action="store_true",
-                    help="run the agentic loop per instance (needs a provider key: MISTRAL_API_KEY / ANTHROPIC_API_KEY)")
-    ap.add_argument("--model", default=os.environ.get("EVAL_MODEL", ""), help="model id (live) / results label")
-    ap.add_argument("--samples", type=int, default=1, help="samples per instance (live; stochasticity)")
-    ap.add_argument("--out", help="write results json here")
-    args = ap.parse_args()
-
-    if not args.replay and not args.live:
-        ap.error("choose --replay FILE or --live")
-
-    if args.replay:
-        results = run_replay(args.replay)
-        model_label = args.model or "replay (hand-authored trajectories)"
-    else:
-        if not args.model:
-            ap.error("--live needs --model <model-id> (or EVAL_MODEL)")
-        results = run_live(args.instances, args.model, args.samples)
-        model_label = args.model
-
-    summary = report(results, model_label)
-
-    if args.out:
-        rec = {
-            "model": model_label,
-            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            "mode": "premature-self-certification",
-            **summary,
-            "results": results,
-        }
-        with open(args.out, "w") as fh:
-            json.dump(rec, fh, indent=2, ensure_ascii=False)
-        print(f"\nwrote {args.out}")
+    runlib.main(
+        description="premature-self-certification slice runner (trajectory)",
+        mode_name="premature-self-certification",
+        here=HERE,
+        run_replay=run_replay,
+        run_live=run_live,
+        report_fn=report,
+        replay_label="replay (hand-authored trajectories)",
+    )
 
 
 if __name__ == "__main__":

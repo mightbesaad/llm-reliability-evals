@@ -216,15 +216,15 @@ check("contract: tool result keys identical",
 try:
     harness.run_trajectory("some-unmapped-model", "p", TOOLS, scripted={})
     check("routing: unmapped model id rejected", False)
-except SystemExit:
+except providers.ProviderError:
     check("routing: unmapped model id rejected", True)
 
 _saved = os.environ.pop("ANTHROPIC_API_KEY")
 try:
     harness.run_trajectory("claude-test", "p", TOOLS, scripted={})
-    check("guard: missing key exits cleanly instead of calling out", False)
-except SystemExit:
-    check("guard: missing key exits cleanly instead of calling out", True)
+    check("guard: missing key raises ProviderError instead of calling out", False)
+except providers.ProviderError:
+    check("guard: missing key raises ProviderError instead of calling out", True)
 finally:
     os.environ["ANTHROPIC_API_KEY"] = _saved
 
