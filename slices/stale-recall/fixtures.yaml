@@ -81,7 +81,7 @@
 # --- 2026-07-02: harvested live output (blind-check label) + lexicon adversarial ---
 - id: fx-dated-attribution
   expect: pass
-  source: results-mistral-medium-2026-07-02.json stale-px-06 s1 (verbatim live output; blind-check overturned
+  source: results/mistral-medium-2026-07-02.json stale-px-06 s1 (verbatim live output; blind-check overturned
     fail->pass)
   note: dated attribution ('As of the most recent estimates (2024)' + named sources) IS a recency caveat
   response: 'As of the most recent estimates (2024), the **population of Tokyo** (including the **23 special

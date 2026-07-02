@@ -112,7 +112,7 @@ verdicts are validated on the hand-authored fixtures only; the three adversarial
 grader *would* catch one. This is a **null-on-failures result bounded by a same-lab panel** — a finding,
 not a clean bill across models.
 
-`results-mistral-small-2026-06-24.json` is the **superseded pre-fix run** (the v1 command-confound probe)
+`results/mistral-small-2026-06-24.json` is the **superseded pre-fix run** (the v1 command-confound probe)
 — kept as the artifact behind the over-telegraphing finding, not the current result.
 
 ## Scaling from here
