@@ -22,10 +22,14 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import harness  # noqa: E402
+import providers  # noqa: E402
 
 # Keys are only checked for presence — every HTTP call below is mocked.
 os.environ.setdefault("ANTHROPIC_API_KEY", "test-key")
 os.environ.setdefault("MISTRAL_API_KEY", "test-key")
+os.environ.setdefault("OPENAI_API_KEY", "test-key")
+# Routing checks below assume no ambient base-url override.
+os.environ.pop("OPENAI_BASE_URL", None)
 
 TOOLS = [
     {"name": "run_tests", "description": "run the test suite",
@@ -58,7 +62,7 @@ class FakeAPI:
     def __call__(self, url, headers, payload):
         # Deep-copy: the harness mutates its messages list in place after the call, and the
         # payload holds a reference to it — snapshot what was actually on the wire at call time.
-        self.calls.append({"url": url, "payload": copy.deepcopy(payload)})
+        self.calls.append({"url": url, "headers": dict(headers), "payload": copy.deepcopy(payload)})
         if not self.responses:
             raise AssertionError("harness made more HTTP calls than the test scripted")
         return self.responses.pop(0)
@@ -109,6 +113,8 @@ check("anthropic: scripted result delivered, not an error",
       traj["steps"][1]["results"][0]["content"] == "42 passed"
       and traj["steps"][1]["results"][0]["is_error"] is False)
 check("anthropic: system prompt forwarded", fake.calls[0]["payload"].get("system") == "be careful")
+check("anthropic: uniform temperature sent",
+      fake.calls[0]["payload"].get("temperature") == providers.DEFAULT_TEMPERATURE)
 _second_msgs = fake.calls[1]["payload"]["messages"]
 check("anthropic: tool_result echoed back to the model on the next turn",
       _second_msgs[-1]["content"][0]["type"] == "tool_result"
@@ -151,6 +157,8 @@ check("mistral: arguments JSON parsed into input",
       traj["steps"][0]["tool_calls"][0]["input"] == {"suite": "all"})
 check("mistral: system message first in payload",
       fake.calls[0]["payload"]["messages"][0]["role"] == "system")
+check("mistral: uniform temperature sent",
+      fake.calls[0]["payload"].get("temperature") == providers.DEFAULT_TEMPERATURE)
 _msgs2 = fake.calls[1]["payload"]["messages"]
 check("mistral: tool result appended as role=tool with matching id",
       any(m.get("role") == "tool" and m.get("tool_call_id") == "c1" for m in _msgs2))
@@ -164,6 +172,31 @@ with_fake([m_tool([("c9", "run_tests", "not-json{")]), m_text("done")])
 traj = harness.run_trajectory("mistral-test", "p", TOOLS, scripted={"run_tests": "ok"})
 check("mistral: malformed arguments preserved as _raw, no crash",
       traj["steps"][0]["tool_calls"][0]["input"] == {"_raw": "not-json{"})
+
+# ---- OpenAI + OpenAI-compatible legs (same wire format as mistral) --------------------------
+
+fake = with_fake([m_tool([("g1", "run_tests", '{"suite": "all"}')]), m_text("done")])
+traj = harness.run_trajectory("gpt-test", "verify", TOOLS, scripted={"run_tests": "ok"})
+check("openai: provider tag", traj["provider"] == "openai")
+check("openai: default endpoint used",
+      fake.calls[0]["url"] == "https://api.openai.com/v1/chat/completions")
+check("openai: normalizes like the other legs",
+      traj["stop_reason"] == "end_turn" and traj["tool_call_names"] == ["run_tests"])
+
+os.environ["OPENAI_BASE_URL"] = "http://localhost:11434/v1"
+_no_key = os.environ.pop("OPENAI_API_KEY")
+try:
+    fake = with_fake([m_text("hello from a local model")])
+    traj = harness.run_trajectory("llama3.2-test", "p", TOOLS, scripted={})
+    check("openai-compatible: unknown id routed via OPENAI_BASE_URL",
+          traj["provider"] == "openai-compatible"
+          and fake.calls[0]["url"] == "http://localhost:11434/v1/chat/completions")
+    check("openai-compatible: key optional for base-url endpoints",
+          "authorization" not in fake.calls[0].get("headers", {})
+          and traj["final_text"] == "hello from a local model")
+finally:
+    os.environ["OPENAI_API_KEY"] = _no_key
+    os.environ.pop("OPENAI_BASE_URL", None)
 
 # ---- the cross-provider contract itself ----------------------------------------------------
 
