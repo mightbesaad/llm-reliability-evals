@@ -180,6 +180,42 @@ mode-7 first-live gaps in one session), PR 5 (results convention, land BEFORE th
 results files), PR 6 (license split), then the judge layer (task 3) trained on the panel's
 abstains + accumulated human labels.
 
+**(2026-07-02, night) FRONTIER PANEL RUN — cold-start resume point.** If you are reading this
+with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md` are the state.
+- **Ran:** 5 models × 8 modes × 3 samples — `anthropic/claude-sonnet-5`, `openai/gpt-5.5`,
+  `google/gemini-3.5-flash` (via OpenRouter, `$OPENAI_BASE_URL`), `mistral-medium` (native;
+  same-day drift rerun, files suffixed `-b`), `mistral-large-latest` (native). Results in
+  `slices/<mode>/results/*-2026-07-02*.json` — **deliberately untracked until blind-check labels
+  exist** (see the no-`add -A` rule below). 37/40 cells complete; mistral-large's
+  confidence-calibration / disconfirmation / premature-certification are partial behind a
+  persistent 429 wall — retry at a quiet hour.
+- **Regraded headline (pass/fail/uncertain totals):** sonnet-5 130/8/64 · gpt-5.5 105/31/68 ·
+  gemini-3.5-flash 78/35/91 · medium-drift 109/28/67 · large 67/23/64 (partial). Two clean
+  sweeps across every model: mode 8 (12/0/0 everywhere — fail path STILL unobserved live) and
+  mode 7 (zero fails anywhere). Universal failure: source-overtrust (5/9/13/16/9 fails).
+  Distinct fingerprints: gemini overcorrection 0/14 (zero typography artifacts — real);
+  gpt calibration 5/12/13.
+- **Two mid-panel instrument incidents, both fixed + merged:** (#13→) mid-body connection
+  deaths now retry (a chunked response died inside `json.load`, escaping both except clauses);
+  (#14) **curly-apostrophe typography blinded every apostrophe-bearing lexicon** — gpt-5.5's
+  three "mode-8 fails" were artifacts (raw trajectories show textbook refusal-to-certify); all
+  8 graders now normalize typography; full corpus regraded (`regraded_with` blocks per file).
+- **Judge harness merged (#15), task 3:** `slices/judge.py` — evidence-or-abstain (verbatim
+  quote mechanically checked), vendor-independence rule, provenance embedded per verdict,
+  **validate before trust**: run `--validate-fixtures` / `--validate` and publish agreement
+  BEFORE judging unlabeled records. ~320 uncertains await it.
+- **Adjudication protocol (two tiers):** Tier 1 = agent mechanical rubric-conformance over the
+  115 fails, dispositions written into each results file as a `triage` block; only ambiguous
+  records escalate to the human (self-contained escalation doc). Tier 2 = the operator's
+  rounds method — see `slices/specimens/INTERROGATION-PROTOCOL.md` + ready probe cards in
+  `slices/specimens/probe-cards/` (gemini-overcorrection, gpt55-calibration,
+  source-overtrust-cross-model). Rounds outputs become specimens (privacy rule applies).
+- **Queued riders:** run.py/runlib same-day auto-suffix (`-b`,`-c`) + never clobber a larger
+  partial with a smaller rerun (an 18-record large partial was lost to an 11-record rerun);
+  rotate both API keys when the panel wraps; commit rule: **never `git add -A` in this repo** —
+  explicit paths only (an `add -A` swept in-flight unchecked results into public main today;
+  repaired in fcffccf/e952e49).
+
 **Pre-panel checklist (before spending money):** (1) the harness's OpenAI-compatible leg is
 mock-verified only — the first OpenRouter call should be a ~$0.001 smoke of
 `smoke_test_harness.py` with `--base-url`, validating the tool-calling wire format live before
