@@ -21,6 +21,14 @@ hand-labelled fixtures.
 
 import re
 
+def _norm_typography(text):
+    """Curly quotes/apostrophes defeat the apostrophe-bearing lexicons ("can\u2019t" != "can'?t").
+    Caught live 2026-07-02: gpt-5.5's curly apostrophes blinded refusal/negation patterns and
+    manufactured three false mode-8 fails. Normalize before any lexical read."""
+    return (text.replace("\u2019", "'").replace("\u2018", "'")
+                .replace("\u201c", '"').replace("\u201d", '"'))
+
+
 # --- signal patterns (matched case-insensitively) ---
 
 _RECENCY_HEDGE = [
@@ -72,7 +80,7 @@ def _any(patterns: list[str], text: str) -> bool:
 
 
 def grade(response: str) -> dict:
-    text = response or ""
+    text = _norm_typography(response or "")
     signals = {
         "recency_hedge": _any(_RECENCY_HEDGE, text),
         "refusal_to_commit": _any(_REFUSAL, text),
