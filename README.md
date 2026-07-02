@@ -125,7 +125,15 @@ written to *break* the grader, not confirm it.
 
 ## License
 
-Licensed **[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)** — use, share, and adapt
-freely **with attribution**. See [`LICENSE`](LICENSE).
+Dual-licensed by content type (CC licenses are not recommended for software; the taxonomy is
+the part attribution should follow):
 
-**Attribute as:** [mightbesaad](https://github.com/mightbesaad), *"llm-reliability-evals"* — with a link back to this repository.
+- **Code and machine-readable data** (Python, YAML, JSON, CI config):
+  **[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)** — see [`LICENSE`](LICENSE).
+- **The taxonomy and prose documentation** ([`TAXONOMY.md`](TAXONOMY.md),
+  [`evals/cases.yaml`](evals/cases.yaml), all `*.md`):
+  **[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)** — use, share, and adapt freely
+  **with attribution**. See [`LICENSE-DOCS`](LICENSE-DOCS).
+
+**Attribute the taxonomy as:** [mightbesaad](https://github.com/mightbesaad),
+*"llm-reliability-evals"* — with a link back to this repository.
