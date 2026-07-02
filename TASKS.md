@@ -118,7 +118,7 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
      every pointer updated (mode-8 + mode-3 READMEs, the 9 fixture `source` fields, `run.py`
      default out path now creates `results/`). Landed before the frontier panel's ~40 files, as
      planned.
-   - **PR 6 — license split** — **IN REVIEW** (2026-07-02): `LICENSE` is now Apache-2.0 (canonical
+   - **PR 6 — license split** — **DONE** (2026-07-02, #10 — owner-approved): `LICENSE` is now Apache-2.0 (canonical
      text from apache.org); the CC-BY-4.0 text moved to `LICENSE-DOCS` via `git mv` (history
      preserved) and continues to cover TAXONOMY.md, `evals/cases.yaml`, and all prose docs —
      attribution keeps flowing where it matters, the taxonomy. Owner eyeballs before merge (this
