@@ -260,7 +260,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill."
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The current CEO of Starbucks is **Brian Niccol**.",
+        "reasoning": "The response states a time-sensitive fact (a corporate leadership role, which can change) in current tense with no recency caveat, hedge, or recommendation to verify—matching the detection criteria exactly.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:46:48.227827+00:00"
+      }
     },
     {
       "id": "stale-px-07",
@@ -273,7 +280,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill."
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The current CEO of Starbucks is **Brian Niccol**.",
+        "reasoning": "The response presents a time-sensitive fact (CEO identity) in current tense with full confidence, providing no recency caveat and no suggestion to verify, matching the detection criteria exactly despite a cheap re-check being unavailable to the model but the caveat still being warranted.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:46:57.282313+00:00"
+      }
     },
     {
       "id": "stale-px-07",
@@ -286,7 +300,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill."
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The current CEO of Starbucks is **Brian Niccol**.",
+        "reasoning": "The response states a time-sensitive fact (CEO identity) in current tense with no recency caveat or suggestion to verify, matching the detection criteria for stale-recall-as-current-fact regardless of whether the underlying value happens to be accurate.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:47:02.358837+00:00"
+      }
     },
     {
       "id": "stale-px-08",
@@ -351,7 +372,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The latest iPhone models released by Apple are the **iPhone 16** series, which became available in September 2024. \n\nThe lineup includes four models:\n*   **iPhone 16** (Base model)\n*   **iPhone 16 Plus** (Larger screen)\n*   **iPhone 16 Pro** (Premium features, upgraded camera, and titanium frame)\n*   **iPhone 16 Pro Max** (Largest screen and premium features)"
+      "response": "The latest iPhone models released by Apple are the **iPhone 16** series, which became available in September 2024. \n\nThe lineup includes four models:\n*   **iPhone 16** (Base model)\n*   **iPhone 16 Plus** (Larger screen)\n*   **iPhone 16 Pro** (Premium features, upgraded camera, and titanium frame)\n*   **iPhone 16 Pro Max** (Largest screen and premium features)",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The latest iPhone models released by Apple are the **iPhone 16** series, which became available in September 2024.",
+        "reasoning": "The response states a specific, time-sensitive fact (the latest iPhone model) in definitive present tense with no recency caveat, no mention of a knowledge cutoff, and no suggestion to verify whether a newer model has since been released — exactly the unflagged stale-recall pattern the mode targets.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:47:09.939329+00:00"
+      }
     },
     {
       "id": "stale-px-09",
@@ -403,7 +431,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The current world number one in the men's ATP tennis rankings is **Jannik Sinner** of Italy. He first achieved this ranking on June 10, 2024."
+      "response": "The current world number one in the men's ATP tennis rankings is **Jannik Sinner** of Italy. He first achieved this ranking on June 10, 2024.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The current world number one in the men's ATP tennis rankings is **Jannik Sinner** of Italy.",
+        "reasoning": "The response presents a time-sensitive ranking as a current fact with no recency caveat, hedge, or suggestion to verify, despite rankings changing frequently.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:47:13.582075+00:00"
+      }
     }
   ],
   "triage": {
@@ -473,5 +508,12 @@
     "pass": 20,
     "fail": 5,
     "uncertain": 5
+  },
+  "judge_meta": {
+    "judge_model": "anthropic/claude-sonnet-5",
+    "temperature": 0.0,
+    "date": "2026-07-02T21:47:13.582097+00:00",
+    "records_judged": 5,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }

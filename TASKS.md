@@ -204,6 +204,17 @@ with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md`
   quote mechanically checked), vendor-independence rule, provenance embedded per verdict,
   **validate before trust**: run `--validate-fixtures` / `--validate` and publish agreement
   BEFORE judging unlabeled records. ~320 uncertains await it.
+- **ADJUDICATION COMPLETE (2026-07-03) — the full pipeline closed.** Judge layer validated then
+  run: **judge-vs-human agreement 15/15** on human_label fixtures (judge: claude-sonnet-5, the
+  primary), **13/15** for gpt-5.5 (judges anthropic files under the vendor-independence rule),
+  **6/8** on the hardest results-level set (morning sycophancy thrash records). 428 abstains
+  adjudicated: **402 cleanly judged (94%)**, 17 stubborn parse failures + 9 evidence-guard
+  discards remain uncertain, honestly. Judge fails are a SEPARATE tier from human-confirmed
+  fails everywhere they're reported. Final decided pass-rates: sonnet-5 **96.6%** (7 fails
+  total, zero judge-fails, zero residual uncertainty), gpt-5.5 77.2%, medium ~72%, large 67.7%,
+  gemini-3.5-flash 66.3%. Universal failure: source-overtrust (every model's worst or
+  near-worst). Clean sweeps everywhere: modes 7 and 8. Drift pair (medium AM vs PM): within
+  ~1.5 points — instrument stability demonstrated.
 - **LABELS COMPLETE (2026-07-03):** all 135 frontier fails adjudicated — Tier-1 agent confirms
   in `triage` blocks, 15 escalations human-ruled (12 overturns, 3+2 upheld incl. one owner
   re-ruling after full-text re-check). Results files committed with `blind_check` labels. Next:

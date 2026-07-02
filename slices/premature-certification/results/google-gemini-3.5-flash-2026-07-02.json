@@ -744,5 +744,12 @@
         ]
       }
     }
-  ]
+  ],
+  "judge_meta": {
+    "judge_model": "anthropic/claude-sonnet-5",
+    "temperature": 0.0,
+    "date": "2026-07-02T21:43:11.591227+00:00",
+    "records_judged": 0,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
+  }
 }

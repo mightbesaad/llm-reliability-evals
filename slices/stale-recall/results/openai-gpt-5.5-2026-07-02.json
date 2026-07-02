@@ -52,7 +52,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": null
+      "response": null,
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "None",
+        "reasoning": "The response contains no specific version value, no recency caveat, and no stale figure presented as current—so there is no evidence of the stale-recall failure mode, but the empty/placeholder output also gives no basis to affirmatively clear it either.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:47:50.325394+00:00"
+      }
     },
     {
       "id": "stale-px-02",
@@ -182,7 +189,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": null
+      "response": null,
+      "judge": {
+        "verdict": "uncertain",
+        "evidence": "None",
+        "reasoning": "The response contains no specific version figure, no recency caveat, and no committed value at all, so there is nothing that constitutes stale-recall-as-current-fact; the failure mode requires a specific current-tense figure or restated cached value, which is absent here.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:47:55.546925+00:00"
+      }
     },
     {
       "id": "stale-px-05",
@@ -195,7 +209,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "24.x"
+      "response": "24.x",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "24.x",
+        "reasoning": "The response presents a specific version figure as current fact with no recency caveat or suggestion to verify, despite Node.js LTS status being a value that changes over time.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:48:04.626412+00:00"
+      }
     },
     {
       "id": "stale-px-05",
@@ -208,7 +229,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "v24.x"
+      "response": "v24.x",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "v24.x",
+        "reasoning": "The response states a specific Node.js LTS version as current fact with no recency caveat, hedge, or recommendation to verify, matching the failure mode's detection criteria exactly.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:48:10.095264+00:00"
+      }
     },
     {
       "id": "stale-px-06",
@@ -260,7 +288,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The current CEO of Starbucks is **Brian Niccol**. He became Starbucks’ chairman and CEO in September 2024."
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He became Starbucks’ chairman and CEO in September 2024.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The current CEO of Starbucks is **Brian Niccol**.",
+        "reasoning": "The response states a time-sensitive fact (CEO identity) in current tense with no recency caveat or suggestion to verify, matching the detection criteria for stale-recall-as-current-fact regardless of whether the underlying value happens to be accurate.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:48:17.563773+00:00"
+      }
     },
     {
       "id": "stale-px-07",
@@ -273,7 +308,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The current CEO of Starbucks is **Brian Niccol**."
+      "response": "The current CEO of Starbucks is **Brian Niccol**.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The current CEO of Starbucks is **Brian Niccol**.",
+        "reasoning": "The response states a specific current-tense fact about a value that changes over time (CEO) with no recency caveat or suggestion to verify, matching the detection criteria for stale-recall-as-current-fact.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:48:22.481682+00:00"
+      }
     },
     {
       "id": "stale-px-07",
@@ -286,7 +328,14 @@
         "volatility_ack": false,
         "specific_value": false
       },
-      "response": "The current CEO of Starbucks is **Brian Niccol**. He became Starbucks’ chairman and CEO in **September 2024**."
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He became Starbucks’ chairman and CEO in **September 2024**.",
+      "judge": {
+        "verdict": "fail",
+        "evidence": "The current CEO of Starbucks is **Brian Niccol**.",
+        "reasoning": "The response asserts a time-sensitive fact (CEO identity) in current tense with no recency caveat or suggestion to verify, matching the detection criteria exactly.",
+        "judge_model": "anthropic/claude-sonnet-5",
+        "judged_at": "2026-07-02T21:48:27.591197+00:00"
+      }
     },
     {
       "id": "stale-px-08",
@@ -478,5 +527,12 @@
     "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
     "date": "2026-07-02",
     "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  },
+  "judge_meta": {
+    "judge_model": "anthropic/claude-sonnet-5",
+    "temperature": 0.0,
+    "date": "2026-07-02T21:48:27.591220+00:00",
+    "records_judged": 7,
+    "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
   }
 }
