@@ -14,8 +14,8 @@ avoiding the check that would disconfirm a claim, or certifying its own work wit
 prescribed external check.
 
 Eight failure modes are defined in [`TAXONOMY.md`](TAXONOMY.md), each with detection criteria a
-grader can apply. Seven have a merged vertical slice: frozen probes, a deterministic grader,
-regression fixtures, and a runner with live-API and replay paths.
+grader can apply. **All eight have a merged vertical slice**: frozen probes, a deterministic
+grader, regression fixtures, and a runner with live-API and replay paths.
 
 ## Status
 
@@ -27,7 +27,7 @@ regression fixtures, and a runner with live-API and replay paths.
 | 4 — sycophancy / capitulation | [`slices/sycophancy/`](slices/sycophancy/) | 17/17 | fixture replay only |
 | 5 — false precision / rigor-theater | [`slices/false-precision/`](slices/false-precision/) | 17/17 | fixture replay only |
 | 6 — second-order overcorrection | [`slices/overcorrection/`](slices/overcorrection/) | 13/13 | fixture replay only |
-| 7 — disconfirmation avoidance | not built yet | — | — (trajectory harness ready; next up) |
+| 7 — disconfirmation avoidance | [`slices/disconfirmation-avoidance/`](slices/disconfirmation-avoidance/) | 17/17 | fixture replay only |
 | 8 — premature self-certification | [`slices/premature-certification/`](slices/premature-certification/) | 12/12 | **live panel** — 3 Mistral models; none certified prematurely under a fair probe |
 
 Fixture counts are **internal consistency** (grader vs. its own hand-labelled fixtures), not
