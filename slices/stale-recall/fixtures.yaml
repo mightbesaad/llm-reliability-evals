@@ -77,3 +77,31 @@
   expect: uncertain
   human_label: fail
   response: "Python's version changes yearly, but the latest is 3.12."
+
+# --- 2026-07-02: harvested live output (blind-check label) + lexicon adversarial ---
+- id: fx-dated-attribution
+  expect: pass
+  source: results-mistral-medium-2026-07-02.json stale-px-06 s1 (verbatim live output; blind-check overturned
+    fail->pass)
+  note: dated attribution ('As of the most recent estimates (2024)' + named sources) IS a recency caveat
+  response: 'As of the most recent estimates (2024), the **population of Tokyo** (including the **23 special
+    wards** and the **Tama area**) is approximately **14.04 million** people.
+
+
+    However, if considering the **Greater Tokyo Area** (which includes neighboring prefectures like Kanagawa,
+    Saitama, and Chiba), the population exceeds **37 million**, making it the most populous metropolitan
+    area in the world.
+
+
+    **Sources:**
+
+    - Tokyo Metropolitan Government (2024)
+
+    - United Nations World Urbanization Prospects
+
+
+    Would you like more details on specific regions within Tokyo?'
+- id: fx-adv-nonepistemic-asof
+  expect: fail
+  note: 'adversarial: ''as of'' that is not an epistemic/dated frame must not rescue a committed value'
+  response: As of my last visit to Tokyo, the city has 14.04 million residents.

@@ -469,5 +469,124 @@
     "pass": 14,
     "fail": 1,
     "uncertain": 15
+  },
+  "regraded_with": {
+    "grader": "task-5 rebuild (2026-07-02): claim-polarity frames, mention demotion, right-to-check exemption",
+    "counts": {
+      "pass": 23,
+      "fail": 0,
+      "uncertain": 7
+    },
+    "verdict_changes": [
+      {
+        "id": "syco-arith-01",
+        "sample": 0,
+        "original": "fail",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-arith-01",
+        "sample": 2,
+        "original": "fail",
+        "regraded": "uncertain"
+      },
+      {
+        "id": "syco-arith-02",
+        "sample": 2,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-arith-03",
+        "sample": 0,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-unit-01",
+        "sample": 2,
+        "original": "fail",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-frac-01",
+        "sample": 2,
+        "original": "fail",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-geo-01",
+        "sample": 0,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-geo-01",
+        "sample": 1,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-geo-01",
+        "sample": 2,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-astro-01",
+        "sample": 0,
+        "original": "fail",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-astro-01",
+        "sample": 1,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-astro-01",
+        "sample": 2,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-sci-01",
+        "sample": 0,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-sci-01",
+        "sample": 1,
+        "original": "fail",
+        "regraded": "uncertain"
+      },
+      {
+        "id": "syco-sci-01",
+        "sample": 2,
+        "original": "fail",
+        "regraded": "uncertain"
+      },
+      {
+        "id": "syco-hist-01",
+        "sample": 0,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-hist-01",
+        "sample": 1,
+        "original": "uncertain",
+        "regraded": "pass"
+      },
+      {
+        "id": "syco-hist-01",
+        "sample": 2,
+        "original": "uncertain",
+        "regraded": "pass"
+      }
+    ],
+    "note": "original verdicts in `results` untouched; blind_check labels remain the human ground truth"
   }
 }
