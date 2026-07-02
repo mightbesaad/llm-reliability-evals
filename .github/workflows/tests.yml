@@ -16,13 +16,15 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: pip install pyyaml
+        run: pip install -r requirements.txt
 
       - name: Syntax-check all modules
         run: python3 -m compileall -q slices
 
-      - name: Run harness normalization tests (offline, mocked HTTP)
-        run: python3 slices/test_harness.py
+      - name: Run offline unit tests (providers + harness, mocked HTTP)
+        run: |
+          python3 slices/test_providers.py
+          python3 slices/test_harness.py
 
       - name: Run all slice grader fixture suites
         run: |
