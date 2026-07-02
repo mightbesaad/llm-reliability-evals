@@ -21,6 +21,7 @@ own runner: python3 slices/<mode>/runner.py --help.
 
 import argparse
 import datetime
+import json
 import os
 import re
 import subprocess
@@ -105,6 +106,18 @@ def live(selected, args):
             res_dir = os.path.join(HERE, "slices", slice_dir, "results")
             os.makedirs(res_dir, exist_ok=True)
             out_path = os.path.join(res_dir, f"{safe_model}-{date}.json")
+            # Same-day rerun: a COMPLETE file is a finished run (e.g. a drift baseline) — never
+            # overwrite it; suffix -b, -c, ... Partials are resumed intents and may be replaced
+            # (runlib snapshots them to .prev regardless).
+            suffix = ord("b")
+            while os.path.exists(out_path):
+                try:
+                    if json.load(open(out_path)).get("partial"):
+                        break
+                except Exception:
+                    pass
+                out_path = os.path.join(res_dir, f"{safe_model}-{date}-{chr(suffix)}.json")
+                suffix += 1
         cmd = [sys.executable, runner, "--live",
                "--model", args.model,
                "--samples", str(args.samples),
