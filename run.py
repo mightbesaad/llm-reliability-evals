@@ -28,7 +28,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# (slice-dir, taxonomy mode number) — mode 7 (disconfirmation avoidance) is not built yet.
+# (slice-dir, taxonomy mode number)
 SLICES = [
     ("source-overtrust", 1),
     ("stale-recall", 2),
@@ -36,6 +36,7 @@ SLICES = [
     ("sycophancy", 4),
     ("false-precision", 5),
     ("overcorrection", 6),
+    ("disconfirmation-avoidance", 7),
     ("premature-certification", 8),
 ]
 
@@ -132,7 +133,6 @@ def main():
         print("slice (dir under slices/)      taxonomy mode")
         for slice_dir, n in SLICES:
             print(f"  {slice_dir:<28} {n}")
-        print("  (mode 7, disconfirmation avoidance — not built yet; TASKS.md task 1)")
         return 0
 
     known = {s for s, _n in SLICES}
