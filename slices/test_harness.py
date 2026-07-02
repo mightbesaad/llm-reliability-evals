@@ -198,6 +198,20 @@ finally:
     os.environ["OPENAI_API_KEY"] = _no_key
     os.environ.pop("OPENAI_BASE_URL", None)
 
+
+os.environ["OPENAI_BASE_URL"] = "http://localhost:11434/v1"
+fake = with_fake([m_text("routed")])
+traj = harness.run_trajectory("anthropic/claude-test", "p", TOOLS, scripted={})
+check("aggregator: anthropic/* trajectory routed via base-url leg",
+      traj["provider"] == "openai-compatible"
+      and fake.calls[0]["url"] == "http://localhost:11434/v1/chat/completions")
+os.environ.pop("OPENAI_BASE_URL", None)
+try:
+    harness.run_trajectory("anthropic/claude-test", "p", TOOLS, scripted={})
+    check("aggregator: slash-id without base_url fails plainly", False)
+except providers.ProviderError:
+    check("aggregator: slash-id without base_url fails plainly", True)
+
 # ---- the cross-provider contract itself ----------------------------------------------------
 
 with_fake([a_tool("t", [("x", "run_tests", {})]), a_text("d")])

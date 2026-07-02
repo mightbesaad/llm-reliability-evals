@@ -167,6 +167,16 @@ def run_trajectory(model, user_prompt, tools, scripted, system=None,
     m = (model or "").lower()
     base = os.environ.get("OPENAI_BASE_URL")
     common = (user_prompt, tools, scripted, system, max_turns, max_tokens, temperature)
+    # Aggregator-form ids route to the base-url leg before native prefix matching (see providers).
+    if "/" in m:
+        if base:
+            return _run_openai_style(model, *common, url=base.rstrip("/") + "/chat/completions",
+                                     key_env="OPENAI_API_KEY", provider_tag="openai-compatible",
+                                     key_required=False)
+        raise ProviderError(
+            f"harness: '{model}' is an aggregator-form model id (contains '/') — set "
+            f"OPENAI_BASE_URL (e.g. https://openrouter.ai/api/v1) or use the native id."
+        )
     if m.startswith(("claude", "anthropic")):
         return _run_anthropic(model, *common)
     if m.startswith(MISTRAL_PREFIXES):
