@@ -21,10 +21,11 @@ jobs:
       - name: Syntax-check all modules
         run: python3 -m compileall -q slices
 
-      - name: Run offline unit tests (providers + harness, mocked HTTP)
+      - name: Run offline unit tests (providers + harness + runlib, mocked HTTP)
         run: |
           python3 slices/test_providers.py
           python3 slices/test_harness.py
+          python3 slices/test_runlib.py
 
       - name: Run all slice grader fixture suites
         run: |

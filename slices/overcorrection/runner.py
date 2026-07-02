@@ -13,13 +13,10 @@ uncertain ids routed to a judge, and — in replay with `expect` — grader-vs-l
 
   python3 runner.py --replay fixtures.yaml
   MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 5 --out results.json   # or an ANTHROPIC/OPENAI key + matching model
-  MISTRAL_API_KEY=... python3 runner.py --live --model mistral-tiny --samples 5 --out results.json
   OPENAI_API_KEY=... python3 runner.py --live --model gpt-4 --samples 5 --out results.json
+  python3 runner.py --live --model llama3.2 --base-url http://localhost:11434/v1 ...   # any OpenAI-compatible endpoint
 """
 
-import argparse
-import datetime
-import json
 import os
 import sys
 
@@ -28,7 +25,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 import yaml  # noqa: E402
 
-from providers import call_model  # noqa: E402
+from providers import DEFAULT_TEMPERATURE, call_model  # noqa: E402
+
+import runlib  # noqa: E402
 
 import grader  # noqa: E402
 
@@ -54,100 +53,47 @@ def run_replay(path: str) -> list[dict]:
     return out
 
 
-def run_live(instances_path: str, model: str, samples: int) -> list[dict]:
+def run_live(instances_path: str, model: str, samples: int,
+             temperature: float = DEFAULT_TEMPERATURE, on_record=None) -> list[dict]:
     with open(instances_path) as fh:
         instances = yaml.safe_load(fh)["instances"]
     out = []
     for inst in instances:
         for s in range(samples):
-            r1 = call_model(model, [{"role": "user", "content": inst["prompt"]}])
+            r1 = call_model(model, messages=[{"role": "user", "content": inst["prompt"]}],
+                            temperature=temperature)
             r2 = call_model(
                 model,
-                [
+                messages=[
                     {"role": "user", "content": inst["prompt"]},
                     {"role": "assistant", "content": r1},
                     {"role": "user", "content": inst["followup"]},
                 ],
+                temperature=temperature,
             )
             g = grader.grade(r2)
-            out.append(
-                {
-                    "id": inst["id"],
-                    "sample": s,
-                    "verdict": g["verdict"],
-                    "reason": g["reason"],
-                    "signals": g["signals"],
-                    "response": r2,  # raw turn-2 text kept so verdicts are blind-checkable
-                }
-            )
+            rec = {
+                "id": inst["id"],
+                "sample": s,
+                "verdict": g["verdict"],
+                "reason": g["reason"],
+                "signals": g["signals"],
+                "response": r2,  # raw turn-2 text kept so verdicts are blind-checkable
+            }
+            out.append(rec)
+            if on_record:
+                on_record(rec)  # durability: flushed to --out immediately
     return out
 
 
-def report(results: list[dict], model_label: str) -> dict:
-    counts = {"pass": 0, "fail": 0, "uncertain": 0}
-    for r in results:
-        counts[r["verdict"]] += 1
-    decided = counts["pass"] + counts["fail"]
-    pass_rate = (counts["pass"] / decided) if decided else None
-
-    print(f"model: {model_label}")
-    print(f"items graded: {len(results)}\n")
-    for r in results:
-        agree = ""
-        if "grader_agrees" in r:
-            agree = "  [label match]" if r["grader_agrees"] else f"  [LABEL MISMATCH expect={r['expect']}]"
-        print(f"  {r['id']:<16} {r['verdict']:<10} {r['reason']}{agree}")
-
-    print(f"\naggregate: pass={counts['pass']}  fail={counts['fail']}  uncertain={counts['uncertain']}")
-    print(
-        "pass-rate over decided cases: "
-        + (f"{pass_rate:.0%}  ({counts['pass']}/{decided})" if decided else "n/a")
-    )
-    uncertain = [r["id"] for r in results if r["verdict"] == "uncertain"]
-    if uncertain:
-        print(f"uncertain → route to human / LLM-judge: {uncertain}")
-    labelled = [r for r in results if "grader_agrees" in r]
-    if labelled:
-        agreed = sum(1 for r in labelled if r["grader_agrees"])
-        print(f"grader vs fixture labels: {agreed}/{len(labelled)} agree")
-    return {"counts": counts, "pass_rate_decided": pass_rate}
-
-
 def main() -> None:
-    ap = argparse.ArgumentParser(description="overcorrection slice runner")
-    ap.add_argument("--instances", default=os.path.join(HERE, "instances.yaml"))
-    ap.add_argument("--replay", help="fixtures-style yaml of recorded turn-2 responses (offline)")
-    ap.add_argument("--live", action="store_true", help="call a model (needs a provider key: ANTHROPIC_API_KEY / MISTRAL_API_KEY / OPENAI_API_KEY)")
-    ap.add_argument("--model", default=os.environ.get("EVAL_MODEL", ""), help="model id (live) / results label")
-    ap.add_argument("--samples", type=int, default=1, help="samples per instance (live)")
-    ap.add_argument("--out", help="write results json here")
-    args = ap.parse_args()
-
-    if not args.replay and not args.live:
-        ap.error("choose --replay FILE or --live")
-
-    if args.replay:
-        results = run_replay(args.replay)
-        model_label = args.model or "replay (synthetic fixtures)"
-    else:
-        if not args.model:
-            ap.error("--live needs --model <model-id> (or EVAL_MODEL)")
-        results = run_live(args.instances, args.model, args.samples)
-        model_label = args.model
-
-    summary = report(results, model_label)
-
-    if args.out:
-        rec = {
-            "model": model_label,
-            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            "mode": "second-order-overcorrection",
-            **summary,
-            "results": results,
-        }
-        with open(args.out, "w") as fh:
-            json.dump(rec, fh, indent=2)
-        print(f"\nwrote {args.out}")
+    runlib.main(
+        description="overcorrection slice runner",
+        mode_name="second-order-overcorrection",
+        here=HERE,
+        run_replay=run_replay,
+        run_live=run_live,
+    )
 
 
 if __name__ == "__main__":

@@ -119,7 +119,7 @@ finally:
 try:
     providers.call_model("mistral-medium")
     check("guard: prompt or messages required", False)
-except SystemExit:
+except providers.ProviderError:
     check("guard: prompt or messages required", True)
 
 _saved = {k: os.environ.pop(k) for k in
@@ -127,7 +127,7 @@ _saved = {k: os.environ.pop(k) for k in
 try:
     providers.call_model("some-unmapped-model", "q")
     check("guard: no route + no keys + no base_url rejected", False)
-except SystemExit:
+except providers.ProviderError:
     check("guard: no route + no keys + no base_url rejected", True)
 finally:
     os.environ.update(_saved)
@@ -136,7 +136,7 @@ _key = os.environ.pop("MISTRAL_API_KEY")
 try:
     providers.call_model("mistral-medium", "q")
     check("guard: missing provider key exits cleanly", False)
-except SystemExit:
+except providers.ProviderError:
     check("guard: missing provider key exits cleanly", True)
 finally:
     os.environ["MISTRAL_API_KEY"] = _key
@@ -212,7 +212,7 @@ try:
     try:
         providers.post_json("http://x/y", {}, {})
         check("retry: 4xx (non-429) fails immediately, no retry", False)
-    except SystemExit as e:
+    except providers.ProviderError as e:
         check("retry: 4xx (non-429) fails immediately, no retry",
               N["calls"] == 1 and "bad request detail" in str(e))
 
@@ -226,7 +226,7 @@ try:
     try:
         providers.post_json("http://x/y", {}, {})
         check("retry: persistent 429 exhausts attempts and raises", False)
-    except SystemExit:
+    except providers.ProviderError:
         check("retry: persistent 429 exhausts attempts and raises",
               N["calls"] == providers.MAX_ATTEMPTS)
 finally:
