@@ -110,6 +110,11 @@ class ResultSink:
     crash mid-run loses at most the in-flight call."""
 
     def __init__(self, path, model_label, mode_name, params):
+        # Rerun insurance: never destroy an existing results file — snapshot it once before the
+        # first flush overwrites it (a partial rerun once clobbered a larger partial: 18->11
+        # records lost, 2026-07-02). The .prev is untracked working data.
+        if os.path.exists(path):
+            os.replace(path, path + ".prev")
         self.path = path
         self.model_label = model_label
         self.mode_name = mode_name
