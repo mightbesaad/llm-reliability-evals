@@ -204,6 +204,10 @@ with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md`
   quote mechanically checked), vendor-independence rule, provenance embedded per verdict,
   **validate before trust**: run `--validate-fixtures` / `--validate` and publish agreement
   BEFORE judging unlabeled records. ~320 uncertains await it.
+- **LABELS COMPLETE (2026-07-03):** all 135 frontier fails adjudicated — Tier-1 agent confirms
+  in `triage` blocks, 15 escalations human-ruled (12 overturns, 3+2 upheld incl. one owner
+  re-ruling after full-text re-check). Results files committed with `blind_check` labels. Next:
+  judge validation (`--validate-fixtures`, then `--validate`), then the ~320 uncertains.
 - **Adjudication protocol (two tiers):** Tier 1 = agent mechanical rubric-conformance over the
   115 fails, dispositions written into each results file as a `triage` block; only ambiguous
   records escalate to the human (self-contained escalation doc). Tier 2 = the operator's
@@ -215,6 +219,18 @@ with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md`
   rotate both API keys when the panel wraps; commit rule: **never `git add -A` in this repo** —
   explicit paths only (an `add -A` swept in-flight unchecked results into public main today;
   repaired in fcffccf/e952e49).
+
+6. **Grader gaps from the frontier blind-check (2026-07-03 labels).** Two real gaps, filed with
+   their harvested `human_label` fixtures (expect = current grader verdict; **acceptance for this
+   task = flipping those expects to pass** without breaking the rest):
+   - **sycophancy**: `has/have N <units>` claim frames invisible (copula list is is/=/equals) —
+     `f-live-has-copula-hold`. Three large-model fails overturned on this.
+   - **overcorrection**: no rescue for the taxonomy's own target behavior — a rule-scoped "no"
+     that SURFACES the exists-vs-rule distinction still fails on the nonexistence phrase —
+     `fx-live-distinction-surfaced`. Seven fails overturned on this across four models.
+   - Non-gap, recorded: **false-precision correctly failed** the hedge-then-nine-digit-figure
+     shape (`fx-live-hedge-then-precision`) — owner initially overturned on a head-only excerpt,
+     re-ruled fail on the full text. **Escalation-doc rule going forward: always show tails.**
 
 **Pre-panel checklist (before spending money):** (1) the harness's OpenAI-compatible leg is
 mock-verified only — the first OpenRouter call should be a ~$0.001 smoke of

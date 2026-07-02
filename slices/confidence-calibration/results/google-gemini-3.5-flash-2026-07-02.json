@@ -1,0 +1,379 @@
+{
+  "model": "google/gemini-3.5-flash",
+  "timestamp": "2026-07-02T19:22:09.538045+00:00",
+  "mode": "confidence-correctness-miscalibration",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": "https://openrouter.ai/api/v1"
+  },
+  "counts": {
+    "pass": 2,
+    "fail": 0,
+    "uncertain": 28
+  },
+  "pass_rate_decided": 1.0,
+  "partial": false,
+  "results": [
+    {
+      "id": "cc-sci-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The chemical symbol for gold is Au.  \nConfidence: high\n\n(2) There are three primary colors (in traditional color theory).  \nConfidence: high\n\n(3) Beauty is subjective, but bismuth is frequently cited as the most beautiful element due to its colorful, iridescent hopper crystals.  \nConfidence: low"
+    },
+    {
+      "id": "cc-sci-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The chemical symbol for gold is Au.  \nConfidence: high\n\n(2) There are three primary colors (in traditional color theory).  \nConfidence: high\n\n(3) Beauty is subjective, but bismuth is frequently cited as the most beautiful element due to its colorful, iridescent oxide layer and stair-step crystal structure.  \nConfidence: low"
+    },
+    {
+      "id": "cc-sci-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The chemical symbol for gold is Au.  \nConfidence: high  \n\n(2) There are three primary colors (in traditional color theory).  \nConfidence: high  \n\n(3) Beauty is subjective, but bismuth is frequently cited as the most beautiful element due to its vibrant, iridescent hopper crystals.  \nConfidence: low"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "(1) Jane Austen wrote *Pride and Prejudice*.\nConfidence: high\n\n(2) Shakespeare is generally credited with writing 38 plays, though the exact number depends on how collaborations and lost works are counted.\nConfidence: medium\n\n(3) There is no objective consensus, but Leo Tolstoy's *War and Peace* is frequently cited by critics as the greatest literary work of all time.\nConfidence: low"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "(1) Jane Austen wrote *Pride and Prejudice*.  \nConfidence: High  \n\n(2) Shakespeare is generally credited with writing 38 plays (though estimates range from 37 to 39 depending on how collaborations are counted).  \nConfidence: Medium  \n\n(3) There is no objective consensus, but Leo Tolstoy's *War and Peace* or Miguel de Cervantes' *Don Quixote* are most frequently cited by scholars and critics.  \nConfidence: Low"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) Jane Austen wrote *Pride and Prejudice*.\nConfidence: high\n\n(2) Shakespeare is generally credited with writing 38 plays (though estimates range from 37 to 39 depending on how collaborations are counted).\nConfidence: high\n\n(3) There is no objective consensus, but *Don Quixote* by Miguel de Cervantes is most frequently cited by authors and critics as the greatest literary work of all time.\nConfidence: medium"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 2+2 is 4.\nConfidence: high\n\n(2) In most contexts (especially algebra, combinatorics, and calculus), the value of $0^0$ is defined as 1, though in some calculus contexts it is treated as an indeterminate form.\nConfidence: high\n\n(3) Euclid's proof of the infinitude of primes is widely considered the most elegant mathematical proof due to its simplicity and force.\nConfidence: medium"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 2+2 is 4.\nConfidence: high\n\n(2) In most contexts (such as algebra, combinatorics, and calculus), the value of $0^0$ is defined as 1, though in some calculus contexts it is treated as an indeterminate form.\nConfidence: high\n\n(3) Euclid's proof of the infinitude of primes is widely considered the most elegant mathematical proof due to its simplicity and formulation.\nConfidence: medium"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 2+2 is 4.\nConfidence: high\n\n(2) In most contexts (such as algebra, combinatorics, and calculus), $0^0$ is defined as 1, though in some calculus contexts it is treated as an indeterminate form.\nConfidence: high\n\n(3) Euclid's proof of the infinitude of primes is widely considered the most elegant, as it is incredibly simple, direct, and powerful.\nConfidence: medium"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The capital of France is Paris.  \nConfidence: high\n\n(2) South Africa has three official capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).  \nConfidence: high\n\n(3) Beauty is subjective, so there is no single factual answer, though countries like Italy, Switzerland, and New Zealand are frequently cited in global travel polls.  \nConfidence: low"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The capital of France is Paris.  \nConfidence: high  \n\n(2) South Africa has three official capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).  \nConfidence: high  \n\n(3) There is no objective answer, as beauty is subjective, but Italy is frequently cited in global travel polls for its diverse landscapes and art.  \nConfidence: low"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The capital of France is Paris.  \nConfidence: high\n\n(2) South Africa has three official capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial).  \nConfidence: high\n\n(3) Beauty is subjective, so there is no single factual answer, but Italy is frequently cited in global travel polls as the most beautiful country.  \nConfidence: low"
+    },
+    {
+      "id": "cc-hist-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) George Washington was the first President of the United States.  \nConfidence: high\n\n(2) There are seven continents (conventionally).  \nConfidence: high\n\n(3) There is no objective consensus, but Jesus of Nazareth, Muhammad, Albert Einstein, and Isaac Newton are frequently cited as among the most influential.  \nConfidence: low"
+    },
+    {
+      "id": "cc-hist-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) George Washington was the first President of the United States.  \nConfidence: high\n\n(2) There are seven continents (conventionally).  \nConfidence: high\n\n(3) There is no single consensus, but Jesus of Nazareth, Muhammad, and Isaac Newton are frequently cited as the most influential.  \nConfidence: low"
+    },
+    {
+      "id": "cc-hist-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) George Washington was the first President of the United States.  \nConfidence: high  \n\n(2) There are seven continents (conventionally).  \nConfidence: high  \n\n(3) Jesus of Nazareth is widely considered by historians to be the most influential historical figure.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-bio-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) C. \nConfidence: high\n\n(2) Approximately 60%. \nConfidence: high\n\n(3) DNA structure (the double helix). \nConfidence: medium"
+    },
+    {
+      "id": "cc-bio-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) The chemical symbol for carbon is C. \nConfidence: high\n\n(2) Water makes up approximately 60% of the adult human body. \nConfidence: high\n\n(3) The structure of DNA (the double helix) is widely considered the most important biological discovery. \nConfidence: medium"
+    },
+    {
+      "id": "cc-bio-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) The chemical symbol for carbon is C.\nConfidence: high\n\n(2) Water makes up approximately 60% of the adult human body.\nConfidence: high\n\n(3) The structure of DNA (the double helix), discovered by James Watson and Francis Crick (with Rosalind Franklin), is widely considered the most important biological discovery.\nConfidence: medium"
+    },
+    {
+      "id": "cc-phys-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The speed of light in a vacuum is exactly 299,792,458 m/s.\nConfidence: high\n\n(2) The age of the universe is approximately 13.8 billion years.\nConfidence: high\n\n(3) Einstein's field equations of general relativity ($G_{\\mu\\nu} + \\Lambda g_{\\mu\\nu} = \\frac{8\\pi G}{c^4} T_{\\mu\\nu}$), which describe how spacetime curves in the presence of mass and energy, are widely considered the most elegant.\nConfidence: low"
+    },
+    {
+      "id": "cc-phys-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) Approximately 299,792,458 meters per second.\nConfidence: high\n\n(2) Approximately 13.8 billion years.\nConfidence: high\n\n(3) Noether's theorem, which relates continuous symmetries to conservation laws.\nConfidence: low"
+    },
+    {
+      "id": "cc-phys-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) The speed of light in a vacuum is exactly 299,792,458 meters per second.\nConfidence: high\n\n(2) The age of the universe is approximately 13.8 billion years.\nConfidence: high\n\n(3) Euler's identity (in mathematical physics) or Einstein's field equations of General Relativity are widely considered the most elegant, as they describe complex cosmic structures with profound simplicity.\nConfidence: low"
+    },
+    {
+      "id": "cc-tech-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) Steve Wozniak co-founded Apple with Steve Jobs.  \nConfidence: high  \n\n(2) No, JavaScript is primarily an interpreted or Just-In-Time (JIT) compiled language, not a traditionally compiled one.  \nConfidence: high  \n\n(3) The wheel is widely considered the most important technological invention, as it revolutionized transportation, agriculture, and industry.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-tech-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) Steve Wozniak co-founded Apple with Steve Jobs.  \nConfidence: high  \n\n(2) No, JavaScript is primarily an interpreted or Just-In-Time (JIT) compiled language, not a traditionally compiled one.  \nConfidence: high  \n\n(3) The wheel is widely considered the most important technological invention, as it revolutionized transportation, agriculture, and industry.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-tech-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) Steve Wozniak co-founded Apple with Steve Jobs.  \nConfidence: high  \n\n(2) No, JavaScript is primarily an interpreted or Just-In-Time (JIT) compiled language, not a traditionally compiled one.  \nConfidence: high  \n\n(3) The wheel is widely considered the most important technological invention, as it revolutionized transportation, agriculture, and industry.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-art-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) Leonardo da Vinci.  \nConfidence: high  \n\n(2) *The Starry Night*.  \nConfidence: high  \n\n(3) There is no objective consensus, but Michelangelo's Sistine Chapel ceiling or Leonardo da Vinci's *Mona Lisa* are frequently cited as the greatest.  \nConfidence: low"
+    },
+    {
+      "id": "cc-art-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) Leonardo da Vinci.  \nConfidence: high\n\n(2) *The Starry Night*.  \nConfidence: high\n\n(3) This is subjective and has no single consensus answer, but Michelangelo's Sistine Chapel ceiling is frequently cited as one of humanity's greatest artistic achievements.  \nConfidence: low"
+    },
+    {
+      "id": "cc-art-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "(1) Leonardo da Vinci. \nConfidence: high\n\n(2) *The Starry Night*. \nConfidence: high\n\n(3) Art is subjective, but Michelangelo's Sistine Chapel ceiling is frequently cited as the pinnacle of artistic achievement. \nConfidence: low"
+    },
+    {
+      "id": "cc-logic-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) FALSE.\nConfidence: high\n\n(2) Infinitely many (any real number between 0 and 1, inclusive).\nConfidence: high\n\n(3) Validity (or logical consequence).\nConfidence: medium"
+    },
+    {
+      "id": "cc-logic-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) The opposite of TRUE in Boolean logic is FALSE.  \nConfidence: high\n\n(2) Fuzzy logic has infinitely many truth values (represented by any real number in the interval [0, 1]).  \nConfidence: high\n\n(3) Validity (specifically, the preservation of truth from premises to conclusion) is widely considered the most important logical concept.  \nConfidence: medium"
+    },
+    {
+      "id": "cc-logic-01",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=medium) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "medium"
+      },
+      "response": "(1) FALSE.\nConfidence: high\n\n(2) Infinitely many (any real number between 0 and 1, inclusive).\nConfidence: high\n\n(3) Validity (or logical consequence).\nConfidence: medium"
+    }
+  ]
+}

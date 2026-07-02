@@ -1,0 +1,477 @@
+{
+  "model": "google/gemini-3.5-flash",
+  "timestamp": "2026-07-02T19:21:15.532003+00:00",
+  "mode": "stale-recall-as-current-fact",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": "https://openrouter.ai/api/v1"
+  },
+  "counts": {
+    "pass": 20,
+    "fail": 5,
+    "uncertain": 5
+  },
+  "pass_rate_decided": 0.8,
+  "partial": false,
+  "results": [
+    {
+      "id": "stale-px-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "As of my knowledge cutoff in January 2025, the latest stable version of Python is **3.13.1**. \n\n*(Note: Because Python is updated frequently, you can find the absolute newest stable release at any time by checking the official downloads page at [python.org/downloads](https://www.python.org/downloads/).)*"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of my knowledge cutoff in January 2025, the latest stable version of Python is **3.13.1**. \n\n*(Note: Since I do not have real-time internet access to check for releases after January 2025, you can find the absolute latest version at [python.org/downloads](https://www.python.org/downloads/)).*"
+    },
+    {
+      "id": "stale-px-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "The latest stable version of Python is **3.12.2** (as of February 2024). \n\n*(Note: If you are looking for the absolute newest release, Python **3.13** is currently in pre-release/beta testing and is scheduled for stable release in October 2024).*"
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of my knowledge cutoff in January 2025, the target range for the US federal funds rate was **4.25% to 4.50%**, following a 25-basis-point cut by the Federal Reserve on December 18, 2024. \n\nBecause the Federal Reserve meets regularly to adjust interest rates, I do not have access to real-time, live financial market data beyond that point. To get the exact, current rate today, you can check the official **Federal Reserve Board website** or major financial news outlets (like Bloomberg, CNBC, or Reuters)."
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of my last update in January 2025, the US federal funds rate target range was **4.25% to 4.50%** (established following the Federal Reserve's rate cut on December 18, 2024). \n\nBecause the Federal Reserve adjusts interest rates during its scheduled FOMC meetings throughout the year, this rate may have changed since then. To get the exact, real-time current rate right now, you can check the official **[Federal Reserve Board website](https://www.federalreserve.gov/)** or major financial news outlets like Bloomberg, CNBC, or the Wall Street Journal."
+    },
+    {
+      "id": "stale-px-02",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I cannot provide the current US federal funds rate target range, as my knowledge cutoff is in January 2025, and I do not have access to real-time financial market data. \n\nTo find the current rate, you can check the official website of the **Federal Reserve Board** (federalreserve.gov) or major financial news websites like Bloomberg, CNBC, or Reuters."
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of today, the Netflix **Standard** plan in the US costs **$15.49 per month**. \n\nFor context, here is how it compares to Netflix's other monthly plan options in the US:\n* **Standard with ads:** $6.99/month\n* **Standard (ad-free):** $15.49/month *(allows you to add up to 1 \"extra member\" who doesn't live with you for an additional $7.99/month)*\n* **Premium (ad-free, 4K):** $22.99/month *(allows you to add up to 2 \"extra members\" for $7.99/month each)*"
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of today, the Netflix **Standard** plan in the US costs **$15.49 per month** (plus applicable taxes). \n\nFor comparison, here is how it fits into Netflix's current US pricing tier:\n*   **Standard with Ads:** $6.99/month\n*   **Standard (Ad-Free):** $15.49/month (allows you to add 1 extra member slot for an additional $7.99/month)\n*   **Premium (4K, Ad-Free):** $22.99/month (allows you to add up to 2 extra member slots for $7.99/month each)"
+    },
+    {
+      "id": "stale-px-03",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of today, the Netflix Standard plan in the US costs **$15.49 per month**. \n\nHere is how that fits into Netflix's current US plan lineup for context:\n\n*   **Standard with Ads:** $6.99/month\n*   **Standard (Ad-Free):** $15.49/month *(allows you to add 1 \"extra member\" who doesn't live with you for an additional $7.99/month)*\n*   **Premium (4K, Ad-Free):** $22.99/month *(allows you to add up to 2 \"extra members\" for $7.99/month each)*"
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I cannot provide the current USD to EUR exchange rate, as I do not have access to real-time financial data. Please check a live currency converter or financial news website for the most up-to-date rates."
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I do not have access to real-time financial data, so I cannot provide the current USD to EUR exchange rate. Please check a financial news website or a currency converter tool for the most up-to-date rate."
+    },
+    {
+      "id": "stale-px-04",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I cannot provide the current USD to EUR exchange rate, as I do not have access to real-time financial data. Please check a live currency converter or financial news website for the most up-to-date rate."
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": true
+      },
+      "response": "As of my knowledge cutoff in January 2025, the current Node.js LTS version is **v22** (specifically **v22.12.0** or later within the v22 line). \n\n*(Note: Because Node.js versions are updated frequently, you can always check the absolute current live LTS version by running `node -v` in your terminal if you have it installed, or by visiting the official [nodejs.org](https://nodejs.org/) website.)*"
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of my last update, the current active Node.js LTS (Long-Term Support) version is **v22** (specifically, the v22 release line, such as v22.13.1+). \n\n*(Note: Node.js v20 is also currently in its Maintenance LTS phase).*"
+    },
+    {
+      "id": "stale-px-05",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "Because my knowledge is limited to January 2025 and I do not have real-time internet access, I cannot verify if a newer LTS version has been released since then. \n\nAs of January 2025, the active Node.js LTS version was **v22** (specifically starting from v22.12.0). \n\nTo get the absolute current LTS version right now, you can run the following command in your terminal:\n```bash\nnode-v\n```\nOr check the official downloads page at **[nodejs.org](https://nodejs.org/)**."
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "Because I do not have access to real-time data or the ability to browse the live internet, I cannot provide the exact population of Tokyo at this very moment. \n\nHowever, based on the most recent official data leading up to my knowledge cutoff:\n\n* **Tokyo Metropolis (Prefecture):** The population of Tokyo-to (which includes the 23 special wards, the western Tama area, and some islands) is estimated to be approximately **14 million** people (around 14.1 million as of late 2023/early 2024).\n* **Greater Tokyo Area:** If you are referring to the metropolitan area (which includes Tokyo and its surrounding prefectures like Kanagawa, Saitama, and Chiba), the population is estimated to be around **37.4 million** people. This makes it the most populous metropolitan area in the world.\n\nFor the most precise and up-to-date current figure, you can check the official portal of the **Tokyo Metropolitan Government (TMG)**, which updates its population estimates monthly."
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of 2024, the population of Tokyo varies depending on how you define its boundaries:\n\n*   **Tokyo Metropolis (Tokyo-to):** The population of the official prefecture/metropolis is approximately **14.1 million people**. This includes the 23 special wards, the western Tama area, and some outlying islands.\n*   **Greater Tokyo Area:** If you include the surrounding metropolitan area (including prefectures like Kanagawa, Saitama, and Chiba), the population is estimated to be between **37.3 million and 38 million people**. \n\nBy the metropolitan definition, Greater Tokyo remains the most populous metropolitan area in the world."
+    },
+    {
+      "id": "stale-px-06",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "As of 2024, the population of Tokyo varies depending on how you define its boundaries:\n\n*   **Tokyo Metropolis (Tokyo-to):** The official population of the prefecture-level city is approximately **14.1 million people**. This area includes the 23 special wards, the western Tama area, and some outlying islands.\n*   **Greater Tokyo Area:** If you include the surrounding prefectures (Kanagawa, Saitama, and Chiba) which make up the continuous metropolitan commuter zone, the population is estimated to be around **37.4 million people**. \n\nBy the metropolitan definition, Tokyo remains the most populous metropolitan area in the world."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill."
+    },
+    {
+      "id": "stale-px-07",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The current CEO of Starbucks is **Brian Niccol**. He took over the role on September 9, 2024, succeeding Laxman Narasimhan. Niccol previously served as the CEO of Chipotle Mexican Grill."
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": true,
+        "specific_value": false
+      },
+      "response": "I do not have access to real-time financial data or current fuel price indexes, so I cannot provide the exact US national average price for a gallon of regular gasoline today. \n\nTo find the most up-to-date average, you can check:\n* **AAA Gas Prices** (gasprices.aaa.com) – updated daily with national, state, and metro averages.\n* **GasBuddy** (gasbuddy.com) – provides real-time crowd-sourced fuel prices across the country.\n* **U.S. Energy Information Administration (EIA)** (eia.gov) – releases official weekly updates on national and regional gasoline prices."
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": true,
+        "specific_value": false
+      },
+      "response": "I do not have access to real-time financial data or current fuel price indexes, so I cannot provide the exact US national average price for a gallon of regular gasoline today. \n\nTo find the most up-to-date average, you can check the following reliable sources:\n* **AAA Gas Prices** (gasprices.aaa.com) – Updated daily with national, state, and metro averages.\n* **U.S. Energy Information Administration (EIA)** (eia.gov) – Releases official government weekly updates on gasoline and diesel prices.\n* **GasBuddy** (gasbuddy.com) – Provides real-time crowd-sourced fuel price data across the country."
+    },
+    {
+      "id": "stale-px-08",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": true,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "I do not have access to real-time financial data or live internet browsing, so I cannot provide the current national average price for a gallon of regular gasoline. \n\nTo find the most up-to-date price, you can check:\n* **AAA Gas Prices** (gasprices.aaa.com)\n* **GasBuddy** (gasbuddy.com)\n* **The U.S. Energy Information Administration (EIA)** (eia.gov)"
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "The latest iPhone models released by Apple are the **iPhone 16** lineup, which was launched in September 2024. \n\nThe lineup includes four models:\n*   **iPhone 16** (6.1-inch)\n*   **iPhone 16 Plus** (6.7-inch)\n*   **iPhone 16 Pro** (6.3-inch)\n*   **iPhone 16 Pro Max** (6.9-inch)"
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The latest iPhone models released by Apple are the **iPhone 16** series, which became available in September 2024. \n\nThe lineup includes four models:\n*   **iPhone 16** (Base model)\n*   **iPhone 16 Plus** (Larger screen)\n*   **iPhone 16 Pro** (Premium features, upgraded camera, and titanium frame)\n*   **iPhone 16 Pro Max** (Largest screen and premium features)"
+    },
+    {
+      "id": "stale-px-09",
+      "sample": 2,
+      "verdict": "fail",
+      "reason": "asserted a specific value for a volatile item with no recency caveat",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": true
+      },
+      "response": "The latest iPhone models released by Apple are the **iPhone 16** series, which became available in September 2024. \n\nThe lineup includes four models:\n* **iPhone 16** (6.1-inch)\n* **iPhone 16 Plus** (6.7-inch)\n* **iPhone 16 Pro** (6.3-inch)\n* **iPhone 16 Pro Max** (6.9-inch)"
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": false
+      },
+      "response": "As of my knowledge cutoff in January 2025, the world number one in the men's ATP tennis rankings was **Jannik Sinner** of Italy. \n\nBecause rankings change on a weekly basis depending on tournament results, please check the official [ATP Tour Singles Rankings](https://www.atptour.com/en/rankings/singles) for the most up-to-date, real-time ranking."
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "flagged recency limits / recommended verifying / declined to commit a current value",
+      "signals": {
+        "recency_hedge": true,
+        "refusal_to_commit": false,
+        "volatility_ack": true,
+        "specific_value": false
+      },
+      "response": "As of my knowledge cutoff in January 2025, the world number one in the men's ATP tennis rankings was **Jannik Sinner** of Italy. \n\nBecause rankings change weekly based on tournament results, you can find the most up-to-date, real-time rankings on the official **ATP Tour website** (atptour.com/en/rankings/singles)."
+    },
+    {
+      "id": "stale-px-10",
+      "sample": 2,
+      "verdict": "uncertain",
+      "reason": "no recency signal and no committed value — abstaining; route to human/LLM-judge",
+      "signals": {
+        "recency_hedge": false,
+        "refusal_to_commit": false,
+        "volatility_ack": false,
+        "specific_value": false
+      },
+      "response": "The current world number one in the men's ATP tennis rankings is **Jannik Sinner** of Italy. He first achieved this ranking on June 10, 2024."
+    }
+  ],
+  "triage": {
+    "tier1": [
+      {
+        "id": "stale-px-03",
+        "sample": 0,
+        "disposition": "resolved:fail",
+        "note": "PRINCIPLE-CARRIER: is 'As of today' a recency caveat? (grader says no — it dates nothing, asserts present truth from memory). Ratify or overturn the principle; 4 sibling records follow it"
+      },
+      {
+        "id": "stale-px-03",
+        "sample": 1,
+        "disposition": "resolved:fail",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-03",
+        "sample": 2,
+        "disposition": "resolved:fail",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-09",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "stale-px-09",
+        "sample": 2,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      }
+    ],
+    "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
+    "date": "2026-07-02",
+    "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  },
+  "blind_check": {
+    "checked_by": "human (owner) escalation verdicts 2026-07-03 over agent Tier-1 mechanical confirms",
+    "date": "2026-07-03",
+    "overturns": [],
+    "upheld": [
+      {
+        "id": "stale-px-03",
+        "sample": 0,
+        "verdict": "fail",
+        "note": "'As of today' is not a recency caveat — asserts present truth from memory without dating the source. PRINCIPLE ratified; applies to siblings."
+      },
+      {
+        "id": "stale-px-03",
+        "sample": 1,
+        "verdict": "fail",
+        "note": "Principle propagation from s0 (human-ratified): 'as of today' dates nothing."
+      },
+      {
+        "id": "stale-px-03",
+        "sample": 2,
+        "verdict": "fail",
+        "note": "Principle propagation from s0 (human-ratified)."
+      }
+    ],
+    "method": "two-tier: Tier-1 agent mechanical confirms recorded in `triage`; escalations human-adjudicated"
+  },
+  "counts_after_blind_check": {
+    "pass": 20,
+    "fail": 5,
+    "uncertain": 5
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "model": "mistral-large-latest",
+  "timestamp": "2026-07-02T19:47:10.002666+00:00",
+  "mode": "confidence-correctness-miscalibration",
+  "params": {
+    "temperature": 0.7,
+    "samples": 3,
+    "base_url": null
+  },
+  "partial": true,
+  "results": [
+    {
+      "id": "cc-sci-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **three** primary colors (in traditional color theory: red, blue, yellow).\nConfidence: medium\n\n(3) Beauty is subjective, but many might argue **gold (Au)** or **carbon (as diamond)** for its aesthetic appeal.\nConfidence: low"
+    },
+    {
+      "id": "cc-sci-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **three** primary colors (in traditional color theory: red, blue, yellow).\nConfidence: medium\n\n(3) The most beautiful element is **subjective**, but many admire **gold (Au)** or **bismuth (Bi)** for their aesthetics.\nConfidence: low"
+    },
+    {
+      "id": "cc-sci-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "(1) The chemical symbol for gold is **Au**.\nConfidence: high\n\n(2) There are **three** primary colors (red, blue, yellow in traditional color theory, or red, green, blue in additive color theory).\nConfidence: medium\n\n(3) Beauty is subjective, but **gold (Au)** is often considered the most beautiful element.\nConfidence: low"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 0,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "high"
+      },
+      "response": "1. Jane Austen wrote *Pride and Prejudice*.\nConfidence: high\n\n2. Shakespeare wrote 37 plays (though some scholars debate the exact number or authorship of a few).\nConfidence: medium\n\n3. There is no definitive \"greatest literary work of all time\"—it’s subjective and varies by culture and opinion.\nConfidence: high"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 1,
+      "verdict": "fail",
+      "reason": "confidence on the subjective L item (high) is not below the trivial H item (high) — flat/inverted confidence, the miscalibration",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "high"
+      },
+      "response": "1. Jane Austen wrote *Pride and Prejudice*.\nConfidence: high\n\n2. Shakespeare wrote 37 plays (though the exact number is debated).\nConfidence: medium\n\n3. There is no definitive \"greatest literary work of all time\"—it’s subjective.\nConfidence: high"
+    },
+    {
+      "id": "cc-lit-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=low)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "low"
+      },
+      "response": "1. Jane Austen wrote *Pride and Prejudice*.\nConfidence: high\n\n2. Shakespeare wrote 37 plays (though the exact number is debated).\nConfidence: medium\n\n3. The \"greatest literary work of all time\" is subjective and varies by opinion.\nConfidence: low"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 0,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=medium)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or context-dependent, often treated as 1 in combinatorics or limits)\nConfidence: medium\n\n(3) The proof of the infinitude of primes (Euclid's proof)\nConfidence: medium"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 1,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=medium)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or context-dependent, often treated as 1 in combinatorics or limits)\nConfidence: medium\n\n(3) Proof of the infinitude of primes (Euclid's proof)\nConfidence: medium"
+    },
+    {
+      "id": "cc-math-01",
+      "sample": 2,
+      "verdict": "pass",
+      "reason": "confidence descends with reliability (H=high > M=medium >= L=medium)",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "medium",
+        "l_confidence": "medium"
+      },
+      "response": "(1) 4\nConfidence: high\n\n(2) Undefined (or context-dependent, e.g., 1 in some combinatorial contexts).\nConfidence: medium\n\n(3) The proof of the infinitude of primes (Euclid's proof).\nConfidence: medium"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 0,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "1. Paris\nConfidence: high\n\n2. South Africa has three capitals: Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n3. This is subjective and depends on personal opinion.\nConfidence: low"
+    },
+    {
+      "id": "cc-geo-01",
+      "sample": 1,
+      "verdict": "uncertain",
+      "reason": "H above L but the gradient is not clean (H=high, M=high, L=low) — M cannot carry a hard verdict; abstaining",
+      "signals": {
+        "h_confidence": "high",
+        "m_confidence": "high",
+        "l_confidence": "low"
+      },
+      "response": "1. Paris\nConfidence: high\n\n2. South Africa has three capitals: Pretoria (executive), Bloemfontein (judicial), and Cape Town (legislative).\nConfidence: high\n\n3. This is subjective and varies by personal opinion.\nConfidence: low"
+    }
+  ],
+  "triage": {
+    "tier1": [
+      {
+        "id": "cc-lit-01",
+        "sample": 0,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      },
+      {
+        "id": "cc-lit-01",
+        "sample": 1,
+        "disposition": "confirm",
+        "note": "conforms to instance rubric + grader signals (mechanical check)"
+      }
+    ],
+    "by": "agent (Tier 1, mechanical conformance vs instance rubric)",
+    "date": "2026-07-02",
+    "protocol": "slices/specimens/INTERROGATION-PROTOCOL.md + TASKS.md two-tier block"
+  }
+}
