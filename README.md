@@ -21,26 +21,45 @@ grader, regression fixtures, and a runner with live-API and replay paths.
 
 | Mode | Slice | Grader fixtures | Live validation |
 |---|---|---|---|
-| 1 — secondary-source over-trust | [`slices/source-overtrust/`](slices/source-overtrust/) | 17/17 | **live** (2026-07-02 panel) — mass-fail 20/30, confirmed real by blind-check, incl. cross-sample fabricated-figure contradictions |
-| 2 — stale recall as current fact | [`slices/stale-recall/`](slices/stale-recall/) | 18/18 | **live** (panel) — fails blind-checked; one overturn fed back into the grader lexicon |
-| 3 — confidence–correctness miscalibration | [`slices/confidence-calibration/`](slices/confidence-calibration/) | 20/20 | **live-validated** — two runs, verdicts blind-checked against raw responses |
-| 4 — sycophancy / capitulation | [`slices/sycophancy/`](slices/sycophancy/) | 29/29 | **live** (panel) — blind-check caught the grader false-failing 6/7 real fails; grader rebuilt against the human labels, harvested as fixtures |
-| 5 — false precision / rigor-theater | [`slices/false-precision/`](slices/false-precision/) | 17/17 | **live** (panel) — fails blind-checked; 20/30 abstain by design (judge-layer backlog) |
-| 6 — second-order overcorrection | [`slices/overcorrection/`](slices/overcorrection/) | 13/13 | **live** (panel) — all fails adjudicated |
-| 7 — disconfirmation avoidance | [`slices/disconfirmation-avoidance/`](slices/disconfirmation-avoidance/) | 17/17 | fixture replay only — first live run comes with the frontier panel |
-| 8 — premature self-certification | [`slices/premature-certification/`](slices/premature-certification/) | 12/12 | **live, twice** — 3-model Mistral panel + 2026-07-02 run; none certified prematurely under a fair probe |
+| 1 — secondary-source over-trust | [`slices/source-overtrust/`](slices/source-overtrust/) | 17/17 | **the universal failure** — every panel model's worst or near-worst cell; several fabricated supporting figures that changed between samples |
+| 2 — stale recall as current fact | [`slices/stale-recall/`](slices/stale-recall/) | 18/18 | live, 5 models — bare version numbers and "as of today" assertions; one lexicon overturn fed back as a fixture |
+| 3 — confidence–correctness miscalibration | [`slices/confidence-calibration/`](slices/confidence-calibration/) | 20/20 | live, 5 models — gpt-5.5's distinct wound (same register on solid and contested claims) |
+| 4 — sycophancy / capitulation | [`slices/sycophancy/`](slices/sycophancy/) | 31/31 | live, 5 models — frontier tier swept clean; the grader was itself caught false-failing 6/7 real fails and rebuilt against human labels |
+| 5 — false precision / rigor-theater | [`slices/false-precision/`](slices/false-precision/) | 18/18 | live, 5 models — incl. the hedge-then-nine-digit-figure shape the grader correctly failed |
+| 6 — second-order overcorrection | [`slices/overcorrection/`](slices/overcorrection/) | 14/14 | live, 5 models — gemini-3.5-flash concluded *nonexistence* in 21/27 records (rule-worship); the exists-vs-rule distinction is the pass |
+| 7 — disconfirmation avoidance | [`slices/disconfirmation-avoidance/`](slices/disconfirmation-avoidance/) | 17/17 | **live, clean sweep** — zero fails across all panel models; no one proceeded past a contradiction |
+| 8 — premature self-certification | [`slices/premature-certification/`](slices/premature-certification/) | 13/13 | **live, clean sweep** — ~60 trajectories across 5 models + the earlier Mistral panel; the fail path has never been observed (and three fake observations were killed by the blind-check) |
+
+## The frontier panel (2026-07-02/03)
+
+Five models, eight modes, temperature pinned, params recorded in every results file. Every fail
+verdict adjudicated in two tiers (mechanical rubric-conformance, then human judgment on
+escalations — 10 grader false positives overturned, labels in each file's `blind_check` block).
+Every abstain adjudicated by an LLM judge that was **validated against human labels first**
+(15/15 primary / 13/15 secondary / 6/8 on the hardest set) and must quote its evidence verbatim
+or its verdict is discarded. 402/428 abstains resolved; the rest stay uncertain, on the record.
+
+| | claude-sonnet-5 | gpt-5.5 | gemini-3.5-flash | mistral-medium | mistral-large |
+|---|---|---|---|---|---|
+| **decided pass-rate** | **96.6%** | 77.2% | 66.3% | ~72% (two runs) | 67.7% |
+| fails (human-confirmed + judge-attributed) | 7 + 0 | 28 + 17 | 34 + 32 | 28 + 23 | 28 + 25 |
+| residual uncertain | 0 | 7 | 8 | 3–7 | 4 |
+
+The models fail *differently* — calibration for gpt-5.5, rule-worship for gemini, source-trust
+for the Mistral tier — which is the point: these are behavioral fingerprints, not a leaderboard.
+Same-day drift pair (mistral-medium ×2): within ~1.5 points — the instrument is stable.
 
 Fixture counts are **internal consistency** (grader vs. its own hand-labelled fixtures), not
-accuracy — every test suite prints this caveat itself. Real validation is blind-checking verdicts
-against real model output. The 2026-07-02 live panel (189 records, one model) had **every fail
-verdict read against raw output**; the labels, overturns, and regrades live inside each results
-file (`blind_check` / `regraded_with` blocks) — including the ones that overruled the graders.
+accuracy — every test suite prints this caveat itself. Real validation is the pipeline above,
+and its full audit trail (including every time it overruled the graders, twice mid-panel) is in
+the results files and [`TASKS.md`](TASKS.md).
 
-Known gaps, stated so they don't get lost: live coverage is **one model family** (cross-provider
-panel open — that's the next milestone); mode 7 has no live run yet; mode 8's *fail* path is
-proven on adversarial fixtures but has never been observed live (models verify or defer); ~39% of
-live verdicts abstain by design, awaiting the LLM-judge layer — which will be validated against
-the human labels the blind-checks keep producing. See [`TASKS.md`](TASKS.md) for the full ledger.
+Known gaps, stated so they don't get lost: mode 8's *fail* path has never been observed live —
+a defended null result, not a blind spot; 26 records remain uncertain (17 judge parse-failures,
+9 evidence-guard discards); the interesting cells await depth interrogation (see
+[`slices/specimens/INTERROGATION-PROTOCOL.md`](slices/specimens/INTERROGATION-PROTOCOL.md) and
+the ready probe cards); grader gaps from the blind-check are filed as task 6 with their
+acceptance fixtures in place.
 
 ## The agentic modes grade trajectories, not prose
 
