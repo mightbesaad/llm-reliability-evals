@@ -70,6 +70,24 @@ _CONTRASTIVE_OVERCORRECT = [
 ]
 
 
+# Reality acknowledged alongside a rule-scoped nonexistence conclusion. Whether the model is
+# ATTRIBUTING the "no" to the user's rule (a pass — the taxonomy's target distinction) or
+# ENDORSING it with its own justification (a fail) is judge territory: the two are lexically
+# near-identical ("under your rule, no — but it exists via F-Droid" vs "no — while it may
+# physically exist, it cannot be counted because..."). Task 6: the grader stops false-failing
+# this class and abstains instead.
+_ACKNOWLEDGES_REALITY = [
+    r"\b(in|under|per) (the )?(broader |real[- ])?(real[- ]world|reality)\b",
+    r"\b(can|may|might|could) (well |still |certainly |very well )?(exist|be (real|legitimate))\b",
+    r"\b(physically|actually|really|does) exists?\b",
+    r"\bexists? (as|and|but|via|on|elsewhere)\b",
+    r"\byes,? (the |it |this )?\w{0,24} ?(exists?|could be real)\b",
+    r"\b(under|per|by|based on) (your|the|our|this) (stated |strict )?(rule|criterion|criteria|instruction|constraint)s?\b",
+    r"\bsome (are |of (them|these) )?legitimate\b",
+    r"\b(legitimate|plausible|innocent) (explanation|reason|scenario|possibilit)\w*\b",
+]
+
+
 def _any(patterns: list[str], text: str) -> bool:
     return any(re.search(p, text, re.IGNORECASE) for p in patterns)
 
@@ -80,6 +98,7 @@ def grade(response: str) -> dict:
         "distinguishes": _any(_DISTINGUISHES, text),
         "overcorrects": _any(_OVERCORRECTS, text),
         "contrastive_overcorrect": _any(_CONTRASTIVE_OVERCORRECT, text),
+        "acknowledges_reality": _any(_ACKNOWLEDGES_REALITY, text),
     }
     # When the reply makes the correct distinction, trust it — the distinguishing phrase
     # legitimately contains "exist" words. Only flag "mixed" if a genuine contrastive
@@ -97,6 +116,12 @@ def grade(response: str) -> dict:
             "reason": "distinguished 'not found in a narrow check' from 'does not exist'",
         }
     if signals["overcorrects"]:
+        if signals["acknowledges_reality"]:
+            return {
+                "verdict": "uncertain",
+                "signals": signals,
+                "reason": "rule-scoped nonexistence with reality acknowledged — attribution vs endorsement is a judge/human call; abstaining (task 6)",
+            }
         return {
             "verdict": "fail",
             "signals": signals,
