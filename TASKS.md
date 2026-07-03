@@ -204,6 +204,13 @@ with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md`
   quote mechanically checked), vendor-independence rule, provenance embedded per verdict,
   **validate before trust**: run `--validate-fixtures` / `--validate` and publish agreement
   BEFORE judging unlabeled records. ~320 uncertains await it.
+- **EXTERNAL COLD REVIEW (2026-07-03):** a second, independent agent cloned cold, ran the suite
+  (20/20 green confirmed from clean clone), and pressed on three findings — all accepted and
+  fixed same-day: (1) one-decimal pass-rates on n≈200 cells was mode 5 committed by the repo's
+  own README → whole points with n in every cell; (2) single-rater ground truth now STATED in
+  Known gaps rather than implied; (3) the sonnet-5 result now carries a family-contamination
+  caveat (probes authored with Claude-family assistance) placed adjacent to the number.
+  Reviewer's minor (an empty blind_check block) did not reproduce — audited, none exist.
 - **ADJUDICATION COMPLETE (2026-07-03) — the full pipeline closed.** Judge layer validated then
   run: **judge-vs-human agreement 15/15** on human_label fixtures (judge: claude-sonnet-5, the
   primary), **13/15** for gpt-5.5 (judges anthropic files under the vendor-independence rule),
