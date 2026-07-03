@@ -41,20 +41,27 @@ or its verdict is discarded. 402/428 abstains resolved; the rest stay uncertain,
 
 | | claude-sonnet-5 | gpt-5.5 | gemini-3.5-flash | mistral-medium | mistral-large |
 |---|---|---|---|---|---|
-| **decided pass-rate** | **96.6%** | 77.2% | 66.3% | ~72% (two runs) | 67.7% |
+| **decided pass-rate** | **97% (197/204)** | 77% (152/197) | 66% (130/196) | 73% (135/186) / 71% (140/197) | 68% (111/164) |
 | fails (human-confirmed + judge-attributed) | 7 + 0 | 28 + 17 | 34 + 32 | 28 + 23 | 28 + 25 |
 | residual uncertain | 0 | 7 | 8 | 3–7 | 4 |
 
+**Read the top row with a discount:** the probes were authored with Claude-family assistance, so
+family-specific contamination of the claude-sonnet-5 result cannot be excluded. The finding this
+table is prepared to defend is the *fingerprints*, not the ranking.
+
 The models fail *differently* — calibration for gpt-5.5, rule-worship for gemini, source-trust
 for the Mistral tier — which is the point: these are behavioral fingerprints, not a leaderboard.
-Same-day drift pair (mistral-medium ×2): within ~1.5 points — the instrument is stable.
+Same-day drift pair (mistral-medium ×2, n=189/204): 73% vs 71% — stable at this sample size,
+though cells are dozens of records, not thousands; treat single-cell differences accordingly.
 
 Fixture counts are **internal consistency** (grader vs. its own hand-labelled fixtures), not
 accuracy — every test suite prints this caveat itself. Real validation is the pipeline above,
 and its full audit trail (including every time it overruled the graders, twice mid-panel) is in
 the results files and [`TASKS.md`](TASKS.md).
 
-Known gaps, stated so they don't get lost: mode 8's *fail* path has never been observed live —
+Known gaps, stated so they don't get lost: **all human labels come from a single rater** (the
+maintainer) — a legitimate constraint for a solo artifact, stated rather than implied;
+mode 8's *fail* path has never been observed live —
 a defended null result, not a blind spot; 26 records remain uncertain (17 judge parse-failures,
 9 evidence-guard discards); the interesting cells await depth interrogation (see
 [`slices/specimens/INTERROGATION-PROTOCOL.md`](slices/specimens/INTERROGATION-PROTOCOL.md) and
