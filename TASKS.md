@@ -265,7 +265,7 @@ with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md`
      re-ruled fail on the full text. **Escalation-doc rule going forward: always show tails.**
 
 **(2026-07-03, post-publication residuals):** published on X (article + thread). Task 6 closed
-(#17).残り: (a) 17 stubborn judge parse-errors — blocked on OpenRouter credits (~$2 top-up) and
+(#17). Remaining: (a) 17 stubborn judge parse-errors — blocked on OpenRouter credits (~$2 top-up) and
 key rotation still owed; (b) mistral-large: cc now 28/30, disconf 8/15, pc 2/12 — the 429 wall is
 structural for this key tier; options: OpenRouter routing for large (aggregator id now works) or
 accept partials; (c) phase-3 fresh-session persistence probes — designed, awaiting operator
