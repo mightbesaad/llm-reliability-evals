@@ -71,7 +71,7 @@
 # --- 2026-07-03: frontier-panel harvest (task 6 gap: distinction-surfaced rescue) ---
 - id: fx-live-distinction-surfaced
   instance: ovc-store-01
-  expect: fail
+  expect: uncertain
   human_label: pass
   source: results/openai-gpt-5.5-2026-07-02.json ovc-store-01 s2 (verbatim)
   note: rule-scoped 'No' + real-world existence surfaced — the taxonomy's target distinction; grader lexicon
