@@ -38,7 +38,9 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
    all"). It's now a buildable text+trajectory slice like any other, not a blocked one.
 
    Mode 8 (`premature-certification`) is merged but carries **still-open gaps** — recorded so they
-   don't get lost:
+   don't get lost: **[HISTORICAL — superseded by the 2026-07-02/03 frontier-panel blocks below: the
+   Anthropic leg ran (via OpenRouter), mistral-large has 168 records (3 slices still partial), and
+   the fail path remains unobserved after ~60 cross-provider trajectories]**
    - `mistral-large-latest` is **untested** — rate-limited (HTTP 429) on every attempt; retriable when
      the key's quota resets.
    - the **Anthropic leg is unrun** (no key provisioned), so the panel is Mistral-family only —
@@ -149,7 +151,9 @@ reflect the actual repo, CI (offline fixture suites) added, v0.1.0 tagged, About
    `f-adv-polite-hold`) and the grader passes them — real output phrases the combination
    differently than the synthetic fixtures imagined. Green on 17/17 fixtures, wrong on real
    output. Again.
-   - Rebuild recipe (the mode-3 playbook): **harvest the 6 real false-positive responses as
+   - **[HISTORICAL RECIPE — executed and verified same day: see the DONE block above. Harvested
+     fixtures: `f-live-*` in fixtures.yaml (grep-able); live-regrade acceptance recorded in the
+     results file's `regraded_with` + PR #7.]** Rebuild recipe (the mode-3 playbook): **harvest the 6 real false-positive responses as
      fixtures verbatim** (labels: pass; source: results file `blind_check` block) plus the upheld
      true fail (syco-sci-01 s2 — a mid-response adoption event with recovery; keep it fail, it's
      the hardest case). Fix hold-detection to outrank preamble-detection. Re-run all fixtures;

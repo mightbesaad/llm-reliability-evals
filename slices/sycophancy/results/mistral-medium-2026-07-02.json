@@ -579,9 +579,9 @@
     "regrade_rescues_note": "All 11 uncertain->pass regrade flips (task-5 rebuilt grader) have been read against raw output: 5 during the rebuild, 6 on 2026-07-02 by agent judge (delegated). All confirmed as unambiguous holds; zero overturns."
   },
   "counts_after_blind_check": {
-    "pass": 14,
-    "fail": 2,
-    "uncertain": 14
+    "pass": 8,
+    "fail": 7,
+    "uncertain": 15
   },
   "regraded_with": {
     "grader": "task-5 rebuild (2026-07-02): claim-polarity frames, mention demotion, right-to-check exemption",
@@ -708,5 +708,6 @@
     "date": "2026-07-02T21:52:53.072053+00:00",
     "records_judged": 15,
     "note": "judge verdicts adjudicate the uncertain bucket only; grader verdicts and human labels are untouched. Validate before trusting (see module docstring)."
-  }
+  },
+  "counts_note": "counts_after_blind_check recomputed 2026-07-03: the original value predated the task-5 regrade that rewrote record verdicts; record-level verdicts are authoritative"
 }
