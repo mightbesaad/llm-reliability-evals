@@ -58,6 +58,15 @@ an anecdote, not a measurement).
   spot the two share. Real validation is blind-labelling *real* model outputs and measuring
   agreement; these synthetic fixtures are not that step.
 
+## Live result — frontier panel (2026-07-02/03)
+
+Five models, 30 records each: sonnet-5 28p/1f/1u, gpt-5.5 16p/7f/7u, gemini-3.5-flash 20p/5f/5u
+(3 fails upheld on blind-check), mistral-medium 23p/4f/3u (1 overturn + 3 upheld →
+24p/3f/3u after blind-check; the task-5 sibling fix for dated-attribution recognition then
+regrades this further to 27p/3f/0u), mistral-large 27p/3f/0u. Same-day drift pair
+(mistral-medium): 27p/3f/0u — a real swing from the morning's 23p/4f/3u at this sample size.
+See the top-level README + `TASKS.md` for the cross-model decided-rate table.
+
 ## Scaling from here
 
 Per-mode: more instances for statistical power; an LLM-judge for the `uncertain` bucket (with its

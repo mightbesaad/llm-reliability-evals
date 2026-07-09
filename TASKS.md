@@ -196,7 +196,12 @@ with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md`
 - **Regraded headline (pass/fail/uncertain totals):** sonnet-5 130/8/64 · gpt-5.5 105/31/68 ·
   gemini-3.5-flash 78/35/91 · medium-drift 109/28/67 · large 67/23/64 (partial). Two clean
   sweeps across every model: mode 8 (12/0/0 everywhere — fail path STILL unobserved live) and
-  mode 7 (zero fails anywhere). Universal failure: source-overtrust (5/9/13/16/9 fails).
+  mode 7 (zero fails anywhere). Universal failure: source-overtrust (5/9/13/16/20 fails —
+  **corrected 2026-07-10:** the last figure (large) read 9 since this line was originally
+  written; every commit that has ever touched
+  `slices/source-overtrust/results/mistral-large-latest-2026-07-02.json` shows 20/30 fails,
+  never 9 — a transcription error caught by re-deriving from the committed data rather than
+  trusting this summary. The other four figures check out exactly).
   Distinct fingerprints: gemini overcorrection 0/14 (zero typography artifacts — real);
   gpt calibration 5/12/13.
 - **Two mid-panel instrument incidents, both fixed + merged:** (#13→) mid-body connection
@@ -266,9 +271,10 @@ with no other context, this block + `slices/specimens/INTERROGATION-PROTOCOL.md`
 
 **(2026-07-03, post-publication residuals):** published on X (article + thread). Task 6 closed
 (#17). Remaining: (a) 17 stubborn judge parse-errors — blocked on OpenRouter credits (~$2 top-up) and
-key rotation still owed; (b) mistral-large: cc now 28/30, disconf 8/15, pc 2/12 — the 429 wall is
-structural for this key tier; options: OpenRouter routing for large (aggregator id now works) or
-accept partials; (c) phase-3 fresh-session persistence probes — designed, awaiting operator
+key rotation still owed; (b) **mistral-large partial accepted permanently (2026-07-10 decision):**
+cc 28/30, disconf 8/15, pc 2/12 — the 429 wall is structural for this key tier; not pursuing
+OpenRouter rerouting or further retries, documented here as a disclosed limitation rather than an
+open item; (c) phase-3 fresh-session persistence probes — designed, awaiting operator
 (fresh chats, zero context); (d) Tier-2 rounds cards ready.
 
 **Pre-panel checklist (before spending money):** (1) the harness's OpenAI-compatible leg is

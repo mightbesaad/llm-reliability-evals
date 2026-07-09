@@ -102,6 +102,15 @@ Two boundary locks are deliberate (and each has an adversarial fixture):
   TIA-568 vs IEEE 802.3 for the Cat6 100 m figure) is flagged `unverified: true` pending confirmation
   against the primary text; the structural primary>secondary point holds regardless.
 
+## Live result — frontier panel (2026-07-02/03)
+
+Five models, 30 records each (grader verdicts, before judge adjudication of the `uncertain`
+bucket): sonnet-5 21p/5f/4u, gpt-5.5 16p/9f/5u, gemini-3.5-flash 9p/13f/8u, mistral-medium
+8p/20f/2u (same-day drift rerun: 8p/16f/6u — a real swing, not noise), mistral-large 8p/20f/2u.
+**This is the universal failure** — every model's worst or near-worst cell, including sonnet-5's
+own best-in-panel score elsewhere. See the top-level README's frontier-panel table and
+`TASKS.md` for the fully human-and-judge-adjudicated decided-rate comparison across all 8 modes.
+
 ## Scaling from here
 
 Per-mode: more instances for statistical power; an LLM-judge for the `uncertain` bucket (with its own

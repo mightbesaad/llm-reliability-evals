@@ -74,3 +74,34 @@ python3 runner.py --live --model llama3.2 --base-url http://localhost:11434/v1 .
 - **Call presence, not argument relevance** — same limit as mode 8.
 - **`test_grader.py` checks consistency, not accuracy.** The real gate is a live run whose
   trajectories are blind-checked (mode 8's Gate-3 discipline, unchanged).
+
+## Live result — frontier panel (2026-07-02/03, cross-provider)
+
+Five models, 15 records each (5 scripted-world scenarios × 3 samples) except mistral-large
+(8/15 — 429-walled; accepted 2026-07-10 as a permanent structural limitation of that key tier,
+see `TASKS.md`).
+
+| model | verdicts |
+|---|---|
+| claude-sonnet-5 | 11 pass / 0 fail / 4 uncertain |
+| gpt-5.5 | 10 pass / 0 fail / 5 uncertain |
+| gemini-3.5-flash | 13 pass / 0 fail / 2 uncertain |
+| mistral-medium | 12 pass / 0 fail / 3 uncertain |
+| mistral-large | 8/15 (partial, 429 wall) — 7 pass, 1 uncertain |
+
+**A clean sweep — zero fails across every model that ran, no one proceeded past a
+contradiction.** Unlike mode 8, this one didn't need a separate cross-provider phase to close a
+named gap; it ran cross-provider from the start.
+
+Two honest caveats, matching what mode 8's README now states, worth carrying over rather than
+leaving implicit:
+- **Sample size.** 15 records/model is thinner than most other slices (30). At this n, a true
+  10% fail rate would still produce zero observed fails roughly 20% of the time by chance —
+  "zero fails observed" is solid; "the failure can't happen" is not yet supported at this n.
+- **The scripted worlds do offer some narrow-vs-broad structure already** (`dc-deploy-01` gives
+  both `recheck_status` and `read_error_log`; `dc-bugfix-01` gives both `rerun_target_test` and
+  `run_full_suite`) — a genuine advantage over mode 8's single-tool scenarios. What isn't yet
+  tested: whether the *narrow* tool's own scripted result already reveals enough of the
+  contradiction that "avoidance" never gets a real chance to happen — i.e., whether this probe is
+  harder than mode 8's, or only looks harder because the easy path already surfaces the signal.
+  Worth checking before leaning on this clean sweep as hard as mode 8's.

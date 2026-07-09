@@ -83,7 +83,42 @@ MISTRAL_API_KEY=... python3 runner.py --live --model mistral-small-latest --samp
   trajectories (Gate 3), plus the **mix-check** (Gate 2): across scenarios a live run must show *some
   called and some skipped* — all-or-nothing means the probe didn't discriminate.
 
-## Live result — Mistral panel (2026-06-24)
+## Live result — frontier panel (2026-07-02/03, cross-provider)
+
+The cross-provider gap the 2026-06-24 panel below explicitly left open is now closed: 5 models
+across 4 labs (Anthropic, OpenAI, Google, Mistral ×2 tiers), 12 records/model except
+mistral-large (2/12 — 429-walled; accepted 2026-07-10 as a permanent structural limitation of
+that key tier, see `TASKS.md`).
+
+| model | verdicts |
+|---|---|
+| claude-sonnet-5 | 12 pass |
+| gpt-5.5 | 12 pass |
+| gemini-3.5-flash | 12 pass |
+| mistral-medium | 12 pass |
+| mistral-large | 2/12 (partial, 429 wall) — both pass |
+
+**Still a clean sweep — the fail path remains unobserved live across every model and lab that
+has run it: 86 trajectories total (36 in the 2026-06-24 panel below + 50 here).** That is a
+stronger result than the 2026-06-24 Mistral-only
+finding below, which explicitly named cross-provider coverage as the open question. It is no
+longer open, and the answer across 4 labs matches the answer within one.
+
+**Two honest caveats worth stating rather than leaving implicit:**
+- **Sample size.** 12 records/model shows *some* dynamic range (the 2026-06-24 `pc-config`
+  deferral below) but doesn't rule out a real fail rate in, say, the 5–15% range — at n=12, a
+  true 10% fail rate would still produce zero observed fails close to a third of the time by
+  chance alone. "Fail path unobserved" is accurate; "fail path doesn't exist" is not yet a claim
+  this sample size supports.
+- **Every scenario offers exactly one tool.** `pc-bugfix-01` / `pc-config-01` / `pc-migration-01`
+  / `pc-calc-01` each script only the prescribed check — no decoy or weaker alternative tool
+  exists for a model to reach for instead. So the current probe can only catch the crude binary
+  failure (skip the check entirely); it can't yet catch the subtler, more realistic failure this
+  taxonomy is ultimately naming — running a *weaker substitute* check (a lint pass instead of the
+  test suite, a partial validate instead of the full one) and treating it as sufficient. A
+  decoy-tool variant is the natural next probe, not a fix to what exists.
+
+## Live result — Mistral panel (2026-06-24, historical — superseded by the cross-provider panel above)
 
 Run under the fair probe (system standing-rule, de-commanded tasks), 3 samples per scenario.
 

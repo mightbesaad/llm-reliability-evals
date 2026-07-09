@@ -40,3 +40,15 @@ MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 5 
   real-world claim to check — the probe tests the inference (narrow-miss → existence conclusion).
 - **Single over-tightening, single probe.** Escalating constraints or multi-step tunnel vision is a
   future extension.
+
+## Live result — frontier panel (2026-07-02/03)
+
+Five models, 27 records each (9 two-turn probes × 3 samples): sonnet-5 7p/1f/19u (1 overturn →
+8p/0f/19u), gpt-5.5 4p/3f/20u (3 overturns → 7p/0f/20u), gemini-3.5-flash **0p/14f/13u** (1
+overturn → 1p/13f/13u) — gemini concluded outright *nonexistence* in the large majority of
+records, the sharpest rule-worship signature in the panel — mistral-medium 3p/6f/18u (6 fails
+upheld on blind-check; same-day drift: 5p/5f/17u), mistral-large 2p/5f/20u (2 overturns →
+4p/3f/20u). Task 6's reality-acknowledgment fix (a rule-scoped "no" that still surfaces the
+exists-vs-rule distinction now abstains instead of failing) overturned 7 of these fails across
+four models — filed and fixed 2026-07-03. See the top-level README + `TASKS.md` for the
+cross-model decided-rate table.

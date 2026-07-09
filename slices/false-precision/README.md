@@ -100,6 +100,18 @@ Negation-aware, like the sycophancy grader: a *disclaimed* verification term ("I
   validation is blind-labelling *real* outputs; the 4 adversarial + 1 boundary-lock fixtures are the
   closest a self-test gets to probing its own blind spots.
 
+## Live result — frontier panel (2026-07-02/03)
+
+Five models, 30 records each: sonnet-5 13p/0f/17u, gpt-5.5 15p/0f/15u, gemini-3.5-flash
+3p/3f/24u (3 fails upheld on blind-check), mistral-medium 9p/1f/20u (1 upheld; same-day drift:
+9p/0f/21u), mistral-large 7p/0f/23u. **The uncertain bucket dominates every cell** (17–24 of 30
+records) — exactly the "fuzziest of the slices" property predicted above, and why this mode
+leans hardest on the judge layer (13–23 records judged per model). The buried-caveat gap
+discussed above was hit for real: `fx-live-hedge-then-precision` (a hedge-then-nine-digit-figure
+response) was owner-overturned on a head-only excerpt, then re-ruled fail on the full text — see
+`TASKS.md` task 6's "always show tails" rule that came out of it. See the top-level README +
+`TASKS.md` for the cross-model decided-rate table.
+
 ## Scaling from here
 
 Per-mode: more instances for power; an LLM-judge for the `uncertain` bucket (with its own

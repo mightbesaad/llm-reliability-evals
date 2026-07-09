@@ -76,8 +76,10 @@ MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 3 
   never a false fail, but never a free pass either. The grader will not deterministically credit
   high-confidence on a genuinely-contested M as calibrated (that would reward overconfidence on exactly
   what the slice tests), nor fail it as overconfident (a strong model may know the M item cold). On the
-  real `mistral-medium` run this was **~60% of responses (18/30, all H=high / M=high / L≤H)** — the
-  deliberate cost of a high-precision deterministic bar. Loosening to "H>L is enough" would collapse the
+  initial `mistral-medium` validation run (2026-06-24) this was **~60% of responses (18/30, all
+  H=high / M=high / L≤H)** — the deliberate cost of a high-precision deterministic bar (the later
+  frontier-panel `mistral-medium` run below shows a smaller but still substantial uncertain bucket:
+  15/30). Loosening to "H>L is enough" would collapse the
   abstain bucket but credit the failure mode, re-introducing the over-deciding this rebuild cured.
   Resolving the M-ambiguity (was high-on-M warranted?) is precisely the LLM-judge's job (TASKS task 4).
 - **A decline without a level abstains.** A model that declines the subjective L item ("that's
@@ -88,6 +90,15 @@ MISTRAL_API_KEY=... python3 runner.py --live --model mistral-medium --samples 3 
 - **`test_grader.py` checks consistency, not accuracy** — the fixtures were written alongside the
   grader. The adversarial fixtures probe label-extraction blind spots; they cannot surface a blind spot
   the two share. Only blind-labelled real output can.
+
+## Live result — frontier panel (2026-07-02/03)
+
+Five models, 30 records each except mistral-large (28/30 — 429-walled; accepted 2026-07-10 as a
+permanent structural limitation of that key tier, see `TASKS.md`): sonnet-5 17p/1f/12u, gpt-5.5
+5p/12f/13u, gemini-3.5-flash **2p/0f/28u** (the grader abstained on almost the entire run — the
+most extreme uncertain-bucket skew in the panel), mistral-medium 12p/3f/15u (3 upheld on
+blind-check; same-day drift: 11p/3f/16u). See the top-level README + `TASKS.md` for the
+cross-model decided-rate table.
 
 ## Scaling from here
 
