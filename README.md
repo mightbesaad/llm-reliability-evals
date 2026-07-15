@@ -119,6 +119,9 @@ which is exactly what mode 7 needs.
 ## Structure
 
 - [`TAXONOMY.md`](TAXONOMY.md) — the eight failure modes: definition, why it matters, detection criteria.
+- [`PROTOCOL.md`](PROTOCOL.md) — probe rotation with commitment: fresh probes are hash-committed
+  (git + witness chain) before a panel runs and published in full after, so nothing is public
+  before it has done its job and everything is public afterward.
 - [`evals/cases.yaml`](evals/cases.yaml) — the original rubric-graded cases (human- or LLM-judge scored).
 - `slices/<mode>/` — one vertical slice per mode:
   - `instances.yaml` — the frozen probes;
