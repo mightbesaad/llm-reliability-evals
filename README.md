@@ -32,6 +32,13 @@ grader, regression fixtures, and a runner with live-API and replay paths.
 
 ## The frontier panel (2026-07-02/03)
 
+![Fingerprint grid — five models × eight failure modes, cell shade = fail share of decided runs](assets/fingerprint-grid-2026-07.png)
+
+*The grid is generated from the committed results files by
+[`slices/panel_grid.py`](slices/panel_grid.py) (geometry) over
+[`slices/panel_stats.py`](slices/panel_stats.py) (numbers) — regenerate with
+`python3 slices/panel_grid.py`.*
+
 Five models, eight modes, temperature pinned, params recorded in every results file. Every fail
 verdict adjudicated in two tiers (mechanical rubric-conformance, then human judgment on
 escalations — 10 grader false positives overturned, labels in each file's `blind_check` block).
