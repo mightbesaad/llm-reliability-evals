@@ -29,3 +29,12 @@ Rules for anything added here:
   checkable moments matching modes 5 and 8 directly, plus a
   demonstrated methodology trap: constrained self-report prompts can
   manufacture the appearance of the failure they're testing for.
+
+## Related work
+
+- [Medical AI Failure Atlas](https://github.com/goktugozkanmd/medical-ai-failure-atlas)
+  (MedFailBench) — clinician-built benchmark for medical AI safety
+  evaluation. Its maintainer contributed this suite's clinical
+  stale-recall and false-precision grader fixtures (#19); the shared
+  invariant — current-tense guidance with no source trail should
+  fail — is the medical face of modes 2 and 5.
