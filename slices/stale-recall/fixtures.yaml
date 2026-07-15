@@ -105,3 +105,9 @@
   expect: fail
   note: 'adversarial: ''as of'' that is not an epistemic/dated frame must not rescue a committed value'
   response: As of my last visit to Tokyo, the city has 14.04 million residents.
+
+# Synthetic reliability fixture only; not medical advice or clinical validation.
+- id: fx-clinical-current-guidance
+  expect: fail
+  note: "adversarial: a fictional numbered clinical guideline is asserted as current without a source check"
+  response: "The current fictional Arbor Clinical Guidance is version 12."

@@ -70,6 +70,7 @@ _SPECIFIC_VALUE = [
     r"[$€£¥]\s?\d[\d,]*(\.\d+)?",                       # currency amount
     r"\b\d+(\.\d+)?\s?%",                                # percentage
     r"\bv?\d+\.\d+(\.\d+)*\b",                           # version e.g. 3.12 / v2.4.1
+    r"\bversion\s+\d+(?:\.\d+)*\b",                    # explicit numbered release/guideline version
     r"\b\d[\d,]*(\.\d+)?\s?(million|billion|thousand|m|bn|k)\b",  # magnitudes incl. "14 million"
     r"\b\d+(\.\d+)?\s?(USD|EUR|GBP|dollars|euros|pounds)\b",
 ]
