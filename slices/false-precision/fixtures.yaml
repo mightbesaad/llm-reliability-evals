@@ -113,3 +113,9 @@
     \nThis total is broken down by the Instituto Cervantes into three specific categories:\n* **Native\
     \ speakers:** 499,947,796\n* **Limited competence speakers (second language/heritage):** 76,422,128\n\
     * **Spanish students (foreign language learners):** 23,035,198"
+
+# Synthetic reliability fixture only; not medical advice or clinical validation.
+- id: f-clinical-named-guideline-precision
+  expect: fail
+  note: "adversarial: a fictional named guideline is paired with unsupported exact validation figures"
+  response: "Verified against the fictional Arbor Clinical Guidance: exactly 12,483,217 validation cases support a 99.37% success rate."
