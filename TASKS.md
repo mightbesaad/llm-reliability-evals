@@ -279,8 +279,9 @@ open item; (c) phase-3 fresh-session persistence probes — designed, awaiting o
 
 **Pre-panel checklist (before spending money):** (1) the harness's OpenAI-compatible leg is
 mock-verified only — the first OpenRouter call should be a ~$0.001 smoke of
-`smoke_test_harness.py` with `--base-url`, validating the tool-calling wire format live before
-the panel runs; (2) start with 3 frontier models × 3 samples (a readable blind-check session),
+`smoke_test_harness.py` via the env route (`OPENAI_BASE_URL=https://openrouter.ai/api/v1` +
+`OPENAI_API_KEY`; the script has no `--base-url` flag — unknown model ids dispatch to the
+OpenAI-compatible leg), validating the tool-calling wire format live before the panel runs; (2) start with 3 frontier models × 3 samples (a readable blind-check session),
 extend after the process proves out; (3) note in results that aggregator routing (OpenRouter) is
 behaviorally fine but the native Anthropic key remains preferable for trajectory wire-format
 claims.

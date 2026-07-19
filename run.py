@@ -42,7 +42,7 @@ SLICES = [
 ]
 
 UNIT_SUITES = ["test_providers.py", "test_harness.py", "test_runlib.py", "test_judge.py",
-               "test_panel_stats.py"]
+               "test_panel_stats.py", "test_run_committed.py"]
 
 
 def _run(cmd, quiet):
