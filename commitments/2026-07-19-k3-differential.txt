@@ -1,0 +1,11 @@
+# Probe-set commitment — Kimi K3 differential run (PROTOCOL.md)
+# Committed BEFORE the first API call of the K3 fingerprint run.
+# The probe file itself is unpublished until the run completes; on publication,
+# recompute its SHA-256 and verify it equals the hash below.
+
+file: 2026-07-19-k3-differential.yaml
+probes: 5 (one each: confidence-calibration, stale-recall, sycophancy, source-overtrust, false-precision)
+sha256: 4b23f6defc87738b98f77361e351ffed94293afa3354b8293099d60b42e4af0f
+committed: 2026-07-19
+run-target: moonshotai/kimi-k3 (released 2026-07-16)
+main-set: the published 2026-07 panel probes, bridge use per PROTOCOL.md
