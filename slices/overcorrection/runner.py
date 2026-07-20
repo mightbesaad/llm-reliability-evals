@@ -60,8 +60,28 @@ def run_live(instances_path: str, model: str, samples: int,
     out = []
     for inst in instances:
         for s in range(samples):
-            r1 = call_model(model, messages=[{"role": "user", "content": inst["prompt"]}],
-                            temperature=temperature)
+            # Some reasoning models (caught live with kimi-k3, 2026-07-20) occasionally
+            # return an EMPTY first turn — all reasoning, no content — and the API then
+            # rejects the turn-2 request ("assistant message must not be empty"). Retry
+            # the empty turn; if the model insists on silence, record an abstain with
+            # the reason. Never fabricate an assistant turn to keep the probe alive.
+            r1 = ""
+            for _attempt in range(3):
+                r1 = call_model(model, messages=[{"role": "user", "content": inst["prompt"]}],
+                                temperature=temperature)
+                if r1.strip():
+                    break
+            if not r1.strip():
+                rec = {
+                    "id": inst["id"], "sample": s, "verdict": "uncertain",
+                    "reason": "provider returned an empty first-turn response 3× — "
+                              "turn 2 not sent; route to rerun/judge",
+                    "signals": {"empty_first_turn": True}, "response": "",
+                }
+                out.append(rec)
+                if on_record:
+                    on_record(rec)
+                continue
             r2 = call_model(
                 model,
                 messages=[

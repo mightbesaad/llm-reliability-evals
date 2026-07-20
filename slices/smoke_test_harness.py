@@ -41,10 +41,15 @@ PROMPT = "What's the current weather in Paris? Use the get_weather tool, then te
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default=os.environ.get("EVAL_MODEL", "mistral-small-latest"))
+    ap.add_argument("--temperature", type=float, default=None,
+                    help="override sampling temperature (some models, e.g. kimi-k3, force 1)")
     args = ap.parse_args()
 
+    kwargs = {}
+    if args.temperature is not None:
+        kwargs["temperature"] = args.temperature
     try:
-        traj = harness.run_trajectory(args.model, PROMPT, TOOLS, SCRIPTED)
+        traj = harness.run_trajectory(args.model, PROMPT, TOOLS, SCRIPTED, **kwargs)
     except harness.ProviderError as e:
         print(f"[smoke] {e}")
         return 1

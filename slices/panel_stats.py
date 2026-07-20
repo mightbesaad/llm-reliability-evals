@@ -43,8 +43,9 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# The frozen frontier panel: results files dated 2026-07-02/03, .prev snapshots excluded.
-PANEL_DATES = ("2026-07-02", "2026-07-03")
+# The frozen frontier panel (2026-07-02/03) plus release-week fingerprint additions.
+# .prev snapshots excluded everywhere.
+PANEL_DATES = ("2026-07-02", "2026-07-03", "2026-07-20")
 
 MODEL_LABELS = {
     "anthropic/claude-sonnet-5": "claude-sonnet-5",
